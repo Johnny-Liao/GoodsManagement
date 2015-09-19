@@ -15,7 +15,7 @@
     <context:property-placeholder location="classpath:config.properties"/>
 
     <!--Spring扫描以下包进行IOC操作-->
-    <context:component-scan base-package="org.crazydog.dao.impl,org.crazydog.service.impl,org.crazydog.log.impl"/>
+    <context:component-scan base-package="org.goodsManagement.dao.impl,org.goodsManagement.service.impl,org.goodsManagement.log.impl"/>
 
     <!--开启注解-->
     <context:annotation-config/>
@@ -115,17 +115,17 @@
         </property>
     </bean>
 
-    <!-- 为AccountBiz接口配置事务拦截器，baseTransactionProxy是事务拦截器，在Controller中获取这个对象 -->
-    <bean id="accountBiz" parent="baseTransactionProxy">
-        <!-- 设置target，也就是AccountBiz的实现类 -->
-        <property name="target" ref="accountBizImpl"/>
-    </bean>
+    <!--&lt;!&ndash; 为AccountBiz接口配置事务拦截器，baseTransactionProxy是事务拦截器，在Controller中获取这个对象 &ndash;&gt;-->
+    <!--<bean id="accountBiz" parent="baseTransactionProxy">-->
+        <!--&lt;!&ndash; 设置target，也就是AccountBiz的实现类 &ndash;&gt;-->
+        <!--<property name="target" ref="accountBizImpl"/>-->
+    <!--</bean>-->
 
     <!--使用aop来记录日志-->
     <aop:config proxy-target-class="true">
         <!--pointcut表示将切面逻辑应用到哪些类上，采用的是aspectJ的表达式语言-->
         <aop:pointcut id="myPointcut"
-                      expression="execution(* org.crazydog.service.impl.*.*(..))"/>
+                      expression="execution(* org.goodsManagement.service.impl.*.*(..))"/>
         <!-- 切面： 将哪个对象中的哪个方法，织入到哪个切入点 -->
         <aop:aspect ref="JDKLogImpl">
             <!-- 前置通知-->
