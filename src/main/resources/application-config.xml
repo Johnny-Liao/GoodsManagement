@@ -15,7 +15,10 @@
     <context:property-placeholder location="classpath:config.properties"/>
 
     <!--Spring扫描以下包进行IOC操作-->
-    <context:component-scan base-package="org.goodsManagement.dao.impl,org.goodsManagement.service.impl,org.goodsManagement.log.impl"/>
+    <context:component-scan
+            base-package="org.goodsManagement.dao.impl,
+                          org.goodsManagement.service.impl,
+                          org.goodsManagement.log.impl"/>
 
     <!--开启注解-->
     <context:annotation-config/>
@@ -63,11 +66,21 @@
         <property name="filters" value="mergeStat"/>
     </bean>
 
-    <!-- 创建SqlSessionFactory，同时指定数据源-->
+    <!-- 创建SqlSessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--指定数据源-->
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:../resources/sqlMapConfig.xml"/>
-        <!--<property name="configLocation" value="classpath:mybatis-config.xml"></property>-->
+        <!--mapper的位置-->
+        <!--<property name="mapperLocations" value="classpath:org/goodsManagement/mapper/*Mapper.xml"/>-->
+        <!--MyBatis的配置文件位置-->
+        <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
+        <!--指定实体类所在的包，增强别名-->
+        <property name="typeAliasesPackage" value="org.goodsManagement.po"/>
+    </bean>
+
+    <!--MapperScannerConfigurer就会扫描指定基包下面的所有接口，并把它们注册为一个个MapperFactoryBean对象-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="org.goodsManagement.mapper"/>
     </bean>
 
     <!--创建SqlSessionTemplate-->
@@ -76,11 +89,10 @@
     </bean>
 
     <!--创建数据映射器，数据映射器必须为接口-->
-    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.xxt.ibatis.dbcp.dao.UserMapper"/>
-        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-
-    </bean>
+    <!--<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+    <!--<property name="mapperInterface" value="com.xxt.ibatis.dbcp.dao.UserMapper"/>-->
+    <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+    <!--</bean>-->
 
     <!-- 配置事务管理器，注意这里的dataSource和SqlSessionFactoryBean的dataSource要一致，不然事务就没有作用了 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -115,10 +127,10 @@
         </property>
     </bean>
 
-    <!--&lt;!&ndash; 为AccountBiz接口配置事务拦截器，baseTransactionProxy是事务拦截器，在Controller中获取这个对象 &ndash;&gt;-->
+    <!-- 为AccountBiz接口配置事务拦截器，baseTransactionProxy是事务拦截器，在Controller中获取这个对象 -->
     <!--<bean id="accountBiz" parent="baseTransactionProxy">-->
-        <!--&lt;!&ndash; 设置target，也就是AccountBiz的实现类 &ndash;&gt;-->
-        <!--<property name="target" ref="accountBizImpl"/>-->
+    <!--&lt;!&ndash; 设置target，也就是AccountBiz的实现类 &ndash;&gt;-->
+    <!--<property name="target" ref="accountBizImpl"/>-->
     <!--</bean>-->
 
     <!--使用aop来记录日志-->

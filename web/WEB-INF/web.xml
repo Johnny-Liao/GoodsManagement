@@ -6,7 +6,7 @@
     <!-- spring配置文件位置 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:application-config.xml,classpath:spring-hibernate.xml</param-value>
+        <param-value>classpath:application-config.xml</param-value>
     </context-param>
 
     <!--解决乱码的filter-->
