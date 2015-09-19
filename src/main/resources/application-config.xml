@@ -79,7 +79,6 @@
     <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="com.xxt.ibatis.dbcp.dao.UserMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-
     </bean>
 
     <!-- 配置事务管理器，注意这里的dataSource和SqlSessionFactoryBean的dataSource要一致，不然事务就没有作用了 -->
