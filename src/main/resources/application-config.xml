@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 引入属性文件 集中管理配置属性-->
+    <context:property-placeholder location="classpath:config.properties"/>
+
+    <!--Spring扫描以下包进行IOC操作-->
+    <context:component-scan base-package="org.crazydog.dao.impl,org.crazydog.service.impl,org.crazydog.log.impl"/>
+
+    <!--开启注解-->
+    <context:annotation-config/>
+
+    <!-- 配置数据源 -->
+    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc_url}"/>
+        <property name="username" value="${jdbc_username}"/>
+        <property name="password" value="${jdbc_password}"/>
+
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="0"/>
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="20"/>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle" value="20"/>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="0"/>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="60000"/>
+
+        <!-- <property name="poolPreparedStatements" value="true" /> <property
+            name="maxPoolPreparedStatementPerConnectionSize" value="33" /> -->
+
+        <property name="validationQuery" value="${validationQuery}"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="testWhileIdle" value="true"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="25200000"/>
+
+        <!-- 打开removeAbandoned功能 -->
+        <property name="removeAbandoned" value="true"/>
+        <!-- 1800秒，也就是30分钟 -->
+        <property name="removeAbandonedTimeout" value="1800"/>
+        <!-- 关闭abanded连接时输出错误日志 -->
+        <property name="logAbandoned" value="true"/>
+
+        <!-- 监控数据库 -->
+        <!-- <property name="filters" value="stat" /> -->
+        <property name="filters" value="mergeStat"/>
+    </bean>
+
+    <!-- 创建SqlSessionFactory，同时指定数据源-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath*:com/xxt/ibatis/dbcp/domain/user.map.xml"/>
+        <!--<property name="configLocation" value="classpath:mybatis-config.xml"></property>-->
+    </bean>
+
+    <!--创建SqlSessionTemplate-->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!--创建数据映射器，数据映射器必须为接口-->
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.xxt.ibatis.dbcp.dao.UserMapper"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+
+    </bean>
+
+    <!-- 配置事务管理器，注意这里的dataSource和SqlSessionFactoryBean的dataSource要一致，不然事务就没有作用了 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 配置事务的传播特性 -->
+    <bean id="baseTransactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+          abstract="true">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="modify*">PROPAGATION_REQUIRED</prop>
+                <prop key="edit*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="remove*">PROPAGATION_REQUIRED</prop>
+                <prop key="repair*">PROPAGATION_REQUIRED</prop>
+                <prop key="cancel*">PROPAGATION_REQUIRED</prop>
+                <prop key="deleteAndRepair*">PROPAGATION_REQUIRED</prop>
+
+                <prop key="get*">PROPAGATION_SUPPORTS</prop>
+                <prop key="find*">PROPAGATION_SUPPORTS</prop>
+                <prop key="load*">PROPAGATION_SUPPORTS</prop>
+                <prop key="search*">PROPAGATION_SUPPORTS</prop>
+                <prop key="datagrid*">PROPAGATION_SUPPORTS</prop>
+
+                <prop key="*">PROPAGATION_SUPPORTS</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 为AccountBiz接口配置事务拦截器，baseTransactionProxy是事务拦截器，在Controller中获取这个对象 -->
+    <bean id="accountBiz" parent="baseTransactionProxy">
+        <!-- 设置target，也就是AccountBiz的实现类 -->
+        <property name="target" ref="accountBizImpl"/>
+    </bean>
+
+    <!--使用aop来记录日志-->
+    <aop:config proxy-target-class="true">
+        <!--pointcut表示将切面逻辑应用到哪些类上，采用的是aspectJ的表达式语言-->
+        <aop:pointcut id="myPointcut"
+                      expression="execution(* org.crazydog.service.impl.*.*(..))"/>
+        <!-- 切面： 将哪个对象中的哪个方法，织入到哪个切入点 -->
+        <aop:aspect ref="JDKLogImpl">
+            <!-- 前置通知-->
+            <!--<aop:before method="beforeAdvice" pointcut-ref="myPointcut"/>-->
+            <!--<aop:after method="afterAdvice" pointcut-ref="myPointcut"/>-->
+            <aop:around method="aroundAdvice" pointcut-ref="myPointcut"/>
+            <!--<aop:after-returning method="afterReturningAdvice" returning="returnObj" pointcut-ref="myPointcut"/>-->
+        </aop:aspect>
+    </aop:config>
+
+    <!-- 启用AspectJ对Annotation的支持 -->
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+</beans>
