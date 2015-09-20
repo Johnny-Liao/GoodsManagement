@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by lifei on 2015/9/20.
  */
 @Component
-public class GetGoodsDao<T> extends BasedaoA<GetGoodsDto> {
+public class GetGoodsDao extends BasedaoA<GetGoodsDto> {
     /**
      * 通过主键删除
      *

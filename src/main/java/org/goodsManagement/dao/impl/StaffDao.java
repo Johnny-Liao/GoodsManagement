@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class StaffDao<T> extends BasedaoA<StaffDto> {
+public class StaffDao extends BasedaoA<StaffDto> {
     /**
      * 通过主键获取实体
      *

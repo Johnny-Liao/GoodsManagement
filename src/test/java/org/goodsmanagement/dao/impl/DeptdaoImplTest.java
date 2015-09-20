@@ -13,12 +13,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class DeptdaoImplTest {
 
     private ApplicationContext applicationContext;
-    private DeptdaoImpl<DeptDto> deptdao;
+    private DeptdaoImpl deptdao;
 
     @Before
     public void setUp() throws Exception {
         applicationContext = new ClassPathXmlApplicationContext("application-config.xml");
-        deptdao = (DeptdaoImpl<DeptDto>) applicationContext.getBean("deptdaoImpl");
+        deptdao = (DeptdaoImpl) applicationContext.getBean("deptdaoImpl");
     }
 
     @Test

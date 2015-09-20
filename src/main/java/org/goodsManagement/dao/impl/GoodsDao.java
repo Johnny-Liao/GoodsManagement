@@ -4,11 +4,13 @@ import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.GoodsDto;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by lifei on 2015/9/20.
  */
 @Component
-public class GoodsDao<T> extends BasedaoA<GoodsDto> {
+public class GoodsDao extends BasedaoA<GoodsDto> {
     /**
      * 通过主键删除
      *
@@ -68,5 +70,17 @@ public class GoodsDao<T> extends BasedaoA<GoodsDto> {
     @Override
     public int updateByPrimaryKey(GoodsDto record) {
         return sessionTemplate.update("org.goodsManagement.mapper.GoodsDtoMapper.updateByPrimaryKey", record);
+    }
+    /**
+     * 通过货品名称来查询
+     *
+     * @param name
+     *              需要查询的货品名称
+     * @return goods
+     *              同意货品名称的集合
+     */
+    public  List<GoodsDto> selectByName(String name) {
+        List<GoodsDto> goods =  sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.selectByName", "衬衫");
+        return goods;
     }
 }

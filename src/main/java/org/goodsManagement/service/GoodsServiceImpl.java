@@ -31,12 +31,8 @@ public class GoodsServiceImpl<T> implements BaseServiceI<GoodsDto> {
     public void modifyEntity(GoodsDto goodsDto) {
         goodsDao.updateByPrimaryKey(goodsDto);
     }
-
-    public GoodsDto loadEntity(int id) {
-        return null;
-    }
     /**
-     * 获得实体类
+     * 通过ID获得实体类
      *
      * @param id 实体对象的id
      * @return
@@ -44,12 +40,25 @@ public class GoodsServiceImpl<T> implements BaseServiceI<GoodsDto> {
     public GoodsDto getEntity(int id) {
         return goodsDao.selectByPrimaryKey(id);
     }
-
+    /**
+     * 通过货品名称来查询
+     *
+     * @param name
+     *              需要查询的货品名称
+     * @return goods
+     *              同意货品名称的集合
+     */
+    public List<GoodsDto> getEntitiesByname(String name) {
+        return goodsDao.selectByName(name);
+    }
     public List<GoodsDto> getAllEntities() {
         return null;
     }
 
     public void deleteEntity(GoodsDto goodsDto) {
 
+    }
+    public GoodsDto loadEntity(int id) {
+        return null;
     }
 }
