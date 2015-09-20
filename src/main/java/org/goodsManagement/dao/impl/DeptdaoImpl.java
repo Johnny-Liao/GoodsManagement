@@ -2,10 +2,12 @@ package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.DeptDto;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by never on 2015/9/20.
  */
+@Component
 public class DeptdaoImpl<T> extends BasedaoA<DeptDto> {
 
     /**
@@ -16,7 +18,8 @@ public class DeptdaoImpl<T> extends BasedaoA<DeptDto> {
      */
     @Override
     public int deleteByPrimaryKey(Integer id) {
-        return sessionTemplate.selectOne("org.goodsManagement.mapper.DeptDtoMapper.deleteByPrimaryKey", id);
+//        sessionTemplate.
+        return sessionTemplate.delete("org.goodsManagement.mapper.DeptDtoMapper.deleteByPrimaryKey", id);
     }
 
     /**
@@ -27,7 +30,7 @@ public class DeptdaoImpl<T> extends BasedaoA<DeptDto> {
      */
     @Override
     public int insert(DeptDto record) {
-        return sessionTemplate.selectOne("org.goodsManagement.mapper.DeptDtoMapper.insert", record);
+        return sessionTemplate.insert("org.goodsManagement.mapper.DeptDtoMapper.insert", record);
     }
 
     /**
@@ -38,7 +41,7 @@ public class DeptdaoImpl<T> extends BasedaoA<DeptDto> {
      */
     @Override
     public int insertSelective(DeptDto record) {
-        return sessionTemplate.selectOne("org.goodsManagement.mapper.DeptDtoMapper.insertSelective", record);
+        return sessionTemplate.insert("org.goodsManagement.mapper.DeptDtoMapper.insertSelective", record);
     }
 
     /**
@@ -60,7 +63,7 @@ public class DeptdaoImpl<T> extends BasedaoA<DeptDto> {
      */
     @Override
     public int updateByPrimaryKeySelective(DeptDto record) {
-        return sessionTemplate.selectOne("org.goodsManagement.mapper.DeptDtoMapper.updateByPrimaryKeySelective", record);
+        return sessionTemplate.update("org.goodsManagement.mapper.DeptDtoMapper.updateByPrimaryKeySelective", record);
     }
 
     /**
@@ -71,6 +74,6 @@ public class DeptdaoImpl<T> extends BasedaoA<DeptDto> {
      */
     @Override
     public int updateByPrimaryKey(DeptDto record) {
-        return sessionTemplate.selectOne("org.goodsManagement.mapper.DeptDtoMapper.updateByPrimaryKey", record);
+        return sessionTemplate.update("org.goodsManagement.mapper.DeptDtoMapper.updateByPrimaryKey", record);
     }
 }
