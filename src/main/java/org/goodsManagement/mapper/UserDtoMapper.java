@@ -8,17 +8,6 @@ import org.goodsManagement.po.UserDto;
  *
  * @mbggenerated Sun Sep 20 14:45:05 CST 2015
  */
-public interface UserDtoMapper {
+public interface UserDtoMapper extends BaseMapper<UserDto> {
 
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(UserDto record);
-
-    int insertSelective(UserDto record);
-
-    UserDto selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(UserDto record);
-
-    int updateByPrimaryKey(UserDto record);
 }

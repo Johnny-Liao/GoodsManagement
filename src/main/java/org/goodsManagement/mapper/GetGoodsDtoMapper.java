@@ -8,16 +8,5 @@ import org.goodsManagement.po.GetGoodsDto;
  *
  * @mbggenerated Sun Sep 20 14:45:05 CST 2015
  */
-public interface GetGoodsDtoMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(GetGoodsDto record);
-
-    int insertSelective(GetGoodsDto record);
-
-    GetGoodsDto selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(GetGoodsDto record);
-
-    int updateByPrimaryKey(GetGoodsDto record);
+public interface GetGoodsDtoMapper extends BaseMapper<GetGoodsDto> {
 }

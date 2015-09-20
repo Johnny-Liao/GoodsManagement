@@ -8,17 +8,6 @@ import org.goodsManagement.po.StaffDto;
  *
  * @mbggenerated Sun Sep 20 14:45:05 CST 2015
  */
-public interface StaffDtoMapper {
+public interface StaffDtoMapper extends BaseMapper<StaffDto>{
 
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(StaffDto record);
-
-    int insertSelective(StaffDto record);
-
-    StaffDto selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(StaffDto record);
-
-    int updateByPrimaryKey(StaffDto record);
 }

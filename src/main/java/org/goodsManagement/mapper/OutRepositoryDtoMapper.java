@@ -8,17 +8,6 @@ import org.goodsManagement.po.OutRepositoryDto;
  *
  * @mbggenerated Sun Sep 20 14:45:05 CST 2015
  */
-public interface OutRepositoryDtoMapper {
+public interface OutRepositoryDtoMapper extends BaseMapper<OutRepositoryDto> {
 
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(OutRepositoryDto record);
-
-    int insertSelective(OutRepositoryDto record);
-
-    OutRepositoryDto selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(OutRepositoryDto record);
-
-    int updateByPrimaryKey(OutRepositoryDto record);
 }

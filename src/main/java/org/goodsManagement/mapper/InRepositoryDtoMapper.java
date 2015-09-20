@@ -8,17 +8,6 @@ import org.goodsManagement.po.InRepositoryDto;
  *
  * @mbggenerated Sun Sep 20 14:45:05 CST 2015
  */
-public interface InRepositoryDtoMapper {
+public interface InRepositoryDtoMapper extends BaseMapper<InRepositoryDto> {
 
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(InRepositoryDto record);
-
-    int insertSelective(InRepositoryDto record);
-
-    InRepositoryDto selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(InRepositoryDto record);
-
-    int updateByPrimaryKey(InRepositoryDto record);
 }

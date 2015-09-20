@@ -8,16 +8,5 @@ import org.goodsManagement.po.DeptDto;
  *
  * @mbggenerated Sun Sep 20 14:45:05 CST 2015
  */
-public interface DeptDtoMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(DeptDto record);
-
-    int insertSelective(DeptDto record);
-
-    DeptDto selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(DeptDto record);
-
-    int updateByPrimaryKey(DeptDto record);
+public interface DeptDtoMapper extends BaseMapper<DeptDto> {
 }

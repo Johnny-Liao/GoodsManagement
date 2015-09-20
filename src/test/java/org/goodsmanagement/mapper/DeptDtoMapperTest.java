@@ -36,7 +36,7 @@ public class DeptDtoMapperTest {
     public void testInsert() throws Exception {
         DeptDto deptDto = new DeptDto();
         deptDto.setDeptname("测试");
-        deptDto = sqlSession.selectOne("org.goodsmanagement.mapper.DeptDtoMapper.insert", deptDto);
+        deptDto = sqlSession.selectOne("org.goodsManagement.mapper.DeptDtoMapper.insert", deptDto);
         System.out.println(deptDto);
     }
 
