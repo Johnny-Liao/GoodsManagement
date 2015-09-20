@@ -73,11 +73,10 @@ CREATE TABLE outrepository
   goodnumber INT           NOT NULL,
   operatorid INT             NOT NULL,
   deptid   INT             NOT NULL,
-  standardnumber INT DEFAULT 10,
+  standardnumber INT DEFAULT 1,
   comments VARCHAR(40)
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 ALTER TABLE outrepository ADD CONSTRAINT FK_ID_STAFF_OUT FOREIGN KEY (goodid) REFERENCES goods (id);
 ALTER TABLE outrepository ADD CONSTRAINT FK_ID_DEPT_OUT FOREIGN KEY (deptid) REFERENCES dept (id);
 ALTER TABLE outrepository ADD CONSTRAINT FK_ID_OPERATOR_OUT FOREIGN KEY (operatorid) REFERENCES user (id);
-
 
