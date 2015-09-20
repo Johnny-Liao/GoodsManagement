@@ -46,7 +46,7 @@ CREATE TABLE dept
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 -- 入库信息表（入库单号、入库时间、物品编号、供应商、联系人、联系电话、操作员、备注）
-CREATE TABLE inrespository
+CREATE TABLE inrepository
 (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   intime DATE NOT NULL,
@@ -57,11 +57,11 @@ CREATE TABLE inrespository
   operator INT NOT NULL,
   comments VARCHAR(40)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
-alter table inrespository add constraint FK_ID_STAFF_IN foreign key(goodid) REFERENCES goods(id);
-alter table inrespository add constraint FK_ID_OPERATOR_IN foreign key(operator) REFERENCES user(id);
+alter table inrepository add constraint FK_ID_STAFF_IN foreign key(goodid) REFERENCES goods(id);
+alter table inrepository add constraint FK_ID_OPERATOR_IN foreign key(operator) REFERENCES user(id);
 
 -- 出库信息表（出库单号、出库时间、物品编号、操作员、部门编号、备注）
-CREATE TABLE outrespository
+CREATE TABLE outrepository
 (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   outtime DATE NOT NULL,
@@ -70,8 +70,8 @@ CREATE TABLE outrespository
   deptid INT NOT NULL,
   comments VARCHAR(40)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
-alter table outrespository add constraint FK_ID_STAFF_OUT foreign key(goodid) REFERENCES goods(id);
-alter table outrespository add constraint FK_ID_DEPT_OUT foreign key(deptid) REFERENCES dept(id);
-alter table outrespository add constraint FK_ID_OPERATOR_OUT foreign key(operator) REFERENCES user(id);
+alter table outrepository add constraint FK_ID_STAFF_OUT foreign key(goodid) REFERENCES goods(id);
+alter table outrepository add constraint FK_ID_DEPT_OUT foreign key(deptid) REFERENCES dept(id);
+alter table outrepository add constraint FK_ID_OPERATOR_OUT foreign key(operator) REFERENCES user(id);
 
 

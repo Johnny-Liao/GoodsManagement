@@ -7,7 +7,8 @@
     <!--增加MySQL Driver的classpath-->
     <classPathEntry
             location="C:\Users\never\.m2\repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar"/>
-
+    <!--<classPathEntry-->
+    <!--location="mysql-connector-java-5.1.34.jar"/>-->
     <context id="MySQLTables" targetRuntime="MyBatis3">
         <!--数据库的驱动信息-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -47,12 +48,26 @@
         <!--<ignoreColumn column="FRED"/>-->
         <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>-->
         <!--</table>-->
-        <table catalog="goodsmanage" schema="goodsmanage" tableName="dept"/>
-        <table catalog="goodsmanage" schema="goodsmanage" tableName="getgoods"/>
-        <table catalog="goodsmanage" schema="goodsmanage" tableName="goods"/>
-        <table catalog="goodsmanage" schema="goodsmanage" tableName="inrepository"/>
-        <table catalog="goodsmanage" schema="goodsmanage" tableName="outrepository"/>
-        <table catalog="goodsmanage" schema="goodsmanage" tableName="staff"/>
-        <table catalog="goodsmanage" schema="goodsmanage" tableName="user"/>
+        <table schema="goodsmanage" tableName="dept" domainObjectName="DeptDto"
+               enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table schema="goodsmanage" tableName="getgoods" domainObjectName="GetGoodsDto"
+               enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table schema="goodsmanage" tableName="goods" domainObjectName="GoodsDto"
+               enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table schema="goodsmanage" tableName="inrepository" domainObjectName="InRepositoryDto"
+               enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table schema="goodsmanage" tableName="outrepository" domainObjectName="OutRepositoryDto"
+               enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table schema="goodsmanage" tableName="staff" domainObjectName="StaffDto"
+               enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table schema="goodsmanage" tableName="user" domainObjectName="UserDto"
+               enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>
