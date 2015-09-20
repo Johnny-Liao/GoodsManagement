@@ -16,9 +16,9 @@
 
     <!--Spring扫描以下包进行IOC操作-->
     <context:component-scan
-            base-package="org.goodsManagement.dao.impl,
-                          org.goodsManagement.service.impl,
-                          org.goodsManagement.log.impl"/>
+            base-package="org.goodsmanagement.dao.impl,
+                          org.goodsmanagement.service.impl,
+                          org.goodsmanagement.log.impl"/>
 
     <!--开启注解-->
     <context:annotation-config/>
@@ -35,7 +35,7 @@
         <!-- 连接池最大使用连接数量 -->
         <property name="maxActive" value="20"/>
         <!-- 连接池最大空闲 -->
-        <property name="maxIdle" value="20"/>
+        <!--<property name="maxIdle" value="20"/>-->
         <!-- 连接池最小空闲 -->
         <property name="minIdle" value="0"/>
         <!-- 获取连接最大等待时间 -->
@@ -71,17 +71,17 @@
         <!--指定数据源-->
         <property name="dataSource" ref="dataSource"/>
         <!--mapper的位置-->
-        <!--<property name="mapperLocations" value="classpath:org/goodsManagement/mapper/*Mapper.xml"/>-->
+        <property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
         <!--MyBatis的配置文件位置-->
-        <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
+        <!--<property name="configLocation" value="classpath:sqlMapConfig.xml"/>-->
         <!--指定实体类所在的包，增强别名-->
-        <property name="typeAliasesPackage" value="org.goodsManagement.po"/>
+        <property name="typeAliasesPackage" value="org.goodsmanagement.po"/>
     </bean>
 
     <!--MapperScannerConfigurer就会扫描指定基包下面的所有接口，并把它们注册为一个个MapperFactoryBean对象-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="org.goodsManagement.mapper"/>
-    </bean>
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--<property name="basePackage" value="org.goodsmanagement.mapper"/>-->
+    <!--</bean>-->
 
     <!--创建SqlSessionTemplate-->
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
@@ -137,7 +137,7 @@
     <aop:config proxy-target-class="true">
         <!--pointcut表示将切面逻辑应用到哪些类上，采用的是aspectJ的表达式语言-->
         <aop:pointcut id="myPointcut"
-                      expression="execution(* org.goodsManagement.service.impl.*.*(..))"/>
+                      expression="execution(* org.goodsmanagement.service.impl.*.*(..))"/>
         <!-- 切面： 将哪个对象中的哪个方法，织入到哪个切入点 -->
         <aop:aspect ref="JDKLogImpl">
             <!-- 前置通知-->

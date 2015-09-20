@@ -23,7 +23,7 @@
         </javaTypeResolver>
 
         <!--生成的po类的位置-->
-        <javaModelGenerator targetPackage="org.goodsManagement.po" targetProject="./src/main/java">
+        <javaModelGenerator targetPackage="org.goodsmanagement.po" targetProject="./src/main/java">
             <!--是否让shema作为包的后缀-->
             <property name="enableSubPackages" value="false"/>
             <!--清楚数据库值的空格-->
@@ -31,23 +31,16 @@
         </javaModelGenerator>
 
         <!--生成的mapper的位置-->
-        <sqlMapGenerator targetPackage="org.goodsManagement.mapper" targetProject="./src/main/java">
+        <sqlMapGenerator targetPackage="org.goodsmanagement.mapper" targetProject="./src/main/java">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!--mapper接口类的位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="org.goodsManagement.mapper"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.goodsmanagement.mapper"
                              targetProject="./src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <!--<table catalog="goodsmanage" schema="goodsmanage" tableName="dept" domainObjectName="Customer">-->
-        <!--<property name="useActualColumnNames" value="true"/>-->
-        <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
-        <!--<columnOverride column="DATE_FIELD" property="startDate"/>-->
-        <!--<ignoreColumn column="FRED"/>-->
-        <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>-->
-        <!--</table>-->
         <table schema="goodsmanage" tableName="dept" domainObjectName="DeptDto"
                enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"/>
