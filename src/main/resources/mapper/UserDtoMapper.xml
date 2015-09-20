@@ -8,8 +8,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, username, password
-    </sql>
+    id, username, password
+  </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -19,14 +19,16 @@
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from user
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
 
     <insert id="insert" parameterType="org.goodsManagement.po.UserDto">
-        insert into user (id, username, password)
-        values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
-    </insert>
+    insert into user (id, username, password
+      )
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+      )
+  </insert>
 
     <insert id="insertSelective" parameterType="org.goodsManagement.po.UserDto">
         insert into user
@@ -68,10 +70,10 @@
     </update>
 
     <update id="updateByPrimaryKey" parameterType="org.goodsManagement.po.UserDto">
-        update user
-        set username = #{username,jdbcType=VARCHAR},
-        password = #{password,jdbcType=VARCHAR}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
 </mapper>

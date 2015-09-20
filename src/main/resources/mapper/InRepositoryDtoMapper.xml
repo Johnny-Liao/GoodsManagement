@@ -5,15 +5,18 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="intime" property="intime" jdbcType="DATE"/>
         <result column="goodid" property="goodid" jdbcType="INTEGER"/>
+        <result column="goodnumber" property="goodnumber" jdbcType="INTEGER"/>
         <result column="suppliers" property="suppliers" jdbcType="VARCHAR"/>
         <result column="linkman" property="linkman" jdbcType="VARCHAR"/>
         <result column="phone" property="phone" jdbcType="VARCHAR"/>
-        <result column="operator" property="operator" jdbcType="INTEGER"/>
+        <result column="operatorid" property="operatorid" jdbcType="INTEGER"/>
         <result column="comments" property="comments" jdbcType="VARCHAR"/>
     </resultMap>
+
     <sql id="Base_Column_List">
-        id, intime, goodid, suppliers, linkman, phone, operator, comments
+    id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments
     </sql>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
@@ -21,17 +24,21 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from inrepository
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
+    delete from inrepository
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
     <insert id="insert" parameterType="org.goodsManagement.po.InRepositoryDto">
-        insert into inrepository (id, intime, goodid,
-        suppliers, linkman, phone,
-        operator, comments)
-        values (#{id,jdbcType=INTEGER}, #{intime,jdbcType=DATE}, #{goodid,jdbcType=INTEGER},
-        #{suppliers,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
-        #{operator,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR})
-    </insert>
+    insert into inrepository (id, intime, goodid,
+      goodnumber, suppliers, linkman, 
+      phone, operatorid, comments
+      )
+    values (#{id,jdbcType=INTEGER}, #{intime,jdbcType=DATE}, #{goodid,jdbcType=INTEGER}, 
+      #{goodnumber,jdbcType=INTEGER}, #{suppliers,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{operatorid,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR}
+      )
+  </insert>
+
     <insert id="insertSelective" parameterType="org.goodsManagement.po.InRepositoryDto">
         insert into inrepository
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -44,6 +51,9 @@
             <if test="goodid != null">
                 goodid,
             </if>
+            <if test="goodnumber != null">
+                goodnumber,
+            </if>
             <if test="suppliers != null">
                 suppliers,
             </if>
@@ -53,8 +63,8 @@
             <if test="phone != null">
                 phone,
             </if>
-            <if test="operator != null">
-                operator,
+            <if test="operatorid != null">
+                operatorid,
             </if>
             <if test="comments != null">
                 comments,
@@ -70,6 +80,9 @@
             <if test="goodid != null">
                 #{goodid,jdbcType=INTEGER},
             </if>
+            <if test="goodnumber != null">
+                #{goodnumber,jdbcType=INTEGER},
+            </if>
             <if test="suppliers != null">
                 #{suppliers,jdbcType=VARCHAR},
             </if>
@@ -79,14 +92,15 @@
             <if test="phone != null">
                 #{phone,jdbcType=VARCHAR},
             </if>
-            <if test="operator != null">
-                #{operator,jdbcType=INTEGER},
+            <if test="operatorid != null">
+                #{operatorid,jdbcType=INTEGER},
             </if>
             <if test="comments != null">
                 #{comments,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="org.goodsManagement.po.InRepositoryDto">
         update inrepository
         <set>
@@ -95,6 +109,9 @@
             </if>
             <if test="goodid != null">
                 goodid = #{goodid,jdbcType=INTEGER},
+            </if>
+            <if test="goodnumber != null">
+                goodnumber = #{goodnumber,jdbcType=INTEGER},
             </if>
             <if test="suppliers != null">
                 suppliers = #{suppliers,jdbcType=VARCHAR},
@@ -105,8 +122,8 @@
             <if test="phone != null">
                 phone = #{phone,jdbcType=VARCHAR},
             </if>
-            <if test="operator != null">
-                operator = #{operator,jdbcType=INTEGER},
+            <if test="operatorid != null">
+                operatorid = #{operatorid,jdbcType=INTEGER},
             </if>
             <if test="comments != null">
                 comments = #{comments,jdbcType=VARCHAR},
@@ -114,15 +131,18 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="org.goodsManagement.po.InRepositoryDto">
-        update inrepository
-        set intime = #{intime,jdbcType=DATE},
-        goodid = #{goodid,jdbcType=INTEGER},
-        suppliers = #{suppliers,jdbcType=VARCHAR},
-        linkman = #{linkman,jdbcType=VARCHAR},
-        phone = #{phone,jdbcType=VARCHAR},
-        operator = #{operator,jdbcType=INTEGER},
-        comments = #{comments,jdbcType=VARCHAR}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+    update inrepository
+    set intime = #{intime,jdbcType=DATE},
+      goodid = #{goodid,jdbcType=INTEGER},
+      goodnumber = #{goodnumber,jdbcType=INTEGER},
+      suppliers = #{suppliers,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      operatorid = #{operatorid,jdbcType=INTEGER},
+      comments = #{comments,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
 </mapper>

@@ -5,31 +5,38 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="outtime" property="outtime" jdbcType="DATE"/>
         <result column="goodid" property="goodid" jdbcType="INTEGER"/>
-        <result column="operator" property="operator" jdbcType="INTEGER"/>
+        <result column="goodnumber" property="goodnumber" jdbcType="INTEGER"/>
+        <result column="operatorid" property="operatorid" jdbcType="INTEGER"/>
         <result column="deptid" property="deptid" jdbcType="INTEGER"/>
+        <result column="standardnumber" property="standardnumber" jdbcType="INTEGER"/>
         <result column="comments" property="comments" jdbcType="VARCHAR"/>
     </resultMap>
+
     <sql id="Base_Column_List">
-        id, outtime, goodid, operator, deptid, comments
-    </sql>
+    id, outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments
+  </sql>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
         from outrepository
         where id = #{id,jdbcType=INTEGER}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from outrepository
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
+    delete from outrepository
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
     <insert id="insert" parameterType="org.goodsManagement.po.OutRepositoryDto">
-        insert into outrepository (id, outtime, goodid,
-        operator, deptid, comments
-        )
-        values (#{id,jdbcType=INTEGER}, #{outtime,jdbcType=DATE}, #{goodid,jdbcType=INTEGER},
-        #{operator,jdbcType=INTEGER}, #{deptid,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR}
-        )
-    </insert>
+    insert into outrepository (id, outtime, goodid,
+      goodnumber, operatorid, deptid, 
+      standardnumber, comments)
+    values (#{id,jdbcType=INTEGER}, #{outtime,jdbcType=DATE}, #{goodid,jdbcType=INTEGER}, 
+      #{goodnumber,jdbcType=INTEGER}, #{operatorid,jdbcType=INTEGER}, #{deptid,jdbcType=INTEGER}, 
+      #{standardnumber,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR})
+  </insert>
+
     <insert id="insertSelective" parameterType="org.goodsManagement.po.OutRepositoryDto">
         insert into outrepository
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -42,11 +49,17 @@
             <if test="goodid != null">
                 goodid,
             </if>
-            <if test="operator != null">
-                operator,
+            <if test="goodnumber != null">
+                goodnumber,
+            </if>
+            <if test="operatorid != null">
+                operatorid,
             </if>
             <if test="deptid != null">
                 deptid,
+            </if>
+            <if test="standardnumber != null">
+                standardnumber,
             </if>
             <if test="comments != null">
                 comments,
@@ -62,17 +75,24 @@
             <if test="goodid != null">
                 #{goodid,jdbcType=INTEGER},
             </if>
-            <if test="operator != null">
-                #{operator,jdbcType=INTEGER},
+            <if test="goodnumber != null">
+                #{goodnumber,jdbcType=INTEGER},
+            </if>
+            <if test="operatorid != null">
+                #{operatorid,jdbcType=INTEGER},
             </if>
             <if test="deptid != null">
                 #{deptid,jdbcType=INTEGER},
+            </if>
+            <if test="standardnumber != null">
+                #{standardnumber,jdbcType=INTEGER},
             </if>
             <if test="comments != null">
                 #{comments,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="org.goodsManagement.po.OutRepositoryDto">
         update outrepository
         <set>
@@ -82,11 +102,17 @@
             <if test="goodid != null">
                 goodid = #{goodid,jdbcType=INTEGER},
             </if>
-            <if test="operator != null">
-                operator = #{operator,jdbcType=INTEGER},
+            <if test="goodnumber != null">
+                goodnumber = #{goodnumber,jdbcType=INTEGER},
+            </if>
+            <if test="operatorid != null">
+                operatorid = #{operatorid,jdbcType=INTEGER},
             </if>
             <if test="deptid != null">
                 deptid = #{deptid,jdbcType=INTEGER},
+            </if>
+            <if test="standardnumber != null">
+                standardnumber = #{standardnumber,jdbcType=INTEGER},
             </if>
             <if test="comments != null">
                 comments = #{comments,jdbcType=VARCHAR},
@@ -94,13 +120,16 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="org.goodsManagement.po.OutRepositoryDto">
-        update outrepository
-        set outtime = #{outtime,jdbcType=DATE},
-        goodid = #{goodid,jdbcType=INTEGER},
-        operator = #{operator,jdbcType=INTEGER},
-        deptid = #{deptid,jdbcType=INTEGER},
-        comments = #{comments,jdbcType=VARCHAR}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+    update outrepository
+    set outtime = #{outtime,jdbcType=DATE},
+      goodid = #{goodid,jdbcType=INTEGER},
+      goodnumber = #{goodnumber,jdbcType=INTEGER},
+      operatorid = #{operatorid,jdbcType=INTEGER},
+      deptid = #{deptid,jdbcType=INTEGER},
+      standardnumber = #{standardnumber,jdbcType=INTEGER},
+      comments = #{comments,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

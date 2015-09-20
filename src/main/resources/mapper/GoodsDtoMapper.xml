@@ -6,26 +6,32 @@
         <result column="goodname" property="goodname" jdbcType="VARCHAR"/>
         <result column="goodunit" property="goodunit" jdbcType="VARCHAR"/>
         <result column="goodnumbers" property="goodnumbers" jdbcType="INTEGER"/>
+        <result column="goodtype" property="goodtype" jdbcType="VARCHAR"/>
     </resultMap>
+
     <sql id="Base_Column_List">
-        id, goodname, goodunit, goodnumbers
-    </sql>
+    id, goodname, goodunit, goodnumbers, goodtype
+  </sql>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
         from goods
         where id = #{id,jdbcType=INTEGER}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from goods
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
+    delete from goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
     <insert id="insert" parameterType="org.goodsManagement.po.GoodsDto">
-        insert into goods (id, goodname, goodunit,
-        goodnumbers)
-        values (#{id,jdbcType=INTEGER}, #{goodname,jdbcType=VARCHAR}, #{goodunit,jdbcType=VARCHAR},
-        #{goodnumbers,jdbcType=INTEGER})
-    </insert>
+    insert into goods (id, goodname, goodunit,
+      goodnumbers, goodtype)
+    values (#{id,jdbcType=INTEGER}, #{goodname,jdbcType=VARCHAR}, #{goodunit,jdbcType=VARCHAR}, 
+      #{goodnumbers,jdbcType=INTEGER}, #{goodtype,jdbcType=VARCHAR})
+  </insert>
+
     <insert id="insertSelective" parameterType="org.goodsManagement.po.GoodsDto">
         insert into goods
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -41,6 +47,9 @@
             <if test="goodnumbers != null">
                 goodnumbers,
             </if>
+            <if test="goodtype != null">
+                goodtype,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -55,8 +64,12 @@
             <if test="goodnumbers != null">
                 #{goodnumbers,jdbcType=INTEGER},
             </if>
+            <if test="goodtype != null">
+                #{goodtype,jdbcType=VARCHAR},
+            </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="org.goodsManagement.po.GoodsDto">
         update goods
         <set>
@@ -69,14 +82,20 @@
             <if test="goodnumbers != null">
                 goodnumbers = #{goodnumbers,jdbcType=INTEGER},
             </if>
+            <if test="goodtype != null">
+                goodtype = #{goodtype,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="org.goodsManagement.po.GoodsDto">
-        update goods
-        set goodname = #{goodname,jdbcType=VARCHAR},
-        goodunit = #{goodunit,jdbcType=VARCHAR},
-        goodnumbers = #{goodnumbers,jdbcType=INTEGER}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+    update goods
+    set goodname = #{goodname,jdbcType=VARCHAR},
+      goodunit = #{goodunit,jdbcType=VARCHAR},
+      goodnumbers = #{goodnumbers,jdbcType=INTEGER},
+      goodtype = #{goodtype,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
 </mapper>

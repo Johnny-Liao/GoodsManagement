@@ -7,25 +7,30 @@
         <result column="goodid" property="goodid" jdbcType="INTEGER"/>
         <result column="getnumber" property="getnumber" jdbcType="INTEGER"/>
     </resultMap>
+
     <sql id="Base_Column_List">
-        id, staffid, goodid, getnumber
-    </sql>
+    id, staffid, goodid, getnumber
+  </sql>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
         from getgoods
         where id = #{id,jdbcType=INTEGER}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from getgoods
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
+    delete from getgoods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
     <insert id="insert" parameterType="org.goodsManagement.po.GetGoodsDto">
-        insert into getgoods (id, staffid, goodid,
-        getnumber)
-        values (#{id,jdbcType=INTEGER}, #{staffid,jdbcType=INTEGER}, #{goodid,jdbcType=INTEGER},
-        #{getnumber,jdbcType=INTEGER})
-    </insert>
+    insert into getgoods (id, staffid, goodid,
+      getnumber)
+    values (#{id,jdbcType=INTEGER}, #{staffid,jdbcType=INTEGER}, #{goodid,jdbcType=INTEGER}, 
+      #{getnumber,jdbcType=INTEGER})
+  </insert>
+
     <insert id="insertSelective" parameterType="org.goodsManagement.po.GetGoodsDto">
         insert into getgoods
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -57,6 +62,7 @@
             </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="org.goodsManagement.po.GetGoodsDto">
         update getgoods
         <set>
@@ -72,11 +78,13 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="org.goodsManagement.po.GetGoodsDto">
-        update getgoods
-        set staffid = #{staffid,jdbcType=INTEGER},
-        goodid = #{goodid,jdbcType=INTEGER},
-        getnumber = #{getnumber,jdbcType=INTEGER}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+    update getgoods
+    set staffid = #{staffid,jdbcType=INTEGER},
+      goodid = #{goodid,jdbcType=INTEGER},
+      getnumber = #{getnumber,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
 </mapper>

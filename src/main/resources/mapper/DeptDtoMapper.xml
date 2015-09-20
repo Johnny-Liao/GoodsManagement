@@ -5,23 +5,28 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="deptname" property="deptname" jdbcType="VARCHAR"/>
     </resultMap>
+
     <sql id="Base_Column_List">
-        id, deptname
-    </sql>
+    id, deptname
+  </sql>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
         from dept
         where id = #{id,jdbcType=INTEGER}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from dept
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
+    delete from dept
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
     <insert id="insert" parameterType="org.goodsManagement.po.DeptDto">
-        insert into dept (id, deptname)
-        values (#{id,jdbcType=INTEGER}, #{deptname,jdbcType=VARCHAR})
-    </insert>
+    insert into dept (id, deptname)
+    values (#{id,jdbcType=INTEGER}, #{deptname,jdbcType=VARCHAR})
+  </insert>
+
     <insert id="insertSelective" parameterType="org.goodsManagement.po.DeptDto">
         insert into dept
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -41,6 +46,7 @@
             </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="org.goodsManagement.po.DeptDto">
         update dept
         <set>
@@ -50,9 +56,11 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="org.goodsManagement.po.DeptDto">
-        update dept
-        set deptname = #{deptname,jdbcType=VARCHAR}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+    update dept
+    set deptname = #{deptname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
 </mapper>
