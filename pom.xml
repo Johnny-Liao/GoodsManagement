@@ -25,6 +25,7 @@
 
         <!-- Mybatis -->
         <mybatis.version>3.3.0</mybatis.version>
+        <jpa.version>1.0.1.Final</jpa.version>
 
         <struts2.version>2.3.24</struts2.version>
 
@@ -168,6 +169,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- druid 阿里巴巴的数据源 spring需要 用来取代JDBC 具有很多高级的功能 -->
@@ -175,6 +177,12 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.15</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>${jpa.version}</version>
         </dependency>
 
     </dependencies>
@@ -199,6 +207,12 @@
                     <stopKey>foo</stopKey>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
             </plugin>
         </plugins>
 
