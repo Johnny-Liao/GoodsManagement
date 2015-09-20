@@ -101,10 +101,10 @@ INSERT INTO staff (id, staffname, sex)  VALUES (3, "牛羊新", "男");
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (1, 1, 1, 20);
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (2, 2, 2, 10);
 
-INSERT INTO inrespository (id, intime, goodid, suppliers, linkman, phone, operator, comments)  VALUES (1, 20150919, 1, "卖衣服的", "黄衣党", 12345678901, 1, "买了几件衣服");
-INSERT INTO inrespository (id, intime, goodid, suppliers, linkman, phone, operator, comments)  VALUES (2, 20150919, 1, "卖裤子的", "酷酷党", 12345678901, 1, "买了几件破裤子");
+INSERT INTO inrepository (id, intime, goodid, suppliers, linkman, phone, operator, comments)  VALUES (1, 20150919, 1, "卖衣服的", "黄衣党", 12345678901, 1, "买了几件衣服");
+INSERT INTO inrepository (id, intime, goodid, suppliers, linkman, phone, operator, comments)  VALUES (2, 20150919, 1, "卖裤子的", "酷酷党", 12345678901, 1, "买了几件破裤子");
 
-INSERT INTO outrespository (id, outtime, goodid, operator, deptid, comments)  VALUES (1, 20150920, 1, 1, 1, "发衣服咯");
+INSERT INTO outrepository (id, outtime, goodid, operator, deptid, comments)  VALUES (1, 20150920, 1, 1, 1, "发衣服咯");
 
 -- 显示所有表数据
 SELECT * FROM user;
@@ -112,8 +112,8 @@ SELECT * FROM dept;
 SELECT * FROM goods;
 SELECT * FROM staff;
 SELECT * FROM getgoods;
-SELECT * FROM inrespository;
-SELECT * FROM outrespository;
+SELECT * FROM inrepository;
+SELECT * FROM outrepository;
 
 -- 常用查询语句
 
@@ -131,13 +131,13 @@ FROM getgoods
 
 # 入库信息明细
 SELECT inr.goodid, intime, goods.goodname, suppliers, linkman, phone, username,comments
-FROM inrespository inr
+FROM inrepository inr
   LEFT JOIN goods ON goods.id = inr.goodid
   LEFT JOIN user ON user.id = inr.operator;
 
 # 出库信息明细
 SELECT outr.id, outtime, goodname, username, deptname, comments
-FROM outrespository outr
+FROM outrepository outr
   LEFT JOIN goods ON goods.id = goodid
   LEFT JOIN user ON user.id = operator
   LEFT JOIN dept ON dept.id = deptid;
