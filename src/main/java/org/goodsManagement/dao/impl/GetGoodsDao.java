@@ -3,10 +3,12 @@ package org.goodsManagement.dao.impl;
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.GetGoodsDto;
 import org.goodsManagement.po.GoodsDto;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by lifei on 2015/9/20.
  */
+@Component
 public class GetGoodsDao<T> extends BasedaoA<GetGoodsDto> {
     /**
      * 通过主键删除

@@ -3,10 +3,12 @@ package org.goodsManagement.dao.impl;
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.po.OutRepositoryDto;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by lifei on 2015/9/20.
  */
+@Component
 public class OutRepositoryDao<T> extends BasedaoA<OutRepositoryDto> {
     /**
      * 通过主键获取实体
