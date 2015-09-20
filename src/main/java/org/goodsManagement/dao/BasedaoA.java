@@ -58,4 +58,5 @@ public abstract class BasedaoA<T> {
      * @return
      */
     public abstract int updateByPrimaryKey(T record);
+
 }

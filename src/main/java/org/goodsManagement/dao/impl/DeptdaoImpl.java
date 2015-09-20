@@ -2,10 +2,12 @@ package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.DeptDto;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by never on 2015/9/20.
  */
+@Component
 public class DeptdaoImpl<T> extends BasedaoA<DeptDto> {
 
     /**
