@@ -1,13 +1,12 @@
 package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
-import org.goodsManagement.po.OutRepositoryDto;
 import org.goodsManagement.po.StaffDto;
 
 /**
  * Created by lifei on 2015/9/20.
  */
-public class StaffDao<T> extends BasedaoA<StaffDto> {
+public class StaffDao extends BasedaoA<StaffDto> {
     /**
      * 通过主键获取实体
      *

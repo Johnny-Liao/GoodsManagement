@@ -1,13 +1,12 @@
 package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
-import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.po.OutRepositoryDto;
 
 /**
  * Created by lifei on 2015/9/20.
  */
-public class OutRepositoryDao<T> extends BasedaoA<OutRepositoryDto> {
+public class OutRepositoryDao extends BasedaoA<OutRepositoryDto> {
     /**
      * 通过主键获取实体
      *

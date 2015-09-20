@@ -1,13 +1,12 @@
 package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
-import org.goodsManagement.po.DeptDto;
 import org.goodsManagement.po.GoodsDto;
 
 /**
  * Created by lifei on 2015/9/20.
  */
-public class GoodsDao<T> extends BasedaoA<GoodsDto> {
+public class GoodsDao extends BasedaoA<GoodsDto> {
     /**
      * 通过主键删除
      *

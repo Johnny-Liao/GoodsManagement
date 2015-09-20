@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * Created by never on 2015/9/20.
  */
 @Component
-public class DeptdaoImpl<T> extends BasedaoA<DeptDto> {
+public class DeptdaoImpl extends BasedaoA<DeptDto> {
 
     /**
      * 通过主键删除
