@@ -4,6 +4,8 @@ import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.StaffDto;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by lifei on 2015/9/20.
  */
@@ -71,5 +73,14 @@ public class StaffDao extends BasedaoA<StaffDto> {
     @Override
     public int updateByPrimaryKey(StaffDto record) {
         return sessionTemplate.update("org.goodsManagement.mapper.StaffDtoMapper.updateByPrimaryKey", record);
+    }
+    /**
+     * 通过所有的实体
+     *
+     * @return
+     *          所有实体的回合
+     */
+    public List<StaffDto> selectAll() {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.StaffDtoMapper.selectAll");
     }
 }

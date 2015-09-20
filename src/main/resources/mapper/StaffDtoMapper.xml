@@ -86,5 +86,9 @@
       deptid = #{deptid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
+    <select id="selectAll" resultType="org.goodsManagement.po.StaffDto">
+        select
+        <include refid="Base_Column_List"/>
+        from staff
+    </select>
 </mapper>
