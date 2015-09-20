@@ -2,7 +2,7 @@ package org.goodsmanagement.mapper;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.goodsmanagement.po.DeptDto;
+import org.goodsManagement.po.DeptDto;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
