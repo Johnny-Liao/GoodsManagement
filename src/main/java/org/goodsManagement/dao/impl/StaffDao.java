@@ -1,13 +1,13 @@
 package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
-import org.goodsManagement.po.OutRepositoryDto;
 import org.goodsManagement.po.StaffDto;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by lifei on 2015/9/20.
  */
+
 @Component
 public class StaffDao<T> extends BasedaoA<StaffDto> {
     /**

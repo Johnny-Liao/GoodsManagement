@@ -1,7 +1,6 @@
 package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
-import org.goodsManagement.po.GoodsDto;
 import org.goodsManagement.po.InRepositoryDto;
 import org.springframework.stereotype.Component;
 

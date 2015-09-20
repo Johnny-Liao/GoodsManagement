@@ -5,26 +5,32 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="staffname" property="staffname" jdbcType="VARCHAR"/>
         <result column="sex" property="sex" jdbcType="CHAR"/>
+        <result column="deptid" property="deptid" jdbcType="INTEGER"/>
     </resultMap>
+
     <sql id="Base_Column_List">
-        id, staffname, sex
-    </sql>
+    id, staffname, sex, deptid
+  </sql>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
         from staff
         where id = #{id,jdbcType=INTEGER}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from staff
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
+    delete from staff
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
     <insert id="insert" parameterType="org.goodsManagement.po.StaffDto">
-        insert into staff (id, staffname, sex
-        )
-        values (#{id,jdbcType=INTEGER}, #{staffname,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}
-        )
-    </insert>
+    insert into staff (id, staffname, sex,
+      deptid)
+    values (#{id,jdbcType=INTEGER}, #{staffname,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, 
+      #{deptid,jdbcType=INTEGER})
+  </insert>
+
     <insert id="insertSelective" parameterType="org.goodsManagement.po.StaffDto">
         insert into staff
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -37,6 +43,9 @@
             <if test="sex != null">
                 sex,
             </if>
+            <if test="deptid != null">
+                deptid,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -48,8 +57,12 @@
             <if test="sex != null">
                 #{sex,jdbcType=CHAR},
             </if>
+            <if test="deptid != null">
+                #{deptid,jdbcType=INTEGER},
+            </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="org.goodsManagement.po.StaffDto">
         update staff
         <set>
@@ -59,13 +72,19 @@
             <if test="sex != null">
                 sex = #{sex,jdbcType=CHAR},
             </if>
+            <if test="deptid != null">
+                deptid = #{deptid,jdbcType=INTEGER},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="org.goodsManagement.po.StaffDto">
-        update staff
-        set staffname = #{staffname,jdbcType=VARCHAR},
-        sex = #{sex,jdbcType=CHAR}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+    update staff
+    set staffname = #{staffname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      deptid = #{deptid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
 </mapper>

@@ -1,7 +1,6 @@
 package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
-import org.goodsManagement.po.StaffDto;
 import org.goodsManagement.po.UserDto;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +30,7 @@ public class UserDao<T> extends BasedaoA<UserDto> {
     public int deleteByPrimaryKey(Integer id) {
         return sessionTemplate.delete("org.goodsManagement.mapper.StaffDtoMapper.deleteByPrimaryKey", id);
     }
+
     /**
      * 插入记录，必须指定所有的字段
      *
@@ -41,6 +41,7 @@ public class UserDao<T> extends BasedaoA<UserDto> {
     public int insert(UserDto record) {
         return sessionTemplate.insert("org.goodsManagement.mapper.StaffDtoMapper.insert", record);
     }
+
     /**
      * 插入记录，必须指定非空的字段，但是其他字段可选
      *
@@ -62,6 +63,7 @@ public class UserDao<T> extends BasedaoA<UserDto> {
     public int updateByPrimaryKeySelective(UserDto record) {
         return sessionTemplate.update("org.goodsManagement.mapper.StaffDtoMapper.updateByPrimaryKeySelective", record);
     }
+
     /**
      * 通过主键来更新实体类
      *
