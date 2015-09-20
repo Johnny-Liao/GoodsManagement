@@ -41,7 +41,7 @@ public class UserDtoMapperTest {
         userDto.setId(10);
         userDto.setUsername("test");
         userDto.setPassword("test");
-        sqlSession.selectOne("org.goodsmanagement.mapper.UserDtoMapper.insert", userDto);
+        sqlSession.selectOne("org.goodsManagement.mapper.UserDtoMapper.insert", userDto);
         sqlSession.commit();
         sqlSession.close();
 //        System.out.println(userDto);
@@ -54,7 +54,7 @@ public class UserDtoMapperTest {
 
     @Test
     public void testSelectByPrimaryKey() throws Exception {
-        UserDto userDto = sqlSession.selectOne("org.goodsmanagement.mapper.UserDtoMapper.selectByPrimaryKey", 1);
+        UserDto userDto = sqlSession.selectOne("org.goodsManagement.mapper.UserDtoMapper.selectByPrimaryKey", 1);
         System.out.println(userDto);
     }
 
