@@ -18,7 +18,6 @@ public class DeptdaoImpl<T> extends BasedaoA<DeptDto> {
      */
     @Override
     public int deleteByPrimaryKey(Integer id) {
-//        sessionTemplate.
         return sessionTemplate.delete("org.goodsManagement.mapper.DeptDtoMapper.deleteByPrimaryKey", id);
     }
 
@@ -76,4 +75,8 @@ public class DeptdaoImpl<T> extends BasedaoA<DeptDto> {
     public int updateByPrimaryKey(DeptDto record) {
         return sessionTemplate.update("org.goodsManagement.mapper.DeptDtoMapper.updateByPrimaryKey", record);
     }
+
+//    public void test() {
+//        sessionTemplate.selectOne("select * from dept");
+//    }
 }
