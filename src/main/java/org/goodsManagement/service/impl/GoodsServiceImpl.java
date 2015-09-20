@@ -1,7 +1,9 @@
-package org.goodsManagement.service;
+package org.goodsManagement.service.impl;
 
 import org.goodsManagement.dao.impl.GoodsDao;
 import org.goodsManagement.po.GoodsDto;
+import org.goodsManagement.service.BaseServiceI;
+import org.goodsManagement.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -51,6 +53,16 @@ public class GoodsServiceImpl<T> implements BaseServiceI<GoodsDto> {
     public List<GoodsDto> getEntitiesByname(String name) {
         return goodsDao.selectByName(name);
     }
+    /**
+     * 通过货品名称来查询
+     *
+     * @return goods
+     *              已经分类的Goods集合
+     */
+    public List<GoodsVo> getEntitieskind() {
+        return goodsDao.getEntitieskind();
+    }
+
     public List<GoodsDto> getAllEntities() {
         return null;
     }
