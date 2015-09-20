@@ -2,6 +2,7 @@ package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.GoodsDto;
+import org.goodsManagement.vo.GoodsVo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -81,6 +82,16 @@ public class GoodsDao extends BasedaoA<GoodsDto> {
      */
     public  List<GoodsDto> selectByName(String name) {
         List<GoodsDto> goods =  sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.selectByName", "衬衫");
+        return goods;
+    }
+    /**
+     * 通过货品名称来查询
+     *
+     * @return goods
+     *              已经分类的Goods集合
+     */
+    public List<GoodsVo> getEntitieskind() {
+        List<GoodsVo> goods =  sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.selectGroupByName");
         return goods;
     }
 }

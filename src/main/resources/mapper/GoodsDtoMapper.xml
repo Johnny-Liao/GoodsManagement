@@ -104,10 +104,11 @@
         from goods
         where goodname = #{name,jdbcType=VARCHAR}
     </select>
-    <select id="selectGroupByName" resultType="org.goodsManagement.po.GoodsDto" parameterType="java.lang.String">
+    <select id="selectGroupByName" resultType="org.goodsManagement.vo.GoodsVo" >
         select
-
+        goodname ,
+        goodunit
         from goods
-        where goodname = #{name,jdbcType=VARCHAR}
+        GROUP BY goodname
     </select>
 </mapper>
