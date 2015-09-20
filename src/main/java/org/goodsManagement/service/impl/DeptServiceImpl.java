@@ -4,6 +4,7 @@ import org.goodsManagement.dao.impl.DeptdaoImpl;
 import org.goodsManagement.po.DeptDto;
 import org.goodsManagement.service.BaseServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class DeptServiceImpl implements BaseServiceI<DeptDto> {
 
     @Autowired
+    @Qualifier("deptDao")
     private DeptdaoImpl deptdao;
 
     public void addEntity(DeptDto deptDto) {
@@ -39,3 +41,4 @@ public class DeptServiceImpl implements BaseServiceI<DeptDto> {
         deptdao.deleteByPrimaryKey(deptDto.getId());
     }
 }
+
