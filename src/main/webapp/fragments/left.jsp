@@ -21,23 +21,13 @@
 <div class="subNavBox">
     <div style="padding-bottom:50px;">
         <div class="subs"><a href="#">监管人事管理系统</a></div>
-        <div class="subNav currentDd currentDt">基础数据维护</div>
-        <ul class="navContent " style="display:block">
-            <li><a href="/unit?action=getAll" target="contentFrame">单位管理</a></li>
-        </ul>
-        <div class="subNav">简历管理</div>
-        <ul class="navContent">
-            <li><a href="/resume/1" target="contentFrame">所有简历</a></li>
-            <li><a href="/resume?action=getNoHire" target="contentFrame">简历录取</a></li>
-            <li><a href="/resume?action=getAllHire" target="contentFrame">取消录取</a></li>
-        </ul>
-        <div class="subNav">人事管理</div>
-        <ul class="navContent">
-            <li><a href="/employeePage?action=getAllHires" target="contentFrame">人员信息建档</a></li>
-            <li><a href="/employeePage/1" target="contentFrame">人事信息管理</a></li>
-            <li><a href="/leave?action=getOffLine" target="contentFrame">离职查看</a></li>
-            <li><a href="/employeePage?action=getPositionChange" target="contentFrame">调岗查看</a></li>
-        </ul>
+        <li><a href="#" target="contentFrame">物品信息管理</a></li>
+        <li><a href="#" target="contentFrame">员工着装信息管理</a></li>
+        <li><a href="/Inrepository" target="contentFrame">入库管理</a></li>
+        <li><a href="#" target="contentFrame">出库管理</a></li>
+        <li><a href="#" target="contentFrame">库房盘存</a></li>
+        <li><a href="#" target="contentFrame">人员物品领用明细</a></li>
+
     </div>
 </div>
 </body>
