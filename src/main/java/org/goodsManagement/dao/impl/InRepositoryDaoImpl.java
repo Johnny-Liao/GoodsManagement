@@ -2,7 +2,10 @@ package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.InRepositoryDto;
+import org.goodsManagement.vo.Inrepositorysql;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Created by lifei on 2015/9/20.
@@ -71,4 +74,26 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
     public int updateByPrimaryKey(InRepositoryDto record) {
         return sessionTemplate.update("org.goodsManagement.mapper.InRepositoryDtoMapper.updateByPrimaryKey", record);
     }
+
+
+    /**
+     * 获取入库的表中所有的信息
+     *
+     * @param record
+     * @return
+     */
+    public List<InRepositoryDto> selectall() {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectall");
+    }
+    /**
+     * 条件查询
+     *
+     * @param sql
+     *      Inrepositorysql类型的对象，保存需要查询的信息
+     * @return
+     */
+    public List<InRepositoryDto> selectsearch(Inrepositorysql sql) {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
+    }
+
 }

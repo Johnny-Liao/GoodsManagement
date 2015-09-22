@@ -10,6 +10,7 @@ import org.goodsManagement.po.DeptDto;
 import org.goodsManagement.po.GoodsDto;
 import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.vo.InrepositoryGood;
+import org.goodsManagement.vo.Inrepositorysql;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,8 +78,15 @@ public class GoodsMapperTest {
 //        int i = sqlSession.insert("org.goodsManagement.mapper.InRepositoryDtoMapper.insert", in);
 //        int i=inRepositoryDaoImpl.insert(in);
 //        System.out.println(i);
-        String inrepositoryid = "k12312";
-        List<InrepositoryGood> list= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectingood",inrepositoryid);
+//        String inrepositoryid = "k12312";
+//        List<InrepositoryGood> list= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectingood",inrepositoryid);
+//        System.out.println(list.size());
+        Inrepositorysql sql = new Inrepositorysql();
+        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-DD");
+        sql.setIntime("2015-09-22");
+        sql.setSuppliers("傻逼");
+//        sql.setInrepositoryid("ad1231");
+        List<InrepositoryGood> list= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
         System.out.println(list.size());
     }
 

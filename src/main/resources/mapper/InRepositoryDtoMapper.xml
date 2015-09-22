@@ -165,5 +165,25 @@
         WHERE goods.id = inrepository.goodid
         AND inrepository.inrepositoryid = #{inrepositoryid,jdbcType=VARCHAR}
     </select>
-
+    <select id="selectall" resultType="org.goodsManagement.po.InRepositoryDto" >
+        select
+        <include refid="Base_Column_List"/>
+        from inrepository
+    </select>
+    <select id="selectsql" resultType="org.goodsManagement.po.InRepositoryDto" parameterType="org.goodsManagement.vo.Inrepositorysql">
+        select
+        <include refid="Base_Column_List"/>
+        from inrepository
+        <where>
+        <if test="suppliers != null">
+           suppliers = #{suppliers}
+        </if>
+        <if test="intime != null">
+           and  intime LIKE CONCAT(CONCAT('%', #{intime}),'%')
+        </if>
+        <if test="inrepositoryid != null">
+          and  inrepositoryid = #{inrepositoryid}
+        </if>
+        </where>
+    </select>
 </mapper>
