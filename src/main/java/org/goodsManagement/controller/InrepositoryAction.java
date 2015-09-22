@@ -1,6 +1,9 @@
 package org.goodsManagement.controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.goodsManagement.service.impl.InRepositoryServiceImpl;
+import org.goodsManagement.service.impl.PoiUtils.InRepositoryUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -10,23 +13,29 @@ import org.springframework.stereotype.Controller;
 @Controller
 @Scope("prototype")
 public class InrepositoryAction extends ActionSupport {
-    private String name;
+    private String filename;
+    @Autowired
+    private InRepositoryServiceImpl inRepositoryServiceImpl;
 
+    /**
+     * 用来读取文件并写入数据库
+     */
     public String add() {
-//        if(name == null || !name.equals("admin")) {
-//            this.addFieldError("name", "name is error");
-//            this.addFieldError("name", "name is too long");
-//            return ERROR;
-//        }
-        System.out.println(name);
+        System.out.println(filename);
+        inRepositoryServiceImpl.addinRepositoryD(filename);
+        return SUCCESS;
+    }
+    public String getall() {
+        System.out.println(filename);
+        inRepositoryServiceImpl.selectallmes();
         return SUCCESS;
     }
 
-    public String getName() {
-        return name;
+    public String getFilename() {
+        return filename;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }

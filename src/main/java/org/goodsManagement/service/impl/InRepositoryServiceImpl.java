@@ -8,7 +8,9 @@ import org.goodsManagement.service.BaseServiceI;
 import org.goodsManagement.service.impl.PoiUtils.InRepositoryUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+@Service
 public class InRepositoryServiceImpl implements BaseServiceI<InRepositoryDto>{
 	
 	@Autowired
@@ -52,8 +54,7 @@ public class InRepositoryServiceImpl implements BaseServiceI<InRepositoryDto>{
 	 * 按照入库单号查询所有入库的货物，入库数量，以及详细的入库单信息
 	 *
 	 */
-	public void selectallmes(String filename){
-
-
+	public List<InRepositoryDto> selectallmes(){
+		return inRepositoryDaoImpl.selectall();
 	}
 }

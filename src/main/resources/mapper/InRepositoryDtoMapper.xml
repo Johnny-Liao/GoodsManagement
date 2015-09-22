@@ -165,5 +165,9 @@
         WHERE goods.id = inrepository.goodid
         AND inrepository.inrepositoryid = #{inrepositoryid,jdbcType=VARCHAR}
     </select>
-
+    <select id="selectall" resultType="org.goodsManagement.po.InRepositoryDto" >
+        select
+        <include refid="Base_Column_List"/>
+        from inrepository
+    </select>
 </mapper>
