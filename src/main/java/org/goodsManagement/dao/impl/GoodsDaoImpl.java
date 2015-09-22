@@ -11,7 +11,7 @@ import java.util.List;
  * Created by lifei on 2015/9/20.
  */
 @Component
-public class GoodsDao extends BasedaoA<GoodsDto> {
+public class GoodsDaoImpl extends BasedaoA<GoodsDto> {
     /**
      * 通过主键删除
      *

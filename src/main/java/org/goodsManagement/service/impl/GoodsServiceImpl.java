@@ -1,6 +1,6 @@
 package org.goodsManagement.service.impl;
 
-import org.goodsManagement.dao.impl.GoodsDao;
+import org.goodsManagement.dao.impl.GoodsDaoImpl;
 import org.goodsManagement.po.GoodsDto;
 import org.goodsManagement.service.BaseServiceI;
 import org.goodsManagement.vo.GoodsVo;
@@ -16,8 +16,8 @@ import java.util.List;
 @Service
 public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
     @Autowired
-    @Qualifier("goodsDao")
-    private GoodsDao goodsDao;
+    @Qualifier("goodsDaoImpl")
+    private GoodsDaoImpl goodsDaoImpl;
 
     /**
      * 添加实体
@@ -25,7 +25,7 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
      * @param goodsDto 实体对象
      */
     public void addEntity(GoodsDto goodsDto) {
-        goodsDao.insert(goodsDto);
+        goodsDaoImpl.insert(goodsDto);
     }
     /**
      * 修改实体
@@ -33,7 +33,7 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
      * @param goodsDto 实体对象(不需指定所有的键)
      */
     public void modifyEntity(GoodsDto goodsDto) {
-        goodsDao.updateByPrimaryKey(goodsDto);
+        goodsDaoImpl.updateByPrimaryKey(goodsDto);
     }
     /**
      * 通过ID获得实体类
@@ -42,7 +42,7 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
      * @return
      */
     public GoodsDto getEntity(int id) {
-        return goodsDao.selectByPrimaryKey(id);
+        return goodsDaoImpl.selectByPrimaryKey(id);
     }
     /**
      * 通过货品名称来查询
@@ -53,7 +53,7 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
      *              同意货品名称的集合
      */
     public List<GoodsDto> getEntitiesByname(String name) {
-        return goodsDao.selectByName(name);
+        return goodsDaoImpl.selectByName(name);
     }
     /**
      * 查看商品种类
@@ -62,14 +62,14 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
      *              已经分类的Goods集合
      */
     public List<GoodsVo> getEntitieskind() {
-        return goodsDao.getEntitieskind();
+        return goodsDaoImpl.getEntitieskind();
     }
     /**
      * 删除指定ID的商品
      *
      */
     public void deleteEntity(int id) {
-        goodsDao.deleteByPrimaryKey(id);
+        goodsDaoImpl.deleteByPrimaryKey(id);
     }
     public List<GoodsDto> getAllEntities() {
         return null;

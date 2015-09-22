@@ -49,16 +49,16 @@ public class DeptDtoMapperTest {
 
     @Test
     public void testInsertSelective() throws Exception {
-//        SqlSessionFactory sf;
-//        String resource = "sqlMapConfig.xml";
-//        InputStream inputStream = Resources.getResourceAsStream(resource);
-//        sf= new SqlSessionFactoryBuilder().build(inputStream);
-//        SqlSession session = sf.openSession();
-//        DeptDto u;
-//        u = session.selectOne("org.goodsManagement.mapper.DeptDtoMapper.selectByPrimaryKey", "1");
-//        System.out.println(u);
-        List<GoodsVo> users =  sqlSession.selectList("org.goodsManagement.mapper.GoodsDtoMapper.selectGroupByName");
-        System.out.println(users.get(1).getGoodname());
+        SqlSessionFactory sf;
+        String resource = "sqlMapConfig.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        sf= new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sf.openSession();
+        DeptDto u;
+        u = session.selectOne("org.goodsManagement.mapper.DeptDtoMapper.selectByPrimaryKey", "1");
+        System.out.println(u);
+//        List<GoodsVo> users =  sqlSession.selectList("org.goodsManagement.mapper.GoodsDtoMapper.selectGroupByName");
+//        System.out.println(users.get(1).getGoodname());
     }
 
     @Test

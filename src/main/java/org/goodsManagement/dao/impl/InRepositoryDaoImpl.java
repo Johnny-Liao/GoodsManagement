@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * Created by lifei on 2015/9/20.
  */
 @Component
-public class InRepositoryDao extends BasedaoA<InRepositoryDto> {
+public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
     /**
      * 通过主键获取实体
      *

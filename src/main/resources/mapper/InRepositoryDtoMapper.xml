@@ -11,10 +11,11 @@
         <result column="phone" property="phone" jdbcType="VARCHAR"/>
         <result column="operatorid" property="operatorid" jdbcType="INTEGER"/>
         <result column="comments" property="comments" jdbcType="VARCHAR"/>
+        <result column="inrepositoryid" property="inrepositoryid" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-    id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments
+    id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments,inrepositoryid
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
@@ -31,11 +32,11 @@
     <insert id="insert" parameterType="org.goodsManagement.po.InRepositoryDto">
     insert into inrepository (id, intime, goodid,
       goodnumber, suppliers, linkman, 
-      phone, operatorid, comments
+      phone, operatorid, comments,inrepositoryid
       )
     values (#{id,jdbcType=INTEGER}, #{intime,jdbcType=DATE}, #{goodid,jdbcType=INTEGER}, 
       #{goodnumber,jdbcType=INTEGER}, #{suppliers,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{operatorid,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR}
+      #{phone,jdbcType=VARCHAR}, #{operatorid,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR},#{inrepositoryid,jdbcType=VARCHAR}
       )
   </insert>
 
@@ -69,6 +70,9 @@
             <if test="comments != null">
                 comments,
             </if>
+            <if test="inrepositoryid != null">
+                inrepositoryid,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -97,6 +101,9 @@
             </if>
             <if test="comments != null">
                 #{comments,jdbcType=VARCHAR},
+            </if>
+            <if test="inrepositoryid != null">
+                #{inrepositoryid,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -128,6 +135,9 @@
             <if test="comments != null">
                 comments = #{comments,jdbcType=VARCHAR},
             </if>
+            <if test="inrepositoryid != null">
+                #{inrepositoryid,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -141,8 +151,19 @@
       linkman = #{linkman,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       operatorid = #{operatorid,jdbcType=INTEGER},
-      comments = #{comments,jdbcType=VARCHAR}
+      comments = #{comments,jdbcType=VARCHAR},
+      inrepositoryid = #{inrepositoryid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectingood" resultType="org.goodsManagement.vo.InrepositoryGood" parameterType="java.lang.String">
+        select
+        goods.goodname,
+        goods.goodunit,
+        goods.goodtype,
+        inrepository.goodnumber
+        from goods,inrepository
+        WHERE goods.id = inrepository.goodid
+        AND inrepository.inrepositoryid = #{inrepositoryid,jdbcType=VARCHAR}
+    </select>
 
 </mapper>
