@@ -9,9 +9,25 @@
         <param-value>classpath:application-config.xml</param-value>
     </context-param>
 
+    <!-- spring监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- Struts2配置 -->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!--解决乱码的filter-->
     <filter>
-        <filter-name>Character Encoding</filter-name>
+        <filter-name>CharacterEncoding</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
@@ -19,48 +35,9 @@
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>Character Encoding</filter-name>
+        <filter-name>CharacterEncoding</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-    <!-- openSessionInView配置 -->
-    <!--<filter>-->
-    <!--<filter-name>openSessionInViewFilter</filter-name>-->
-    <!--<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>-->
-    <!--<init-param>-->
-    <!--<param-name>singleSession</param-name>-->
-    <!--<param-value>true</param-value>-->
-    <!--</init-param>-->
-    <!--</filter>-->
-
-    <!--<filter-mapping>-->
-    <!--<filter-name>openSessionInViewFilter</filter-name>-->
-    <!--<url-pattern>*.action</url-pattern>-->
-    <!--</filter-mapping>-->
-
-    <!-- Struts2配置 -->
-    <filter>
-        <filter-name>struts2</filter-name>
-        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-        <!--<init-param>
-            <param-name>config</param-name>
-            <param-value>main/resources/struts.xml</param-value>
-        </init-param>-->
-    </filter>
-
-    <filter-mapping>
-        <filter-name>struts2</filter-name>
-        <url-pattern>*.action</url-pattern>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>struts2</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <!-- spring监听器 -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
 
     <welcome-file-list>
         <welcome-file>/index.jsp</welcome-file>

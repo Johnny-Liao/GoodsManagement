@@ -1,24 +1,15 @@
 package org.goodsManagement.service.impl.PoiUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.goodsManagement.dao.impl.GoodsDaoImpl;
 import org.goodsManagement.dao.impl.InRepositoryDaoImpl;
 import org.goodsManagement.po.GoodsDto;
 import org.goodsManagement.po.InRepositoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.io.FileInputStream;
@@ -29,8 +20,7 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
+
 /**
  * Created by lifei on 2015/9/22.
  */
@@ -38,18 +28,20 @@ import java.util.List;
 public class InRepositoryUtils {
     @Autowired
     @Qualifier("inRepositoryDaoImpl")
-    private static InRepositoryDaoImpl inRepositoryDaoImpl;
+    private InRepositoryDaoImpl inRepositoryDaoImpl;
+
     @Autowired
     @Qualifier("goodsDaoImpl")
-    private static GoodsDaoImpl goodsDaoImpl;
-//    public static String filePath = "C:\\Users\\lifei\\Desktop\\goods.xls";
+    private GoodsDaoImpl goodsDaoImpl;
+
+    //    public static String filePath = "C:\\Users\\lifei\\Desktop\\goods.xls";
 //
 //    public static void main(String[] args){
 //        InRepositoryUtils.PoiUtils(filePath);
 //    }
-    public  void  addPoiUtils(String filePath) {
+    public void addPoiUtils(String filePath) {
         HSSFWorkbook wookbook = null;
-        InRepositoryDto  in;
+        InRepositoryDto in;
         try {
             // 创建对Excel工作簿文件的引用
             wookbook = new HSSFWorkbook(new FileInputStream(filePath));
@@ -62,7 +54,7 @@ public class InRepositoryUtils {
             //先读取第一行的入库单的有关信息
             HSSFRow row1 = sheet.getRow(1);
             String value1 = "";
-            if(row1!=null){
+            if (row1 != null) {
                 int cells = row1.getPhysicalNumberOfCells();
                 for (int j = 0; j < cells; j++) {
                     //获取到列的值
@@ -73,7 +65,7 @@ public class InRepositoryUtils {
                                 break;
                             case HSSFCell.CELL_TYPE_NUMERIC:
                                 DecimalFormat df = new DecimalFormat("0");
-                                value1 += df.format(cell.getNumericCellValue())+ ",";
+                                value1 += df.format(cell.getNumericCellValue()) + ",";
 //                                    value1 += cell.getNumericCellValue() + ",";
                                 break;
                             case HSSFCell.CELL_TYPE_STRING:
@@ -110,7 +102,7 @@ public class InRepositoryUtils {
                                     break;
                                 case HSSFCell.CELL_TYPE_NUMERIC:
                                     DecimalFormat df = new DecimalFormat("0");
-                                    value += df.format(cell.getNumericCellValue())+ ",";
+                                    value += df.format(cell.getNumericCellValue()) + ",";
 //                                    value += cell.getNumericCellValue() + ",";
                                     break;
                                 case HSSFCell.CELL_TYPE_STRING:
@@ -123,30 +115,30 @@ public class InRepositoryUtils {
                         }
                     }
                     // 将数据插入到mysql数据库中
-                        String[] val = value.split(",");
-                        for (String s : val) {
+                    String[] val = value.split(",");
+                    for (String s : val) {
                         System.out.println(s);
-                        }
+                    }
                     //拿到val1中入库表单的数据
-                        in = new InRepositoryDto();
-                        in.setInrepositoryid(val1[0]);
-                        in.setSuppliers(val1[1]);
-                        in.setLinkman(val1[2]);
-                        in.setOperatorid(Integer.parseInt(val1[3]));
-                        Date indata = null;
-                        try {
-                            DateFormat f = new SimpleDateFormat("yyyy/MM/dd");
-                            indata = new Date(f.parse(val1[4].toString()).getTime());
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        in.setIntime(indata);
+                    in = new InRepositoryDto();
+                    in.setInrepositoryid(val1[0]);
+                    in.setSuppliers(val1[1]);
+                    in.setLinkman(val1[2]);
+                    in.setOperatorid(Integer.parseInt(val1[3]));
+                    Date indata = null;
+                    try {
+                        DateFormat f = new SimpleDateFormat("yyyy/MM/dd");
+                        indata = new Date(f.parse(val1[4].toString()).getTime());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    in.setIntime(indata);
                     //将物品信息设置
-                        in.setGoodid(Integer.parseInt(val[0]));
-                        in.setGoodnumber(Integer.parseInt(val[1]));
+                    in.setGoodid(Integer.parseInt(val[0]));
+                    in.setGoodnumber(Integer.parseInt(val[1]));
 //                        System.out.println(in);
-                        int count = inRepositoryDaoImpl.insert(in);
-                        System.out.println(count);
+                    int count = inRepositoryDaoImpl.insert(in);
+                    System.out.println(count);
 //                    SqlSessionFactory sqlSessionFactory;
 //                    SqlSession sqlSession;
 //                    ApplicationContext applicationContext;
@@ -154,10 +146,10 @@ public class InRepositoryUtils {
 //                    sqlSessionFactory = (SqlSessionFactory) applicationContext.getBean("sqlSessionFactory");
 //                    sqlSession = sqlSessionFactory.openSession();
 //                    GoodsDto good =sqlSession.selectOne("org.goodsManagement.mapper.GoodsDtoMapper.selectByPrimaryKey", Integer.parseInt(val[0]));
-                        GoodsDto good = goodsDaoImpl.selectByPrimaryKey(Integer.parseInt(val[0]));
-                        int num = good.getGoodnumbers()+Integer.parseInt(val[1]);
-                        good.setGoodnumbers(num);
-                        goodsDaoImpl.updateByPrimaryKey(good);
+                    GoodsDto good = goodsDaoImpl.selectByPrimaryKey(Integer.parseInt(val[0]));
+                    int num = good.getGoodnumbers() + Integer.parseInt(val[1]);
+                    good.setGoodnumbers(num);
+                    goodsDaoImpl.updateByPrimaryKey(good);
 
 //                    int count = sqlSession.update("org.goodsManagement.mapper.GoodsDtoMapper.updateByPrimaryKeySelective", good);
 //                    System.out.println(count);

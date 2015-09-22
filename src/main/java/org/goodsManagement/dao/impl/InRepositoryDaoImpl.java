@@ -79,7 +79,6 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
     /**
      * 获取入库的表中所有的信息
      *
-     * @param record
      * @return
      */
     public List<InRepositoryDto> selectall() {
