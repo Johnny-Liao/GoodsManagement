@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class OutRepositoryDao extends BasedaoA<OutRepositoryDto> {
+public class OutRepositoryDaoImpl extends BasedaoA<OutRepositoryDto> {
     /**
      * 通过主键获取实体
      *

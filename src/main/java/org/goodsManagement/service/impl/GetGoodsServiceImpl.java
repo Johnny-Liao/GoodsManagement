@@ -1,25 +1,29 @@
 package org.goodsManagement.service.impl;
 
-import org.goodsManagement.dao.impl.GetGoodsDao;
+import org.goodsManagement.dao.impl.GetGoodsDaoImpl;
 import org.goodsManagement.po.GetGoodsDto;
 import org.goodsManagement.service.BaseServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by admin on 2015/9/20.
  */
+@Service
 public class GetGoodsServiceImpl implements BaseServiceI<GetGoodsDto> {
     @Autowired
-    private GetGoodsDao getGoodsDao;
+    @Qualifier("getGoodsDaoImpl")
+    private GetGoodsDaoImpl getGoodsDaoImpl;
 
     public void addEntity(GetGoodsDto getGoodsDto) {
-        getGoodsDao.insert(getGoodsDto);
+        getGoodsDaoImpl.insert(getGoodsDto);
     }
 
     public void modifyEntity(GetGoodsDto getGoodsDto) {
-        getGoodsDao.updateByPrimaryKey(getGoodsDto);
+        getGoodsDaoImpl.updateByPrimaryKey(getGoodsDto);
     }
 
     public GetGoodsDto loadEntity(int id) {
@@ -27,7 +31,7 @@ public class GetGoodsServiceImpl implements BaseServiceI<GetGoodsDto> {
     }
 
     public GetGoodsDto getEntity(int id) {
-        return getGoodsDao.selectByPrimaryKey(id);
+        return getGoodsDaoImpl.selectByPrimaryKey(id);
     }
 
     public List<GetGoodsDto> getAllEntities() {
@@ -35,6 +39,6 @@ public class GetGoodsServiceImpl implements BaseServiceI<GetGoodsDto> {
     }
 
     public void deleteEntity(GetGoodsDto getGoodsDto) {
-        getGoodsDao.deleteByPrimaryKey(getGoodsDto.getId());
+        getGoodsDaoImpl.deleteByPrimaryKey(getGoodsDto.getId());
     }
 }

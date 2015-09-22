@@ -1,7 +1,9 @@
 package org.goodsmanagement.dao.impl;
 
 import org.goodsManagement.dao.impl.DeptdaoImpl;
+import org.goodsManagement.dao.impl.GoodsDaoImpl;
 import org.goodsManagement.po.DeptDto;
+import org.goodsManagement.po.GoodsDto;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -18,7 +20,7 @@ public class DeptdaoImplTest {
     @Before
     public void setUp() throws Exception {
         applicationContext = new ClassPathXmlApplicationContext("application-config.xml");
-        deptdao = (DeptdaoImpl) applicationContext.getBean("deptdaoImpl");
+//        deptdao = (DeptdaoImpl) applicationContext.getBean("deptdaoImpl");
     }
 
     @Test
@@ -31,6 +33,7 @@ public class DeptdaoImplTest {
         DeptDto deptDto = new DeptDto();
         deptDto.setDeptname("测试");
         deptdao.insert(deptDto);
+//         deptdao.selectByPrimaryKey(1);
     }
 
     @Test

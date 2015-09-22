@@ -5,14 +5,22 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.goodsManagement.dao.impl.DeptdaoImpl;
+import org.goodsManagement.dao.impl.InRepositoryDaoImpl;
 import org.goodsManagement.po.DeptDto;
 import org.goodsManagement.po.GoodsDto;
+import org.goodsManagement.po.InRepositoryDto;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.InputStream;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -22,6 +30,9 @@ public class GoodsMapperTest {
     private SqlSessionFactory sqlSessionFactory;
     private SqlSession sqlSession;
     private ApplicationContext applicationContext;
+    @Autowired
+    @Qualifier("inRepositoryDaoImpl")
+    private static InRepositoryDaoImpl inRepositoryDaoImpl;
 
     @Before
     public void setUp() throws Exception {
@@ -38,8 +49,30 @@ public class GoodsMapperTest {
     @Test
     public void testInsert() throws Exception {
         //测试通过名字查询到货品
-        List<GoodsDto> users =  sqlSession.selectList("org.goodsManagement.mapper.GoodsDtoMapper.selectByName", "衬衫");
-        System.out.println(users.size());
+//        List<GoodsDto> users =  sqlSession.selectList("org.goodsManagement.mapper.GoodsDtoMapper.selectByName", "衬衫");
+//        System.out.println(users.size());
+//        GoodsDto good =  sqlSession.selectOne("org.goodsManagement.mapper.GoodsDtoMapper.selectByPrimaryKey", 1);
+//        good.setGoodnumbers(100);
+//        int i = sqlSession.update("org.goodsManagement.mapper.GoodsDtoMapper.updateByPrimaryKey",good);
+        InRepositoryDto in = new InRepositoryDto();
+        in.setInrepositoryid("ad1231");
+        in.setSuppliers("傻逼");
+        in.setLinkman("臭傻逼");
+        in.setOperatorid(1);
+//        Date indata = null;
+//        try {
+//            DateFormat f = new SimpleDateFormat("yyyy/MM/dd");
+//            indata = new Date(f.parse(val1[4].toString()).getTime());
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+        in.setIntime(new java.util.Date());
+        //将物品信息设置
+        in.setGoodid(1);
+        in.setGoodnumber(20);
+//        int i = sqlSession.insert("org.goodsManagement.mapper.InRepositoryDtoMapper.insert", in);
+        int i=inRepositoryDaoImpl.insert(in);
+        System.out.println(i);
     }
 
 }
