@@ -155,5 +155,15 @@
       inrepositoryid = #{inrepositoryid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectingood" resultType="org.goodsManagement.vo.InrepositoryGood" parameterType="java.lang.String">
+        select
+        goods.goodname,
+        goods.goodunit,
+        goods.goodtype,
+        inrepository.goodnumber
+        from goods,inrepository
+        WHERE goods.id = inrepository.goodid
+        AND inrepository.inrepositoryid = #{inrepositoryid,jdbcType=VARCHAR}
+    </select>
 
 </mapper>

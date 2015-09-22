@@ -20,7 +20,7 @@ public class DeptdaoImplTest {
     @Before
     public void setUp() throws Exception {
         applicationContext = new ClassPathXmlApplicationContext("application-config.xml");
-//        deptdao = (DeptdaoImpl) applicationContext.getBean("deptdaoImpl");
+        deptdao = (DeptdaoImpl) applicationContext.getBean("deptdaoImpl");
     }
 
     @Test

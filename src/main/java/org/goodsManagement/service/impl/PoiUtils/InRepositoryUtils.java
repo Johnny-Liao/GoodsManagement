@@ -13,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.goodsManagement.dao.impl.GoodsDaoImpl;
 import org.goodsManagement.dao.impl.InRepositoryDaoImpl;
+import org.goodsManagement.po.GoodsDto;
 import org.goodsManagement.po.InRepositoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -41,12 +42,12 @@ public class InRepositoryUtils {
     @Autowired
     @Qualifier("goodsDaoImpl")
     private static GoodsDaoImpl goodsDaoImpl;
-    public static String filePath = "C:\\Users\\lifei\\Desktop\\goods.xls";
-
-    public static void main(String[] args){
-        InRepositoryUtils.PoiUtils(filePath);
-    }
-    public static void PoiUtils(String filePath) {
+//    public static String filePath = "C:\\Users\\lifei\\Desktop\\goods.xls";
+//
+//    public static void main(String[] args){
+//        InRepositoryUtils.PoiUtils(filePath);
+//    }
+    public  void  addPoiUtils(String filePath) {
         HSSFWorkbook wookbook = null;
         InRepositoryDto  in;
         try {
@@ -143,7 +144,7 @@ public class InRepositoryUtils {
                     //将物品信息设置
                         in.setGoodid(Integer.parseInt(val[0]));
                         in.setGoodnumber(Integer.parseInt(val[1]));
-                        System.out.println(in);
+//                        System.out.println(in);
                         int count = inRepositoryDaoImpl.insert(in);
                         System.out.println(count);
 //                    SqlSessionFactory sqlSessionFactory;
@@ -152,7 +153,13 @@ public class InRepositoryUtils {
 //                    applicationContext = new ClassPathXmlApplicationContext("application-config.xml");
 //                    sqlSessionFactory = (SqlSessionFactory) applicationContext.getBean("sqlSessionFactory");
 //                    sqlSession = sqlSessionFactory.openSession();
-//                    int count = sqlSession.insert("org.goodsManagement.mapper.InRepositoryDtoMapper.insert", in);
+//                    GoodsDto good =sqlSession.selectOne("org.goodsManagement.mapper.GoodsDtoMapper.selectByPrimaryKey", Integer.parseInt(val[0]));
+                        GoodsDto good = goodsDaoImpl.selectByPrimaryKey(Integer.parseInt(val[0]));
+                        int num = good.getGoodnumbers()+Integer.parseInt(val[1]);
+                        good.setGoodnumbers(num);
+                        goodsDaoImpl.updateByPrimaryKey(good);
+
+//                    int count = sqlSession.update("org.goodsManagement.mapper.GoodsDtoMapper.updateByPrimaryKeySelective", good);
 //                    System.out.println(count);
                 }
 
