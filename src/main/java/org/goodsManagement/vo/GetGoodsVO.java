@@ -1,6 +1,7 @@
 package org.goodsManagement.vo;
 
 /**
+ * 所有需要显示的信息的封装类
  * Created by johnny on 15-9-23.
  */
 public class GetGoodsVO {
@@ -8,7 +9,6 @@ public class GetGoodsVO {
     private String staffname;
     private String goodname;
     private String goodtype;
-
     private int getnumber;
 
     public int getId() {
