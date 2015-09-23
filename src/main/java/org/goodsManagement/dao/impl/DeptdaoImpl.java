@@ -76,7 +76,4 @@ public class DeptdaoImpl extends BasedaoA<DeptDto> {
         return sessionTemplate.update("org.goodsManagement.mapper.DeptDtoMapper.updateByPrimaryKey", record);
     }
 
-//    public void test() {
-//        sessionTemplate.selectOne("select * from dept");
-//    }
 }
