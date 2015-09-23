@@ -10,10 +10,11 @@
         <result column="deptid" property="deptid" jdbcType="INTEGER"/>
         <result column="standardnumber" property="standardnumber" jdbcType="INTEGER"/>
         <result column="comments" property="comments" jdbcType="VARCHAR"/>
+        <result column="outrepositoryid" property="outrepositoryid" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-    id, outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments
+    id, outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments,outrepositoryid
   </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
@@ -31,10 +32,10 @@
     <insert id="insert" parameterType="org.goodsManagement.po.OutRepositoryDto">
     insert into outrepository (id, outtime, goodid,
       goodnumber, operatorid, deptid, 
-      standardnumber, comments)
+      standardnumber, comments,outrepositoryid)
     values (#{id,jdbcType=INTEGER}, #{outtime,jdbcType=DATE}, #{goodid,jdbcType=INTEGER}, 
       #{goodnumber,jdbcType=INTEGER}, #{operatorid,jdbcType=INTEGER}, #{deptid,jdbcType=INTEGER}, 
-      #{standardnumber,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR})
+      #{standardnumber,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR},#{outrepositoryid,jdbcType=VARCHAR})
   </insert>
 
     <insert id="insertSelective" parameterType="org.goodsManagement.po.OutRepositoryDto">
@@ -64,6 +65,9 @@
             <if test="comments != null">
                 comments,
             </if>
+            <if test="outrepositoryid != null">
+                outrepositoryid,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -89,6 +93,9 @@
             </if>
             <if test="comments != null">
                 #{comments,jdbcType=VARCHAR},
+            </if>
+            <if test="outrepositoryid != null">
+                #{outrepositoryid,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -117,6 +124,9 @@
             <if test="comments != null">
                 comments = #{comments,jdbcType=VARCHAR},
             </if>
+            <if test="outrepositoryid != null">
+                outrepositoryid = #{outrepositoryid,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -129,7 +139,8 @@
       operatorid = #{operatorid,jdbcType=INTEGER},
       deptid = #{deptid,jdbcType=INTEGER},
       standardnumber = #{standardnumber,jdbcType=INTEGER},
-      comments = #{comments,jdbcType=VARCHAR}
+      comments = #{comments,jdbcType=VARCHAR},
+      outrepositoryid = #{outrepositoryid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

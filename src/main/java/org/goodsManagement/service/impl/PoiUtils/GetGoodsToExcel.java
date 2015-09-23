@@ -4,6 +4,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.goodsManagement.po.GetGoodsDto;
 import org.goodsManagement.vo.GetGoodsVO;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +12,11 @@ import java.util.List;
 /**
  * Created by lifei on 2015/9/23.
  */
+@Component
 public class GetGoodsToExcel {
 
 
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         List<GetGoodsVO> list = new ArrayList<GetGoodsVO>();
         GetGoodsVO a1 = new GetGoodsVO();
         a1.setStaffname("大黄");
@@ -31,7 +33,7 @@ public class GetGoodsToExcel {
         String path = "C:\\Users\\lifei\\Desktop\\getgood.xls";
         GetGoodsToExcel.toExcel(list,path);
         System.out.println("导出完成");
-    }
+    }*/
     /**
      *
      * @param list
@@ -40,10 +42,10 @@ public class GetGoodsToExcel {
      *          要写入的文件的路径
      */
 
-    public static void toExcel(List<GetGoodsVO> list,String path){
+    public void addtoExcel(List<GetGoodsVO> list,String path){
 
         HSSFWorkbook wb = new HSSFWorkbook();
-        HSSFSheet sheet = wb.createSheet("Users");
+        HSSFSheet sheet = wb.createSheet("Outgoods");
 
         String[] n = { "姓名", "物品名称号", "物品型号", "物品数量" };
 

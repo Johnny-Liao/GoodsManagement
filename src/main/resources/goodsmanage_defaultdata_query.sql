@@ -32,9 +32,9 @@ INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, ph
 INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (3, 20150919, 1, 30, "卖鞋的", "飞鞋党", 12345678901, 1, "买了几件破鞋", "XIEZI");
 INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (4, 20150919, 1, 30, "卖月饼的", "咸蛋超人", 12345678901, 1, "可以吃月饼咯", "yuebing");
 
-INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 1, 10, 1, 1, 3, "发衣服咯");
-INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 2, 10, 1, 1, 3, "发裤子咯");
-INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 5, 10, 1, 6, 3, "发月饼咯");
+INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 1, 10, 1, 1, 3, "发衣服咯","Ka131");
+INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 2, 10, 1, 1, 3, "发裤子咯","Ka131");
+INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 5, 10, 1, 6, 3, "发月饼咯","Ka131");
 
 -- 显示所有表数据
 SELECT * FROM user;
