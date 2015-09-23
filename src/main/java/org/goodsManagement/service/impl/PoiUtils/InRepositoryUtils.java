@@ -38,10 +38,10 @@ import java.util.List;
 public class InRepositoryUtils {
     @Autowired
     @Qualifier("inRepositoryDaoImpl")
-    private static InRepositoryDaoImpl inRepositoryDaoImpl;
+    private  InRepositoryDaoImpl inRepositoryDaoImpl;
     @Autowired
     @Qualifier("goodsDaoImpl")
-    private static GoodsDaoImpl goodsDaoImpl;
+    private  GoodsDaoImpl goodsDaoImpl;
 //    public static String filePath = "C:\\Users\\lifei\\Desktop\\goods.xls";
 //
 //    public static void main(String[] args){
