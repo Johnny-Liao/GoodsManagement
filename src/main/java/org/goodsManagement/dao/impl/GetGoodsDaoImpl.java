@@ -3,10 +3,13 @@ package org.goodsManagement.dao.impl;
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.GetGoodsDto;
 import org.goodsManagement.po.GoodsDto;
+import org.goodsManagement.vo.GetGoodsVO;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
- * Created by lifei on 2015/9/20.
+ * Created by johnny on 2015/9/23.
  */
 @Component
 public class GetGoodsDaoImpl extends BasedaoA<GetGoodsDto> {
@@ -48,8 +51,9 @@ public class GetGoodsDaoImpl extends BasedaoA<GetGoodsDto> {
      */
     @Override
     public GetGoodsDto selectByPrimaryKey(Integer id) {
-        return sessionTemplate.selectOne("org.goodsManagement.mapper.GetGoodsDtoMapper.selectByPrimaryKey", id);
+        return sessionTemplate.selectOne("org.goodsManagement.mapper.GetGoodsDtoMapper.getGoodsById", id);
     }
+
     /**
      * 更新实体类，不需要指定所有的键
      *
@@ -69,5 +73,20 @@ public class GetGoodsDaoImpl extends BasedaoA<GetGoodsDto> {
     @Override
     public int updateByPrimaryKey(GetGoodsDto record) {
         return sessionTemplate.update("org.goodsManagement.mapper.GetGoodsDtoMapper.updateByPrimaryKey", record);
+    }
+
+
+
+    /**
+     * 通过id获取页面显示信息
+     * @param id 传入的id
+     * @return VO用于显示
+     */
+    public GetGoodsVO getGoodsById(Integer id) {
+        return sessionTemplate.selectOne("org.goodsManagement.mapper.GetGoodsDtoMapper.getGoodsById", id);
+    }
+
+    public List<GetGoodsVO> allGetGoodsInfo() {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.GetGoodsDtoMapper.allGetGoodsInfo");
     }
 }
