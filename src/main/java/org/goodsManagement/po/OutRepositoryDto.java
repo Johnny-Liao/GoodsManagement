@@ -258,4 +258,13 @@ public class OutRepositoryDto {
     public void setComments(String comments) {
         this.comments = comments == null ? null : comments.trim();
     }
+    private String outrepositoryid;
+
+    public String getOutrepositoryid() {
+        return outrepositoryid;
+    }
+
+    public void setOutrepositoryid(String outrepositoryid) {
+        this.outrepositoryid = outrepositoryid;
+    }
 }
