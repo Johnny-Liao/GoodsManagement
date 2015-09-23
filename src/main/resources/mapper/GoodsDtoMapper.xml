@@ -13,6 +13,10 @@
     id, goodname, goodunit, goodnumbers, goodtype
   </sql>
 
+    <select id="WarehouseInventory" resultType="org.goodsManagement.vo.Warehouse">
+        SELECT id, goodname, sum(goodnumbers) as sumnum FROM goods GROUP BY goodname;
+    </select>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>

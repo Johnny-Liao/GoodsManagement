@@ -50,8 +50,10 @@ SELECT * FROM outrepository;
 # 物品信息管理页展示数据
 SELECT id, goodname, goodunit FROM goods;
 
+SELECT * FROM goods;
+
 # 库房盘存
-SELECT id, goodname, goodnumbers FROM goods;
+SELECT id, goodname, sum(goodnumbers) FROM goods GROUP BY goodname;
 
 # 人员物品领用明细
 SELECT getgoods.id, staff.staffname, goods.goodname, getgoods.getnumber
