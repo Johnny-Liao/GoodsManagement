@@ -44,7 +44,9 @@ SELECT id, goodname, goodnumbers FROM goods;
 SELECT getgoods.id, staff.staffname, goods.goodname, getgoods.getnumber
 FROM getgoods
   LEFT JOIN staff ON getgoods.staffid = staff.id
-  LEFT JOIN goods ON getgoods.goodid = goods.id;
+  LEFT JOIN goods ON getgoods.goodid = goods.id
+WHERE getgoods.id = 1;
+
 
 # 入库信息明细
 SELECT inr.goodid, intime, goods.goodname, goodnumber, suppliers, linkman, phone, username,comments
