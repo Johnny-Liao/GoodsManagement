@@ -63,7 +63,7 @@
         <property name="logAbandoned" value="true"/>
 
         <!-- 监控数据库 -->
-        <!-- <property name="filters" value="stat" /> -->
+        <!--<property name="filters" value="stat"/>-->
         <property name="filters" value="mergeStat"/>
     </bean>
 
@@ -81,12 +81,16 @@
 
     <!--MapperScannerConfigurer就会扫描指定基包下面的所有接口，并把它们注册为一个个MapperFactoryBean对象-->
     <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-        <!--<property name="basePackage" value="org.goodsManagement.mapper"/>-->
-        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
+    <!--<property name="basePackage" value="org.goodsManagement.mapper"/>-->
+    <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
     <!--</bean>-->
 
-    <!--创建SqlSessionTemplate-->
-    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+    <!--创建SqlSessionTemplate scope="prototype"-->
+    <!--SqlSessionTemplate你不可以手动关闭。SqlSessionTemplate是一个代理类，
+    内部他会为每次请求创建线程安全的sqlsession,
+    并与Spring进行集成.在你的方法调用完毕以后他会自动关闭的。-->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
+          scope="prototype">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
 
