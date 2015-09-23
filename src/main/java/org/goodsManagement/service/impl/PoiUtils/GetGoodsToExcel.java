@@ -5,12 +5,33 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.goodsManagement.po.GetGoodsDto;
 import org.goodsManagement.vo.GetGoodsVO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by lifei on 2015/9/23.
  */
 public class GetGoodsToExcel {
+
+
+    public static void main(String[] args){
+        List<GetGoodsVO> list = new ArrayList<GetGoodsVO>();
+        GetGoodsVO a1 = new GetGoodsVO();
+        a1.setStaffname("大黄");
+        a1.setGoodname("屎");
+        a1.setGetnumber(2);
+        a1.setGoodtype("一大坨");
+        list.add(a1);
+        GetGoodsVO a2 = new GetGoodsVO();
+        a2.setStaffname("小黄");
+        a2.setGoodname("屎");
+        a2.setGetnumber(2);
+        a2.setGoodtype("一桶");
+        list.add(a2);
+        String path = "C:\\Users\\lifei\\Desktop\\getgood.xls";
+        GetGoodsToExcel.toExcel(list,path);
+        System.out.println("导出完成");
+    }
     /**
      *
      * @param list
@@ -19,7 +40,7 @@ public class GetGoodsToExcel {
      *          要写入的文件的路径
      */
 
-    public void toExcel(List<GetGoodsVO> list,String path){
+    public static void toExcel(List<GetGoodsVO> list,String path){
 
         HSSFWorkbook wb = new HSSFWorkbook();
         HSSFSheet sheet = wb.createSheet("Users");
