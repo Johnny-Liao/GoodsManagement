@@ -7,38 +7,33 @@ import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.service.BaseServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class InRepositoryImpl implements BaseServiceI<InRepositoryDto>{
-	
-	@Autowired
-	private InRepositoryDao inRepositoryDao;
-	@Override
-	public void addEntity(InRepositoryDto inRepositoryDto) {
-		inRepositoryDao.insert(inRepositoryDto);
-	}
-	
-	@Override
-	public void modifyEntity(InRepositoryDto inRepositoryDto){
-		inRepositoryDao.updateByPrimaryKey(inRepositoryDto);
-	}
+public class InRepositoryImpl implements BaseServiceI<InRepositoryDto> {
 
-	@Override
-	public InRepositoryDto loadEntity(int id) {
-		return null;
-	}
+    @Autowired
+    private InRepositoryDao inRepositoryDao;
 
-	@Override
-	public InRepositoryDto getEntity(int id) {
-		return inRepositoryDao.selectByPrimaryKey(id);
-	}
+    public void addEntity(InRepositoryDto inRepositoryDto) {
+        inRepositoryDao.insert(inRepositoryDto);
+    }
 
-	@Override
-	public List<InRepositoryDto> getAllEntities() {
-		return null;
-	}
+    public void modifyEntity(InRepositoryDto inRepositoryDto) {
+        inRepositoryDao.updateByPrimaryKey(inRepositoryDto);
+    }
 
-	@Override
-	public void deleteEntity(InRepositoryDto inRepositoryDto) {
-		inRepositoryDao.deleteByPrimaryKey(inRepositoryDto.getId());
-	}
-	
+    public InRepositoryDto loadEntity(int id) {
+        return null;
+    }
+
+    public InRepositoryDto getEntity(int id) {
+        return inRepositoryDao.selectByPrimaryKey(id);
+    }
+
+    public List<InRepositoryDto> getAllEntities() {
+        return null;
+    }
+
+    public void deleteEntity(InRepositoryDto inRepositoryDto) {
+        inRepositoryDao.deleteByPrimaryKey(inRepositoryDto.getId());
+    }
+
 }

@@ -27,6 +27,7 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
     public void addEntity(GoodsDto goodsDto) {
         goodsDao.insert(goodsDto);
     }
+
     /**
      * 修改实体
      *
@@ -35,6 +36,7 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
     public void modifyEntity(GoodsDto goodsDto) {
         goodsDao.updateByPrimaryKey(goodsDto);
     }
+
     /**
      * 通过ID获得实体类
      *
@@ -44,39 +46,42 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
     public GoodsDto getEntity(int id) {
         return goodsDao.selectByPrimaryKey(id);
     }
+
     /**
      * 通过货品名称来查询
      *
-     * @param name
-     *              需要查询的货品名称
+     * @param name 需要查询的货品名称
      * @return goods
-     *              同意货品名称的集合
+     * 同意货品名称的集合
      */
     public List<GoodsDto> getEntitiesByname(String name) {
         return goodsDao.selectByName(name);
     }
+
     /**
      * 查看商品种类
      *
      * @return goods
-     *              已经分类的Goods集合
+     * 已经分类的Goods集合
      */
     public List<GoodsVo> getEntitieskind() {
         return goodsDao.getEntitieskind();
     }
+
     /**
      * 删除指定ID的商品
-     *
      */
     public void deleteEntity(int id) {
         goodsDao.deleteByPrimaryKey(id);
     }
+
     public List<GoodsDto> getAllEntities() {
         return null;
     }
 
     public void deleteEntity(GoodsDto goodsDto) {
     }
+
     public GoodsDto loadEntity(int id) {
         return null;
     }
