@@ -1,21 +1,20 @@
 package org.goodsManagement.controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
 import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.service.impl.InRepositoryServiceImpl;
-import org.goodsManagement.service.impl.PoiUtils.InRepositoryUtils;
 import org.goodsManagement.vo.Inrepositorysql;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
 /**
  * Created by lifei on 2015/9/22.
  */
-@Controller
-@Scope("prototype")
+@Namespace("/")
+@Action("inrepository")
 public class InrepositoryAction extends ActionSupport {
     private String filename;
     private List<InRepositoryDto> list;
@@ -39,14 +38,16 @@ public class InrepositoryAction extends ActionSupport {
         inRepositoryServiceImpl.addinRepositoryD(filename);
         return SUCCESS;
     }
+
     public String getall() {
         System.out.println(filename);
-         list = inRepositoryServiceImpl.selectallmes();
+        list = inRepositoryServiceImpl.selectallmes();
         return SUCCESS;
     }
-    public String selectbysearch(){
+
+    public String selectbysearch() {
         Inrepositorysql sql = new Inrepositorysql();
-        list =  inRepositoryServiceImpl.selectbysearch(sql);
+        list = inRepositoryServiceImpl.selectbysearch(sql);
         return SUCCESS;
     }
 

@@ -86,7 +86,7 @@
     <!--</bean>-->
 
     <!--创建SqlSessionTemplate-->
-    <bean id="SqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
 

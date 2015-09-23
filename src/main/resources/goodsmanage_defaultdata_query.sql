@@ -18,8 +18,8 @@ INSERT INTO staff (id, staffname, sex, deptid)  VALUES (3, "牛羊新", "男", 3
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (1, 1, 1, 20);
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (2, 2, 2, 10);
 
-INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments)  VALUES (1, 20150919, 1, 20, "卖衣服的", "黄衣党", 12345678901, 1, "买了几件衣服");
-INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments)  VALUES (2, 20150919, 1, 30, "卖裤子的", "酷酷党", 12345678901, 1, "买了几件破裤子");
+INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (1, 20150919, 1, 20, "卖衣服的", "黄衣党", 12345678901, 1, "买了几件衣服", "1111");
+INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (2, 20150919, 1, 30, "卖裤子的", "酷酷党", 12345678901, 1, "买了几件破裤子", "2222");
 
 INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments)  VALUES (20150920, 1, 10, 1, 1, 3, "发衣服咯");
 
