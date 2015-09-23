@@ -1,6 +1,7 @@
 package org.goodsManagement.vo;
 
 /**
+ * 所有需要显示的信息的封装类
  * Created by johnny on 15-9-23.
  */
 public class GetGoodsVO {

@@ -3,6 +3,7 @@ package org.goodsManagement.dao.impl;
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.GoodsDto;
 import org.goodsManagement.vo.GoodsVo;
+import org.goodsManagement.vo.Warehouse;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -94,4 +95,13 @@ public class GoodsDaoImpl extends BasedaoA<GoodsDto> {
         List<GoodsVo> goods =  sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.selectGroupByName");
         return goods;
     }
+
+    /**
+     * 获取库房盘存信息
+     * @return 所有库房盘存信息
+     */
+    public List<Warehouse> getWarehouseInventory() {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.WarehouseInventory");
+    }
+
 }
