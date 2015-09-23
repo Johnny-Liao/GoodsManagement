@@ -229,8 +229,7 @@ public class ExcelUtils {
     /**
      * 功能：将HSSFWorkbook写入Excel文件
      * @param     wb        HSSFWorkbook
-     * @param     absPath    写入文件的相对路径
-     * @param     wbName    文件名
+     * @param     fileName    文件名
      */
     public static void writeWorkbook(HSSFWorkbook wb,String fileName){
         FileOutputStream fos=null;
