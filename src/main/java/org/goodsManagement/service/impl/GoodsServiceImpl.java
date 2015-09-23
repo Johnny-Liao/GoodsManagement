@@ -4,6 +4,7 @@ import org.goodsManagement.dao.impl.GoodsDaoImpl;
 import org.goodsManagement.po.GoodsDto;
 import org.goodsManagement.service.BaseServiceI;
 import org.goodsManagement.vo.GoodsVo;
+import org.goodsManagement.vo.Warehouse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,25 +27,6 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
      */
     public void addEntity(GoodsDto goodsDto) {
         goodsDaoImpl.insert(goodsDto);
-    }
-
-    /**
-     * 修改实体
-     *
-     * @param goodsDto 实体对象(不需指定所有的键)
-     */
-    public void modifyEntity(GoodsDto goodsDto) {
-        goodsDaoImpl.updateByPrimaryKey(goodsDto);
-    }
-
-    /**
-     * 通过ID获得实体类
-     *
-     * @param id 实体对象的id
-     * @return
-     */
-    public GoodsDto getEntity(int id) {
-        return goodsDaoImpl.selectByPrimaryKey(id);
     }
 
     /**
@@ -85,4 +67,35 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
     public GoodsDto loadEntity(int id) {
         return null;
     }
+
+    /**
+     * 修改实体
+     *
+     * @param goodsDto 实体对象(不需指定所有的键)
+     */
+    public void modifyEntity(GoodsDto goodsDto) {
+        goodsDaoImpl.updateByPrimaryKey(goodsDto);
+    }
+
+    /**
+     * 通过ID获得实体类
+     *
+     * @param id 实体对象的id
+     * @return
+     */
+    public GoodsDto getEntity(int id) {
+        return goodsDaoImpl.selectByPrimaryKey(id);
+    }
+
+
+    /**
+     * 获取库房盘存显示信息
+     *
+     * @return
+     */
+    public List<Warehouse> getWarehouseInventory() {
+        return goodsDaoImpl.getWarehouseInventory();
+    }
+
+
 }
