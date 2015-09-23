@@ -1,9 +1,10 @@
 package org.goodsManagement.service.impl;
 
-import org.goodsManagement.dao.impl.OutRepositoryDao;
+import org.goodsManagement.dao.impl.OutRepositoryDaoImpl;
 import org.goodsManagement.po.OutRepositoryDto;
 import org.goodsManagement.service.BaseServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
 
@@ -12,14 +13,15 @@ import java.util.List;
  */
 public class OutRepositoryServiceImpl implements BaseServiceI<OutRepositoryDto> {
     @Autowired
-    private OutRepositoryDao outRepositoryDao;
+    @Qualifier("outRepositoryDaoImpl")
+    private OutRepositoryDaoImpl outRepositoryDaoImpl;
 
     public void addEntity(OutRepositoryDto outRepositoryDto) {
-        outRepositoryDao.insert(outRepositoryDto);
+        outRepositoryDaoImpl.insert(outRepositoryDto);
     }
 
     public void modifyEntity(OutRepositoryDto outRepositoryDto) {
-        outRepositoryDao.updateByPrimaryKeySelective(outRepositoryDto);
+        outRepositoryDaoImpl.updateByPrimaryKeySelective(outRepositoryDto);
     }
 
     public OutRepositoryDto loadEntity(int id) {
@@ -27,7 +29,7 @@ public class OutRepositoryServiceImpl implements BaseServiceI<OutRepositoryDto> 
     }
 
     public OutRepositoryDto getEntity(int id) {
-        return outRepositoryDao.selectByPrimaryKey(id);
+        return outRepositoryDaoImpl.selectByPrimaryKey(id);
     }
 
     public List<OutRepositoryDto> getAllEntities() {
@@ -35,6 +37,6 @@ public class OutRepositoryServiceImpl implements BaseServiceI<OutRepositoryDto> 
     }
 
     public void deleteEntity(OutRepositoryDto outRepositoryDto) {
-        outRepositoryDao.deleteByPrimaryKey(outRepositoryDto.getId());
+        outRepositoryDaoImpl.deleteByPrimaryKey(outRepositoryDto.getId());
     }
 }

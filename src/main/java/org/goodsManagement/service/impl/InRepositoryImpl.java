@@ -2,7 +2,7 @@ package org.goodsManagement.service.impl;
 
 import java.util.List;
 
-import org.goodsManagement.dao.impl.InRepositoryDao;
+import org.goodsManagement.dao.impl.InRepositoryDaoImpl;
 import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.service.BaseServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class InRepositoryImpl implements BaseServiceI<InRepositoryDto> {
 
     @Autowired
-    private InRepositoryDao inRepositoryDao;
+    private InRepositoryDaoImpl inRepositoryDao;
 
     public void addEntity(InRepositoryDto inRepositoryDto) {
         inRepositoryDao.insert(inRepositoryDto);

@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 @Component
-public class StaffDao extends BasedaoA<StaffDto> {
+public class StaffDaoImpl extends BasedaoA<StaffDto> {
     /**
      * 通过主键获取实体
      *

@@ -18,6 +18,7 @@
     <context:component-scan
             base-package="org.goodsManagement.dao.impl,
                           org.goodsManagement.service.impl,
+                          org.goodsManagement.controller,
                           org.goodsManagement.log.impl"/>
 
     <!--开启注解-->
@@ -85,7 +86,7 @@
     <!--</bean>-->
 
     <!--创建SqlSessionTemplate-->
-    <bean id="SqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
 

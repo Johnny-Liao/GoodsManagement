@@ -290,4 +290,14 @@ public class InRepositoryDto {
     public void setComments(String comments) {
         this.comments = comments == null ? null : comments.trim();
     }
+
+    public String inrepositoryid;
+
+    public String getInrepositoryid() {
+        return inrepositoryid;
+    }
+
+    public void setInrepositoryid(String inrepositoryid) {
+        this.inrepositoryid = inrepositoryid;
+    }
 }
