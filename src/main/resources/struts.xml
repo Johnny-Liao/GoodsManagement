@@ -23,17 +23,7 @@
     <!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
     <constant name="struts.dispatcher.parametersWorkaround" value="false"/>
 
-    <!--<package name="basePackage" extends="struts-default">
-         <action name="/" class="daniel.action.UserAction"> <result>index.jsp</result>
-            </action>
-    </package>-->
-
-    <!-- 把struts的请求委托给spring管理,<include file="java/org/goodsManagement/controller/struts-Inrepository.xml"></include>
+    <!-- 把struts的请求委托给spring管理,
          作用:创建Action实例的过程由spring处理,其他的还是有struts2自己处理 -->
-    <constant name="struts.objectFactory" value="spring"/>
-    <!--<package name="inrepository" extends="struts-default" namespace="/">-->
-        <!--<action name="inrepository" method="add" class="org.goodsManagement.controller.InrepositoryAction">-->
-            <!--<result>/addsusess.jsp</result>-->
-        <!--</action>-->
-    <!--</package>-->
+    <!--<constant name="struts.objectFactory" value="spring"/>-->
 </struts>

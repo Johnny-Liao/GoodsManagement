@@ -23,10 +23,13 @@
         <!-- Spring -->
         <spring-framework.version>4.2.0.RELEASE</spring-framework.version>
 
+        <!--aspectjweaver-->
+        <aspectjweaver.version>1.8.2</aspectjweaver.version>
+
         <!-- Mybatis -->
         <mybatis.version>3.3.0</mybatis.version>
-        <jpa.version>1.0.1.Final</jpa.version>
 
+        <!--struts2-->
         <struts2.version>2.3.24</struts2.version>
 
         <!-- Test -->
@@ -35,10 +38,10 @@
         <!-- Logging -->
         <slf4j.version>1.7.5</slf4j.version>
 
+        <!--mysql-->
         <mysql.version>5.1.34</mysql.version>
 
-        <aspectjweaver.version>1.8.2</aspectjweaver.version>
-
+        <!--poi-->
         <poi.version>3.9</poi.version>
     </properties>
 
@@ -65,7 +68,7 @@
             <version>${spring-framework.version}</version>
         </dependency>
 
-        <!--Spring OR包-->
+        <!--Spring ORM包-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
@@ -91,12 +94,6 @@
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
             <version>${struts2.version}</version>
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>javassist</groupId>-->
-                    <!--<artifactId>javassist</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
         </dependency>
 
         <!-- struts2注解包 -->
@@ -111,24 +108,6 @@
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-spring-plugin</artifactId>
             <version>${struts2.version}</version>
-            <!--<exclusions>-->
-            <!--<exclusion>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-context</artifactId>-->
-            <!--</exclusion>-->
-            <!--<exclusion>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-web</artifactId>-->
-            <!--</exclusion>-->
-            <!--<exclusion>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-core</artifactId>-->
-            <!--</exclusion>-->
-            <!--<exclusion>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-beans</artifactId>-->
-            <!--</exclusion>-->
-            <!--</exclusions>-->
         </dependency>
 
         <!-- Other Web dependencies -->
@@ -136,6 +115,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -155,7 +135,14 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
-            <scope>compile</scope>
+            <!--<scope>compile</scope>-->
+        </dependency>
+
+        <!--log4j-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
 
         <!-- Test Artifacts -->
@@ -181,12 +168,7 @@
             <version>1.0.15</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>${jpa.version}</version>
-        </dependency>
-
+        <!--poi apache的开源类库，开源操作Office的文件-->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
@@ -211,6 +193,7 @@
                 </configuration>
             </plugin>
 
+            <!--启动jetty服务器-->
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -222,6 +205,7 @@
                 </configuration>
             </plugin>
 
+            <!--生成mybatis的mapper等文件的plugin-->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
