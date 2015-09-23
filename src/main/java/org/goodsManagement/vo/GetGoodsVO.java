@@ -8,7 +8,6 @@ public class GetGoodsVO {
     private String staffname;
     private String goodname;
     private String goodtype;
-
     private int getnumber;
 
     public int getId() {
