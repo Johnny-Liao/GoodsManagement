@@ -28,12 +28,12 @@ import java.text.SimpleDateFormat;
 public class InRepositoryUtils {
     @Autowired
     @Qualifier("inRepositoryDaoImpl")
+
     private InRepositoryDaoImpl inRepositoryDaoImpl;
 
     @Autowired
     @Qualifier("goodsDaoImpl")
     private GoodsDaoImpl goodsDaoImpl;
-
     //    public static String filePath = "C:\\Users\\lifei\\Desktop\\goods.xls";
 //
 //    public static void main(String[] args){
