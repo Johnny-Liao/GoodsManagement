@@ -59,7 +59,8 @@ CREATE TABLE inrepository
   linkman   VARCHAR(16)     NOT NULL,
   phone     VARCHAR(11),
   operatorid  INT             NOT NULL,
-  comments  VARCHAR(40)
+  comments  VARCHAR(40),
+  inrepositoryid VARCHAR(20)  NOT NULL
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 ALTER TABLE inrepository ADD CONSTRAINT FK_ID_STAFF_IN FOREIGN KEY (goodid) REFERENCES goods (id);
 ALTER TABLE inrepository ADD CONSTRAINT FK_ID_OPERATOR_IN FOREIGN KEY (operatorid) REFERENCES user (id);
