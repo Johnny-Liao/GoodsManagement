@@ -1,10 +1,9 @@
-package org.goodsManagement.service;
+package org.goodsManagement.controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
 import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.service.impl.InRepositoryServiceImpl;
 import org.goodsManagement.vo.Inrepositorysql;
@@ -15,10 +14,11 @@ import java.util.List;
 /**
  * Created by lifei on 2015/9/22.
  */
-@ParentPackage("struts-default")
-@Namespace("/inRepository")
-@Results({@Result(name = "success", location = "/sussess.jsp"),
-        @Result(name = "error", location = "/sussess.jsp")})
+//@ParentPackage("struts-default")
+@Namespace("/")
+@Action(value = "inRepository",
+        results = {@Result(name = "success", location = "/sussess.jsp"),
+                @Result(name = "error", location = "/sussess.jsp")})
 public class InRepositoryAction extends ActionSupport {
     private String filename;
     private List<InRepositoryDto> list;
