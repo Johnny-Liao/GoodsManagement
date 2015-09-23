@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by admin on 2015/9/20.
  */
-public class OutRepositoryServiceImpl implements BaseServiceI<OutRepositoryDto>{
+public class OutRepositoryServiceImpl implements BaseServiceI<OutRepositoryDto> {
     @Autowired
     @Qualifier("outRepositoryDaoImpl")
     private OutRepositoryDaoImpl outRepositoryDaoImpl;
