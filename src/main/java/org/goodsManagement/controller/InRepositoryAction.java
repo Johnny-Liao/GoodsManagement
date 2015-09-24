@@ -1,6 +1,7 @@
 package org.goodsManagement.controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.convention.annotation.*;
 import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.service.impl.InRepositoryServiceImpl;
 import org.goodsManagement.vo.Inrepositorysql;
@@ -9,13 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 /**
- * Created by lifei on 2015/9/22.
+ * Created by never on 2015/9/24.
  */
-//@ParentPackage("struts-default")
-//@Namespace("/")
-//@Action(value = "inRepository",
-//        results = {@Result(name = "success", location = "/success.jsp"),
-//                @Result(name = "error", location = "/success.jsp")})
+@Action("InRepository")
+@ParentPackage("struts-default")
+@Namespace("/")
+@Results(
+        {
+                @Result(name = "success", location = "/success.jsp"),
+                @Result(name = "error", location = "/error.jsp"),
+                @Result(name = "main", location = "/achiver.jsp")
+        })
 public class InRepositoryAction extends ActionSupport {
     private String filename;
     private List<InRepositoryDto> list;
@@ -30,6 +35,10 @@ public class InRepositoryAction extends ActionSupport {
 
     @Autowired
     private InRepositoryServiceImpl inRepositoryServiceImpl;
+
+    public String test() {
+        return SUCCESS;
+    }
 
     /**
      * 用来读取文件并写入数据库
