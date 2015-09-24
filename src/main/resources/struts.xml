@@ -25,5 +25,12 @@
 
     <!-- 把struts的请求委托给spring管理,
          作用:创建Action实例的过程由spring处理,其他的还是有struts2自己处理 -->
-    <!--<constant name="struts.objectFactory" value="spring"/>-->
+    <constant name="struts.objectFactory" value="spring"/>
+
+    <package name="InRepository" extends="struts-default" namespace="/">
+        <action name="InRepository" method="getAll" class="org.goodsManagement.controller.InRepositoryAction">
+            <result name="getAll">/sussess.jsp</result>
+        </action>
+
+    </package>
 </struts>
