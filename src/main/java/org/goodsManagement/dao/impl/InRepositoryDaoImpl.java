@@ -2,6 +2,7 @@ package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.InRepositoryDto;
+import org.goodsManagement.vo.InrepositoryGood;
 import org.goodsManagement.vo.Inrepositorysql;
 import org.springframework.stereotype.Component;
 
@@ -94,5 +95,14 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
     public List<InRepositoryDto> selectsearch(Inrepositorysql sql) {
         return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
     }
+    /**
+     * 查询入库单下所有入库的物品
+     *
+     * @return
+     */
+    public List<InrepositoryGood> selectallingood(String inrepositoryid) {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectingood",inrepositoryid);
+    }
+
 
 }
