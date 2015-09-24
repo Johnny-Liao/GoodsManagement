@@ -27,6 +27,7 @@
     <!-- 配置数据源 -->
     <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
+        <!-- 基本属性 url、user、password -->
         <property name="url" value="${jdbc_url}"/>
         <property name="username" value="${jdbc_username}"/>
         <property name="password" value="${jdbc_password}"/>
@@ -42,6 +43,8 @@
         <!-- 获取连接最大等待时间 -->
         <property name="maxWait" value="60000"/>
 
+        <!-- 如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。分库分表较多的数据库，建议配置为false。 -->
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
         <!-- <property name="poolPreparedStatements" value="true" /> <property
             name="maxPoolPreparedStatementPerConnectionSize" value="33" /> -->
 
