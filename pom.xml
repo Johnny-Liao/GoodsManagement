@@ -206,15 +206,19 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
-                    <!-- <encoding>UTF-8</encoding> -->
-                    <includes>
-                        <include>*.properties,*.xml</include>
-                        <encoding>UTF-8</encoding>
-                    </includes>
-                    <excludes>
-                        <exclude>*.txt</exclude>
-                        <encoding>UTF-8</encoding>
-                    </excludes>
+                    <encoding>UTF-8</encoding>
+                    <resources>
+                        <!--<includes>-->
+                        <!--<include>*.properties,*.xml</include>-->
+                        <!--<encoding>UTF-8</encoding>-->
+                        <!--</includes>-->
+                        <excludes>
+                            <exclude>*.txt</exclude>
+                            <exclude>*.sql</exclude>
+                            <exclude>generatorConfig.xml</exclude>
+                            <encoding>UTF-8</encoding>
+                        </excludes>
+                    </resources>
                 </configuration>
             </plugin>
 
