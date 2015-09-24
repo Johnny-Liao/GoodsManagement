@@ -1,9 +1,7 @@
 package org.goodsManagement.controller;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.*;
 import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.service.impl.InRepositoryServiceImpl;
 import org.goodsManagement.vo.Inrepositorysql;
@@ -13,14 +11,18 @@ import org.springframework.context.annotation.Scope;
 import java.util.List;
 
 /**
- * Created by lifei on 2015/9/22.
+ * Created by never on 2015/9/24.
  */
-//@ParentPackage("struts-default")
-//@Namespace("/")
-@Scope("prototype")
-/*@Action(value = "inRepository",
-        results = {@Result(name = "success", location = "/sussess.jsp"),
-                @Result(name = "error", location = "/sussess.jsp")})*/
+
+@Action("InRepository")
+@ParentPackage("struts-default")
+@Namespace("/")
+@Results(
+        {
+                @Result(name = "success", location = "/success.jsp"),
+                @Result(name = "error", location = "/error.jsp"),
+                @Result(name = "main", location = "/achiver.jsp")
+        })
 public class InRepositoryAction extends ActionSupport {
     public InRepositoryAction(){
         System.out.println("action被实例化");
@@ -38,6 +40,10 @@ public class InRepositoryAction extends ActionSupport {
 //
 //    @Autowired
 //    private InRepositoryServiceImpl inRepositoryServiceImpl;
+
+    public String test() {
+        return SUCCESS;
+    }
 
     /**
      * 用来读取文件并写入数据库

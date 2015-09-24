@@ -11,6 +11,6 @@
     <title></title>
 </head>
 <body>
-    添加入库成功
+页面跳转成功
 </body>
 </html>

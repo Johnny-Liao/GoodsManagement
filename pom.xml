@@ -201,6 +201,23 @@
                 </configuration>
             </plugin>
 
+            <!--给文件设置编码的插件，一般情况下不需要加-->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <!-- <encoding>UTF-8</encoding> -->
+                    <includes>
+                        <include>*.properties,*.xml</include>
+                        <encoding>UTF-8</encoding>
+                    </includes>
+                    <excludes>
+                        <exclude>*.txt</exclude>
+                        <encoding>UTF-8</encoding>
+                    </excludes>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>

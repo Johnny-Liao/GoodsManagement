@@ -3,7 +3,7 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
     <!-- struts2的开发模式 -->
-    <constant name="struts.devMode" value="false"/>
+    <constant name="struts.devMode" value="true"/>
     <!-- struts配置文件改动后，是否重新加载 -->
     <constant name="struts.configuration.xml.reload" value="true"/>
     <!-- 设置浏览器是否缓存静态内容 -->
@@ -23,8 +23,9 @@
     <!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
     <constant name="struts.dispatcher.parametersWorkaround" value="false"/>
 
-    <!-- 把struts的请求委托给spring管理,
-         作用:创建Action实例的过程由spring处理,其他的还是有struts2自己处理 -->
+
+    <!--&lt;!&ndash; 把struts的请求委托给spring管理,
+         作用:创建Action实例的过程由spring处理,其他的还是有struts2自己处理 &ndash;&gt;
     <constant name="struts.objectFactory" value="spring"/>
 
     <package name="InRepository" extends="struts-default" namespace="/">
@@ -32,5 +33,8 @@
             <result name="getAll">/sussess.jsp</result>
         </action>
 
-    </package>
+    </package>-->
+
+    <!--指定action包的位置，对于使用注解来说非常重要，默认扫描含有action,actions,struts,struts2字符的包-->
+    <constant name="struts.convention.action.packages" value="org.goodsManagement.controller"/>
 </struts>
