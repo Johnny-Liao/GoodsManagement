@@ -4,6 +4,7 @@ import org.goodsManagement.dao.impl.InRepositoryDaoImpl;
 import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.service.BaseServiceI;
 import org.goodsManagement.service.impl.PoiUtils.InRepositoryUtils;
+import org.goodsManagement.vo.InrepositoryGood;
 import org.goodsManagement.vo.Inrepositorysql;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -54,7 +55,7 @@ public class InRepositoryServiceImpl implements BaseServiceI<InRepositoryDto> {
     }
 
     /**
-     * 按照入库单号查询所有入库的货物，入库数量，以及详细的入库单信息，在另一个jsp页面显示时调用
+     * 查看所有的入库信息
      */
     public List<InRepositoryDto> selectallmes() {
         return inRepositoryDaoImpl.selectall();
@@ -66,5 +67,10 @@ public class InRepositoryServiceImpl implements BaseServiceI<InRepositoryDto> {
     public List<InRepositoryDto> selectbysearch(Inrepositorysql sql) {
         return inRepositoryDaoImpl.selectsearch(sql);
     }
-
+    /**
+     * 按照入库单号查询所有入库的货物，入库数量，以及详细的入库单信息，在另一个jsp页面显示时调用
+     */
+    public List<InrepositoryGood> selectallingood(String inrepositoryid){
+        return  inRepositoryDaoImpl.selectallingood(inrepositoryid);
+    }
 }
