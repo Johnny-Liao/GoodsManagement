@@ -38,6 +38,7 @@ public class InRepositoryAction extends ActionSupport {
     private String suppliers;
     private List<InrepositoryGood> listGoods;
     private InrepositoryShow inrepositoryShow;
+    private List<InrepositoryShow> list;
     @Autowired
     private InRepositoryServiceImpl inRepositoryServiceImpl;
     @Autowired
@@ -52,20 +53,29 @@ public class InRepositoryAction extends ActionSupport {
      * 条件查询
      */
     public String selectbysearch() {
-        System.out.println(intime);
-        System.out.println(suppliers);
-        System.out.println(inrepositoryid);
         Inrepositorysql sql = new Inrepositorysql();
-        if(intime!=null||intime!=" "){
-            sql.setIntime(intime);
+        if(intime != null && intime.equals("")==false){
+            String s = intime;
+            sql.setIntime(s);
+            System.out.println(intime+"+++++++++++++++++++++++++++++++++");
         }
-        if(suppliers!=null||suppliers!=" "){
-            sql.setIntime(suppliers);
+
+        if(suppliers != null && suppliers.equals("")==false){
+            String ss = suppliers;
+            sql.setSuppliers(ss);
+            System.out.println(suppliers+"+++++++++++++++++++++++++++++++++");
         }
-        if(inrepositoryid!=null||inrepositoryid!=" "){
-            sql.setInrepositoryid(inrepositoryid);
+
+        if(inrepositoryid != null && inrepositoryid.equals("")==false){
+            String sss = inrepositoryid;
+            sql.setInrepositoryid(sss);
+            System.out.println(inrepositoryid+"+++++++++++++++++++++++++++++++++");
         }
+//        Inrepositorysql sql = new Inrepositorysql();
+//        sql.setIntime("2015-09-19");
+//        sql.setSuppliers("傻逼");
         list = inRepositoryServiceImpl.selectbysearch(sql);
+        System.out.println(sql.getIntime());
         System.out.println(list.size());
         return "getAll";
     }
@@ -157,7 +167,6 @@ public class InRepositoryAction extends ActionSupport {
         this.inrepositoryShow = inrepositoryShow;
     }
 
-    private List<InrepositoryShow> list;
 
     public List<InrepositoryShow> getList() {
         return list;

@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.goodsManagement.dao.impl.InRepositoryDaoImpl;
 import org.goodsManagement.vo.InrepositoryGood;
+import org.goodsManagement.vo.InrepositoryShow;
 import org.goodsManagement.vo.Inrepositorysql;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,12 +44,13 @@ public class InrepositoryMapperTest {
     public void testInsert() throws Exception {
         //测试条件查询
         Inrepositorysql sql = new Inrepositorysql();
-        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-DD");
         sql.setIntime("2015-09-19");
 //        sql.setSuppliers("傻逼");
 //        sql.setInrepositoryid("K13141");
-        List<InrepositoryGood> list= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
+        List<InrepositoryShow> list= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql", sql);
         System.out.println(list.size());
+        List<InrepositoryShow> list1 = inRepositoryDaoImpl.selectsearch(sql);
+        System.out.println("通过Dao接口进行查询"+list1.size());
     }
 
 }

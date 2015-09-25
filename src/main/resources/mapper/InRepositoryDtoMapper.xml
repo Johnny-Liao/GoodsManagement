@@ -179,15 +179,14 @@
         operatorid,
         intime
         from inrepository
-
         <where>
-        <if test="suppliers != null">
+        <if test=" suppliers != null ">
            suppliers = #{suppliers}
         </if>
         <if test="intime != null">
            and  intime LIKE CONCAT(CONCAT('%', #{intime}),'%')
         </if>
-        <if test="inrepositoryid != null">
+        <if test="inrepositoryid != null ">
           and  inrepositoryid = #{inrepositoryid}
         </if>
         </where>
@@ -195,7 +194,7 @@
     </select>
 
     <select id="selectgroup" resultType="org.goodsManagement.vo.InrepositoryShow" >
-        select
+        select distinct
         inrepositoryid,
         suppliers,
         linkman,

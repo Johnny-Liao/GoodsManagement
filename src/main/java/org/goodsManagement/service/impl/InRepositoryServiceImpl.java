@@ -66,6 +66,7 @@ public class InRepositoryServiceImpl implements BaseServiceI<InRepositoryDto> {
      * 条件查询
      */
     public List<InrepositoryShow> selectbysearch(Inrepositorysql sql) {
+        System.out.println(sql.getIntime());
         return inRepositoryDaoImpl.selectsearch(sql);
     }
     /**

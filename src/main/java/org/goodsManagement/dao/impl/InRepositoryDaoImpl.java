@@ -94,6 +94,11 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
      * @return
      */
     public List<InrepositoryShow> selectsearch(Inrepositorysql sql) {
+        System.out.println(sql.getIntime()+"=======");
+        System.out.println(sql.getSuppliers()+"=======");
+        System.out.println(sql.getInrepositoryid()+"=======");
+        List<InrepositoryShow> list = sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
+        System.out.println("Dao层中执行了方法"+list.size());
         return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
     }
     /**
