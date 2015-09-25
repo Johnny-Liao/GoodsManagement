@@ -1,3 +1,5 @@
+START TRANSACTION ;
+
 -- 插入测试数据
 USE goodsmanage;
 
@@ -34,7 +36,7 @@ INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, ph
 
 INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 1, 10, 1, 1, 3, "发衣服咯", "YIFU");
 INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 2, 10, 1, 1, 3, "发裤子咯", "KUZI");
-INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 5, 10, 1, 6, 3, "发月饼咯", "YUEBING");
+INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 5, 10, 1, 5, 3, "发月饼咯", "YUEBING");
 
 -- 显示所有表数据
 SELECT * FROM user;
@@ -74,3 +76,5 @@ FROM outrepository outr
   LEFT JOIN goods ON goods.id = goodid
   LEFT JOIN user ON user.id = operatorid
   LEFT JOIN dept ON dept.id = deptid;
+
+COMMIT ;
