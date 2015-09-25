@@ -26,50 +26,52 @@
 <div class="cont left">
   <div class="content">
     <jsp:include page="fragments/contentTop.jsp"/>
-    <div class="ctop"><a href="#">首页</a> &gt; <a href="#">入库出库管理</a> &gt; <a href="#">入库管理</a>
-    </div>
-    <form id="formresume" method="post">
-      <div class="search">
-        <table border="0" cellspacing="0" cellpadding="0">
+    <div class="ctop"><a href="#">首页</a> &gt; <a href="#">综合业务管理系统</a> &gt; <a href="#">读取入库单信息</a></div>
+    <div  class="tum">
+      <div class="contlist">
+        <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
           <tr>
-            <td>订单号：</td>
-            <td><input type="text" name="inrepositoryid"  class="s_inputs"/></td>
-            <td>入库时间：</td>
-            <td><input type="text" name="intime"  class="s_inputs"/></td>
-            <td>供应商：</td>
-            <td><input type="text" name="suppliers"  class="s_inputs"/></td>
-            <td><input type="submit"  name="submit" id="button" value="查询"  class="s_btn"  onclick="javascript:this.form.action='/InRepository!selectbysearch'"/></td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td><input type="submit"  name="submit" id="button3" value="添加入库"  class="s_btns" onclick="javascript:this.form.action='/resume?action=batchdelete'"/></td>
+            <td colspan="6" align="left" bgcolor="#fff8f8" style="font-size:14px; font-weight:bold; padding-left:16px;">简历基本信息</td>
           </tr>
-
+          <tr>
+            <td width="9%" align="right"><span class="red">*</span> 订单号：</td>
+            <td width="18%"><input type="text" name="textfield" id="textfield" class="s_inputss" value="<s:property value="inrepositoryShow['inrepositoryid']"/>"/></td>
+            <td width="9%" align="right"><span class="red">*</span> 联系人：</td>
+            <td width="18%"><input type="text" name="textfield" id="textfield1" class="s_inputss" value="<s:property value="inrepositoryShow['linkman']"/>"/></td>
+          </tr>
+          <tr>
+            <td width="9%" align="right"><span class="red">*</span> 供应商：</td>
+            <td width="18%"><input type="text" name="textfield" id="textfield2" class="s_inputss" value="<s:property value="inrepositoryShow['suppliers']"/>"/></td>
+            <td width="9%" align="right"><span class="red">*</span> 入库人员编号：</td>
+            <td width="18%"><input type="text" name="textfield" id="textfield3" class="s_inputss" value="<s:property value="inrepositoryShow['operatorid']"/>"/></td>
+            </tr>
+          <tr>
+           <td width="9%" align="right"><span class="red">*</span> 联系人电话：</td>
+            <td width="18%"><input type="text" name="textfield" id="textfield4" class="s_inputss" value="<s:property value="inrepositoryShow['phone']"/>"/></td>
+            <td width="9%" align="right"><span class="red">*</span> 入库时间：</td>
+            <td width="18%"><input type="text" name="textfield" id="textfield5" class="s_inputss" value="<s:property value="inrepositoryShow['intime']"/>"/></td>
+          </tr>
+        </table>
+        <h3>入库清单：</h3>
+        <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+          <%--显示表头标题--%>
+          <tr style="color:#000; font-size:14px; padding:10px 0;">
+            <s:iterator var="column" value="@org.goodsManagement.ResourceString.Resource@InrepositoryGoodHead" id="headname">
+              <td align="center" bgcolor="#fff8f8"><s:property value='headname'/></td>
+            </s:iterator>
+          </tr>
+          <%--显示表内容--%>
+          <s:iterator value="listGoods" var="column">
+            <tr style="color:#000; font-size:14px; padding:10px 0;">
+              <td align="center" bgcolor="#fff8f8">${goodname}</td><br>
+              <td align="center" bgcolor="#fff8f8">${goodunit}</td><br>
+              <td align="center" bgcolor="#fff8f8">${goodtype}</td><br>
+              <td align="center" bgcolor="#fff8f8">${goodnumber}</td><br>
+            </tr>
+          </s:iterator>
         </table>
       </div>
-
-      <div  class="tum">
-        <div class="contlist">
-          <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
-            <%--显示表头标题--%>
-            <%--<tr style="color:#000; font-size:14px; padding:10px 0;">
-              <s:iterator var="column" value="@org.goodsManagement.ResourceString.Resource@InrepositoryHead" id="headname">
-                <td align="center" bgcolor="#fff8f8"><s:property value='headname'/></td>
-              </s:iterator>
-            </tr>--%>
-            <%--显示表内容--%>
-            <s:iterator value="listGoods" var="column">
-              <tr style="color:#000; font-size:14px; padding:10px 0;">
-                <td align="center" bgcolor="#fff8f8">${goodname}</td>
-                <td align="center" bgcolor="#fff8f8">${goodunit}</td>
-                <td align="center" bgcolor="#fff8f8">${goodnumbers}</td>
-                <td align="center" bgcolor="#fff8f8">${goodtype}</td>
-              </tr>
-            </s:iterator>
-          </table>
-
-        </div>
-
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 </div>

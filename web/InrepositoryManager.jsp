@@ -28,7 +28,7 @@
     <jsp:include page="fragments/contentTop.jsp"/>
     <div class="ctop"><a href="#">首页</a> &gt; <a href="#">入库出库管理</a> &gt; <a href="#">入库管理</a>
     </div>
-    <form id="formresume" method="post">
+    <form id="formresume" enctype="multipart/form-data" method="post">
       <div class="search">
         <table border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -38,9 +38,13 @@
             <td><input type="text" name="intime"  class="s_inputs"/></td>
             <td>供应商：</td>
             <td><input type="text" name="suppliers"  class="s_inputs"/></td>
-            <td><input type="submit"  name="submit" id="button" value="查询"  class="s_btn"  onclick="javascript:this.form.action='/InRepository!selectbysearch'"/></td>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td><input type="submit"  name="submit" id="button3" value="添加入库"  class="s_btns" onclick="javascript:this.form.action='/resume?action=batchdelete'"/></td>
+            <td><input type="submit"  name="submit" id="button" value="查询"  class="s_btn"  onclick="javascript:this.form.action='/InRepository!selectbysearch'"/></td>
+          </tr>
+          <tr>
+            <td><input type="file" name="file"></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td><input type="submit"  name="submit" id="button3" value="添加入库"  class="s_btn" onclick="javascript:this.form.action='/InRepository!addInrepository'"/></td>
           </tr>
 
         </table>

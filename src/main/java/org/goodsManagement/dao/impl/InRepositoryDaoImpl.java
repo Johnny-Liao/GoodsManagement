@@ -3,6 +3,7 @@ package org.goodsManagement.dao.impl;
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.vo.InrepositoryGood;
+import org.goodsManagement.vo.InrepositoryShow;
 import org.goodsManagement.vo.Inrepositorysql;
 import org.springframework.stereotype.Component;
 
@@ -82,8 +83,8 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
      *
      * @return
      */
-    public List<InRepositoryDto> selectall() {
-        return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectall");
+    public List<InrepositoryShow> selectall() {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectgroup");
     }
     /**
      * 条件查询
@@ -92,7 +93,12 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
      *      Inrepositorysql类型的对象，保存需要查询的信息
      * @return
      */
-    public List<InRepositoryDto> selectsearch(Inrepositorysql sql) {
+    public List<InrepositoryShow> selectsearch(Inrepositorysql sql) {
+        System.out.println(sql.getIntime()+"=======");
+        System.out.println(sql.getSuppliers()+"=======");
+        System.out.println(sql.getInrepositoryid()+"=======");
+        List<InrepositoryShow> list = sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
+        System.out.println("Dao层中执行了方法"+list.size());
         return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
     }
     /**
@@ -104,5 +110,12 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
         return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectingood",inrepositoryid);
     }
 
-
+    /**
+     * 查询一张入库单的基本信息
+     *
+     * @return
+     */
+    public InrepositoryShow selectmesInprositoryId(String inprositoryId) {
+        return sessionTemplate.selectOne("org.goodsManagement.mapper.InRepositoryDtoMapper.selectmesInprositoryId", inprositoryId);
+    }
 }

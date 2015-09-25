@@ -82,7 +82,6 @@ public class GoodsMapperTest {
 //        List<InrepositoryGood> list= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectingood",inrepositoryid);
 //        System.out.println(list.size());
         Inrepositorysql sql = new Inrepositorysql();
-        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-DD");
         sql.setIntime("2015-09-22");
 //        sql.setSuppliers("傻逼");
 //        sql.setInrepositoryid("ad1231");

@@ -170,20 +170,50 @@
         <include refid="Base_Column_List"/>
         from inrepository
     </select>
-    <select id="selectsql" resultType="org.goodsManagement.po.InRepositoryDto" parameterType="org.goodsManagement.vo.Inrepositorysql">
+    <select id="selectsql" resultType="org.goodsManagement.vo.InrepositoryShow" parameterType="org.goodsManagement.vo.Inrepositorysql">
         select
-        <include refid="Base_Column_List"/>
+        inrepositoryid,
+        suppliers,
+        linkman,
+        phone,
+        operatorid,
+        intime
         from inrepository
         <where>
-        <if test="suppliers != null">
+        <if test=" suppliers != null ">
            suppliers = #{suppliers}
         </if>
         <if test="intime != null">
            and  intime LIKE CONCAT(CONCAT('%', #{intime}),'%')
         </if>
-        <if test="inrepositoryid != null">
+        <if test="inrepositoryid != null ">
           and  inrepositoryid = #{inrepositoryid}
         </if>
         </where>
+        GROUP BY inrepositoryid
+    </select>
+
+    <select id="selectgroup" resultType="org.goodsManagement.vo.InrepositoryShow" >
+        select distinct
+        inrepositoryid,
+        suppliers,
+        linkman,
+        phone,
+        operatorid,
+        intime
+        from inrepository
+        GROUP BY inrepositoryid
+    </select>
+
+    <select id="selectmesInprositoryId" resultType="org.goodsManagement.vo.InrepositoryShow" parameterType="java.lang.String">
+        select distinct
+        inrepositoryid,
+        suppliers,
+        linkman,
+        phone,
+        operatorid,
+        intime
+        from inrepository
+        WHERE inrepositoryid = #{inrepositoryid,jdbcType=VARCHAR}
     </select>
 </mapper>
