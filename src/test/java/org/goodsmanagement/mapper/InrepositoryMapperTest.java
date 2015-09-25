@@ -44,9 +44,9 @@ public class InrepositoryMapperTest {
         //测试条件查询
         Inrepositorysql sql = new Inrepositorysql();
         SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-DD");
-        sql.setIntime("2015-09-22");
+        sql.setIntime("2015-09-19");
 //        sql.setSuppliers("傻逼");
-//        sql.setInrepositoryid("ad1231");
+//        sql.setInrepositoryid("K13141");
         List<InrepositoryGood> list= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
         System.out.println(list.size());
     }

@@ -44,9 +44,10 @@ public class InRepositoryUtils {
 //    public static void main(String[] args){
 //        InRepositoryUtils.addPoiUtils(filePath);
 //    }
-    public void addPoiUtils(String filePath) {
+    public String addPoiUtils(String filePath) {
         HSSFWorkbook wookbook = null;
         InRepositoryDto in;
+        String InRepositoryid = null;
         try {
             // 创建对Excel工作簿文件的引用
             wookbook = new HSSFWorkbook(new FileInputStream(filePath));
@@ -127,6 +128,7 @@ public class InRepositoryUtils {
                     //拿到val1中入库表单的数据
                     in = new InRepositoryDto();
                     in.setInrepositoryid(val1[0]);
+                    InRepositoryid = val1[0];
                     in.setSuppliers(val1[1]);
                     in.setLinkman(val1[2]);
                     in.setOperatorid(Integer.parseInt(val1[3]));
@@ -167,7 +169,6 @@ public class InRepositoryUtils {
 //                    System.out.println(counts);
                 }
 
-
             }
 
         } catch (FileNotFoundException e) {
@@ -175,5 +176,7 @@ public class InRepositoryUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return InRepositoryid;
     }
+
 }

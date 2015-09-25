@@ -10,8 +10,16 @@ public class InrepositoryGood {
 //    goods,inrepository  where goods.id = inrepository.goodid;
     private String goodname;
     private String goodunit;
-    private Integer goodnumbers;
+    private Integer goodnumber;
     private String goodtype;
+
+    public Integer getGoodnumber() {
+        return goodnumber;
+    }
+
+    public void setGoodnumber(Integer goodnumber) {
+        this.goodnumber = goodnumber;
+    }
 
     public String getGoodname() {
         return goodname;
@@ -27,14 +35,6 @@ public class InrepositoryGood {
 
     public void setGoodunit(String goodunit) {
         this.goodunit = goodunit;
-    }
-
-    public Integer getGoodnumbers() {
-        return goodnumbers;
-    }
-
-    public void setGoodnumbers(Integer goodnumbers) {
-        this.goodnumbers = goodnumbers;
     }
 
     public String getGoodtype() {

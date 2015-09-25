@@ -4,11 +4,14 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.convention.annotation.*;
 import org.goodsManagement.po.InRepositoryDto;
 import org.goodsManagement.service.impl.InRepositoryServiceImpl;
+import org.goodsManagement.service.impl.PoiUtils.InRepositoryUtils;
 import org.goodsManagement.vo.InrepositoryGood;
+import org.goodsManagement.vo.InrepositoryShow;
 import org.goodsManagement.vo.Inrepositorysql;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -20,7 +23,7 @@ import java.util.List;
 @Namespace("/")
 @Results(
         {
-                @Result(name = "success", location = "/InrepositoryManager.jsp"),
+                @Result(name = "getAll", location = "/InrepositoryManager.jsp"),
                 @Result(name = "error", location = "/error.jsp"),
                 @Result(name = "showmessage", location = "/InrepositoryMessage.jsp"),
                 @Result(name = "main", location = "/achiver.jsp")
@@ -29,45 +32,18 @@ public class InRepositoryAction extends ActionSupport {
     public InRepositoryAction(){
         System.out.println("action被实例化");
     }
-    private String filename;
+    private File file;
     private String inrepositoryid;
     private String intime;
     private String suppliers;
     private List<InrepositoryGood> listGoods;
-
-
-    private List<InRepositoryDto> list;
-
-    public List<InRepositoryDto> getList() {
-        return list;
-    }
-
-    public void setList(List<InRepositoryDto> list) {
-        this.list = list;
-    }
-//
+    private InrepositoryShow inrepositoryShow;
     @Autowired
     private InRepositoryServiceImpl inRepositoryServiceImpl;
-
-    public String test() {
-        list = inRepositoryServiceImpl.selectallmes();
-        System.out.println(list.size());
-        return SUCCESS;
-    }
-
-    /**
-     * 用来读取文件并写入数据库
-     */
-    /*public String add() {
-        System.out.println(filename);
-        inRepositoryServiceImpl.addinRepositoryD(filename);
-
-        System.out.println("进入到了action");
-        return SUCCESS;
-    }*/
+    @Autowired
+    private InRepositoryUtils inRepositoryUtils;
 
     public String getAll() {
-//        System.out.println(filename);
         list = inRepositoryServiceImpl.selectallmes();
         System.out.println("拿到所有信息的方法");
         return "getAll";
@@ -80,18 +56,18 @@ public class InRepositoryAction extends ActionSupport {
         System.out.println(suppliers);
         System.out.println(inrepositoryid);
         Inrepositorysql sql = new Inrepositorysql();
-        if(intime!=null){
+        if(intime!=null||intime!=" "){
             sql.setIntime(intime);
         }
-        if(suppliers!=null){
+        if(suppliers!=null||suppliers!=" "){
             sql.setIntime(suppliers);
         }
-        if(inrepositoryid!=null){
+        if(inrepositoryid!=null||inrepositoryid!=" "){
             sql.setInrepositoryid(inrepositoryid);
         }
         list = inRepositoryServiceImpl.selectbysearch(sql);
         System.out.println(list.size());
-        return SUCCESS;
+        return "getAll";
     }
 
     /**
@@ -101,13 +77,37 @@ public class InRepositoryAction extends ActionSupport {
     public String selectInrepositoryGoods(){
         System.out.println(inrepositoryid);
         listGoods = inRepositoryServiceImpl.selectallingood(inrepositoryid);
+        inrepositoryShow = inRepositoryServiceImpl.selectmesInprositoryId(inrepositoryid);
         System.out.println(listGoods.size());
         return "showmessage";
+    }
+
+    /**
+     *    通过Excel对订单进行入库
+     * @return
+     */
+    public String addInrepository(){
+        System.out.println("开始进行入库");
+        String filename = file.getPath();
+        System.out.println(filename);
+        String inid = inRepositoryUtils.addPoiUtils(filename);
+        System.out.println("添加入库成功"+inid);
+        this.setInrepositoryid(inid);
+        return this.selectInrepositoryGoods();
     }
 
 
 
 
+
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
 
     public List<InrepositoryGood> getListGoods() {
         return listGoods;
@@ -117,13 +117,6 @@ public class InRepositoryAction extends ActionSupport {
         this.listGoods = listGoods;
     }
 
-    public String getFilename() {
-        return filename;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
 
     public String getInrepositoryid() {
         return inrepositoryid;
@@ -155,6 +148,23 @@ public class InRepositoryAction extends ActionSupport {
 
     public void setInRepositoryServiceImpl(InRepositoryServiceImpl inRepositoryServiceImpl) {
         this.inRepositoryServiceImpl = inRepositoryServiceImpl;
+    }
+    public InrepositoryShow getInrepositoryShow() {
+        return inrepositoryShow;
+    }
+
+    public void setInrepositoryShow(InrepositoryShow inrepositoryShow) {
+        this.inrepositoryShow = inrepositoryShow;
+    }
+
+    private List<InrepositoryShow> list;
+
+    public List<InrepositoryShow> getList() {
+        return list;
+    }
+
+    public void setList(List<InrepositoryShow> list) {
+        this.list = list;
     }
 
 }
