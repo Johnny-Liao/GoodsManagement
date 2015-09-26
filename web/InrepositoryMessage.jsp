@@ -64,9 +64,9 @@
           <s:iterator value="listGoods" var="column">
             <tr style="color:#000; font-size:14px; padding:10px 0;">
               <td align="center" bgcolor="#fff8f8">${goodname}</td><br>
+              <td align="center" bgcolor="#fff8f8">${goodnumber}</td><br>
               <td align="center" bgcolor="#fff8f8">${goodunit}</td><br>
               <td align="center" bgcolor="#fff8f8">${goodtype}</td><br>
-              <td align="center" bgcolor="#fff8f8">${goodnumber}</td><br>
             </tr>
           </s:iterator>
         </table>

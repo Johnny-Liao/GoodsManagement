@@ -160,4 +160,15 @@ public class GoodsDto {
     public void setGoodtype(String goodtype) {
         this.goodtype = goodtype == null ? null : goodtype.trim();
     }
+
+    @Override
+    public String toString() {
+        return "GoodsDto{" +
+                "id=" + id +
+                ", goodname='" + goodname + '\'' +
+                ", goodunit='" + goodunit + '\'' +
+                ", goodnumbers=" + goodnumbers +
+                ", goodtype='" + goodtype + '\'' +
+                '}';
+    }
 }

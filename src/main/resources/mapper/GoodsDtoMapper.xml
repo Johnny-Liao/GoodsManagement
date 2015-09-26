@@ -14,7 +14,9 @@
   </sql>
 
     <select id="WarehouseInventory" resultType="org.goodsManagement.vo.Warehouse">
-        SELECT id, goodname, sum(goodnumbers) as sumnum FROM goods GROUP BY goodname;
+        SELECT id, goodname, sum(goodnumbers) as sumnum FROM goods
+        where goodname = #{goodname,jdbcType=VARCHAR}
+        GROUP BY goodname;
     </select>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">

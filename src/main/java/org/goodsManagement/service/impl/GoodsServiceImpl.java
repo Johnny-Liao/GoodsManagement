@@ -93,8 +93,8 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
      *
      * @return
      */
-    public List<Warehouse> getWarehouseInventory() {
-        return goodsDaoImpl.getWarehouseInventory();
+    public List<Warehouse> getWarehouseInventory(String name) {
+        return goodsDaoImpl.getWarehouseInventory(name);
     }
 
 
