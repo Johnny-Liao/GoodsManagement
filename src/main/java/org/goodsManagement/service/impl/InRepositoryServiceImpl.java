@@ -24,6 +24,16 @@ public class InRepositoryServiceImpl implements BaseServiceI<InRepositoryDto> {
     @Qualifier("inRepositoryUtils")
     private InRepositoryUtils inRepositoryUtils;
 
+    private int pagecount;
+
+    public int getPagecount() {
+        return pagecount;
+    }
+
+    public void setPagecount(int pagecount) {
+        this.pagecount = pagecount;
+    }
+
     public void addEntity(InRepositoryDto inRepositoryDto) {
         inRepositoryDaoImpl.insert(inRepositoryDto);
     }
@@ -83,5 +93,32 @@ public class InRepositoryServiceImpl implements BaseServiceI<InRepositoryDto> {
      */
     public InrepositoryShow selectmesInprositoryId(String inprositoryId) {
         return  inRepositoryDaoImpl.selectmesInprositoryId(inprositoryId);
+    }
+
+
+    /**
+     * 统计有多少页
+     *
+     * @return
+     */
+    public int selectcountpage() {
+        int pagesize = 3;
+        int count = inRepositoryDaoImpl.selectcount();
+        if(count%pagesize!=0){
+
+            pagecount = (count/pagesize)+1;
+        }else{
+            pagecount = count/pagesize;
+        }
+        return pagecount;
+    }
+
+    /**
+     * 根据页码查询记录
+     *
+     * @return
+     */
+    public List<InrepositoryShow> selectbypage(int page) {
+        return  inRepositoryDaoImpl.selectbypage(page);
     }
 }

@@ -9,6 +9,7 @@ import org.goodsManagement.dao.impl.InRepositoryDaoImpl;
 import org.goodsManagement.po.DeptDto;
 import org.goodsManagement.po.GoodsDto;
 import org.goodsManagement.po.InRepositoryDto;
+import org.goodsManagement.service.impl.InRepositoryServiceImpl;
 import org.goodsManagement.vo.InrepositoryGood;
 import org.goodsManagement.vo.Inrepositorysql;
 import org.junit.Before;
@@ -36,7 +37,10 @@ public class GoodsMapperTest {
     private ApplicationContext applicationContext;
     @Autowired
     @Qualifier("inRepositoryDaoImpl")
-    private static InRepositoryDaoImpl inRepositoryDaoImpl;
+    private InRepositoryDaoImpl inRepositoryDaoImpl;
+    @Autowired
+    @Qualifier("inRepositoryServiceImpl")
+    private InRepositoryServiceImpl inRepositoryServiceImpl;
 
     @Before
     public void setUp() throws Exception {
@@ -44,6 +48,7 @@ public class GoodsMapperTest {
         inRepositoryDaoImpl = (InRepositoryDaoImpl) applicationContext.getBean("inRepositoryDaoImpl");
         sqlSessionFactory = (SqlSessionFactory) applicationContext.getBean("sqlSessionFactory");
         sqlSession = sqlSessionFactory.openSession();
+        inRepositoryServiceImpl = (InRepositoryServiceImpl) applicationContext.getBean("inRepositoryServiceImpl");
     }
 
     @Test
@@ -87,6 +92,9 @@ public class GoodsMapperTest {
 //        sql.setInrepositoryid("ad1231");
         List<InrepositoryGood> list= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
         System.out.println(list.size());
+
+
+        System.out.println("共"+inRepositoryServiceImpl.selectcountpage()+"页");
     }
 
 }

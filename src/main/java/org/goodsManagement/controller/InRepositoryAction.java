@@ -39,6 +39,10 @@ public class InRepositoryAction extends ActionSupport {
     private List<InrepositoryGood> listGoods;
     private InrepositoryShow inrepositoryShow;
     private List<InrepositoryShow> list;
+    private int countpage;
+
+
+
     @Autowired
     private InRepositoryServiceImpl inRepositoryServiceImpl;
     @Autowired
@@ -46,6 +50,8 @@ public class InRepositoryAction extends ActionSupport {
 
     public String getAll() {
         list = inRepositoryServiceImpl.selectallmes();
+        countpage = inRepositoryServiceImpl.selectcountpage();
+        System.out.println(countpage);
         System.out.println("拿到所有信息的方法");
         return "getAll";
     }
@@ -175,5 +181,11 @@ public class InRepositoryAction extends ActionSupport {
     public void setList(List<InrepositoryShow> list) {
         this.list = list;
     }
+    public int getCountpage() {
+        return countpage;
+    }
 
+    public void setCountpage(int countpage) {
+        this.countpage = countpage;
+    }
 }
