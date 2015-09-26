@@ -4,6 +4,7 @@ import org.goodsManagement.po.OutRepositoryDto;
 import org.goodsManagement.service.impl.GetGoodsServiceImpl;
 import org.goodsManagement.service.impl.OutRepositoryServiceImpl;
 import org.goodsManagement.vo.GetGoodsVO;
+import org.goodsManagement.vo.OutGoodsWithSameId;
 import org.goodsManagement.vo.OutRepositoryVO;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,9 +27,9 @@ public class OutRepositoryServiceTest {
     }
 
     @Test
-    public void getGoodsById() {
-//        OutRepositoryDto vo = outRepositoryService.getEntity(1);
-//        System.out.println(vo);
+    public void getOutReposById() {
+        OutRepositoryVO vo = outRepositoryService.getOutReposById("YIFU");
+        System.out.println(vo);
     }
 
     @Test
@@ -36,6 +37,15 @@ public class OutRepositoryServiceTest {
         List<OutRepositoryVO> vo = outRepositoryService.getAllOutRepositoryVO();
         System.out.println(vo);
     }
+
+    @Test
+    public void getDifferentGoodsById() {
+        List<OutGoodsWithSameId> goods = outRepositoryService.getDifferentGoodsById("KUZI");
+        for (OutGoodsWithSameId good : goods) {
+            System.out.println(good);
+        }
+    }
+
 
     @Test
     public void testDeleteByPrimaryKey() throws Exception {

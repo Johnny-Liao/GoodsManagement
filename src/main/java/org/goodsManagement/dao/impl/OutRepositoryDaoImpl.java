@@ -2,6 +2,7 @@ package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.OutRepositoryDto;
+import org.goodsManagement.vo.OutGoodsWithSameId;
 import org.goodsManagement.vo.OutRepositoryVO;
 import org.springframework.stereotype.Component;
 
@@ -82,5 +83,23 @@ public class OutRepositoryDaoImpl extends BasedaoA<OutRepositoryDto> {
      */
     public List<OutRepositoryVO> selectAll() {
         return sessionTemplate.selectList("org.goodsManagement.mapper.OutRepositoryDtoMapper.selectAll");
+    }
+
+    /**
+     * 通过id获取货物信息
+     * @param outId
+     * @return
+     */
+    public OutRepositoryVO selectOutReposById(String outId) {
+        return sessionTemplate.selectOne("org.goodsManagement.mapper.OutRepositoryDtoMapper.selectOutReposById", outId);
+    }
+
+    /**
+     * 通过id来获取不同的货物信息
+     * @param id
+     * @return
+     */
+    public List<OutGoodsWithSameId> getDifferentGoodsById(String id) {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.OutRepositoryDtoMapper.selectDifferentGoods", id);
     }
 }

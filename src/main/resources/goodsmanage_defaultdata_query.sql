@@ -33,12 +33,12 @@ INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, ph
 INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (2, 20150919, 2, 30, "卖裤子的", "酷酷党", 12345678901, 1, "买了几件破裤子", "2222");
 INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (3, 20150919, 4, 30, "卖鞋的", "飞鞋党", 12345678901, 1, "买了几件破鞋", "XIEZI");
 INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (4, 20150919, 5, 30, "卖月饼的", "咸蛋超人", 12345678901, 1, "可以吃月饼咯", "yuebing");
-INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (5, 20150919, 2, 30, "卖裤子的", "酷酷党", 12345678901, 1, "买了几件衣服和裤子", "1111");
+INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (5, 20150919, 2, 30, "卖衣服的", "黄衣党", 12345678901, 1, "买了几件衣服和裤子", "1111");
 
 INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 1, 10, 1, 1, 3, "发衣服咯", "YIFU");
 INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 2, 10, 1, 1, 3, "发裤子咯", "KUZI");
 INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 5, 10, 1, 5, 3, "发月饼咯", "YUEBING");
-INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150921, 5, 10, 1, 1, 3, "发衣服咯", "YIFU");
+INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150921, 5, 10, 1, 2, 3, "发衣服咯", "YIFU");
 
 -- 显示所有表数据
 SELECT * FROM user;
@@ -53,8 +53,6 @@ SELECT * FROM outrepository;
 
 # 物品信息管理页展示数据
 SELECT id, goodname, goodunit FROM goods;
-
-SELECT * FROM goods;
 
 # 库房盘存
 SELECT id, goodname, sum(goodnumbers) FROM goods GROUP BY goodname;
@@ -77,7 +75,23 @@ SELECT outrepositoryid, outr.id, outtime, goodname, goodtype, goodnumber, userna
 FROM outrepository outr
   LEFT JOIN goods ON goods.id = goodid
   LEFT JOIN user ON user.id = operatorid
-  LEFT JOIN dept ON dept.id = deptid;
-  # GROUP BY outrepositoryid;
+  LEFT JOIN dept ON dept.id = deptid
+  GROUP BY outrepositoryid;
+
+# 通过特定的ID来查询出库信息
+SELECT outrepositoryid, outr.id, outtime, goodname, goodtype, goodnumber, username, deptname, comments
+FROM outrepository outr
+  LEFT JOIN goods ON goods.id = goodid
+  LEFT JOIN user ON user.id = operatorid
+  LEFT JOIN dept ON dept.id = deptid
+WHERE outrepositoryid = 'YIFU'
+GROUP BY outrepositoryid;
+
+# public static String[] OutRepositoryGoodListHead = {"出库物品", "部门", "数量", "数量单位", "型号"};
+SELECT goodname, deptname, goodnumber, goodunit, goodtype
+  FROM outrepository
+    LEFT JOIN goods ON goods.id = outrepository.goodid
+    LEFT JOIN dept ON dept.id = outrepository.deptid
+WHERE outrepositoryid = 'YIFU';
 
 COMMIT

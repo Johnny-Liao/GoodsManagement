@@ -3,6 +3,7 @@ package org.goodsManagement.controller;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.convention.annotation.*;
 import org.goodsManagement.service.impl.OutRepositoryServiceImpl;
+import org.goodsManagement.vo.OutGoodsWithSameId;
 import org.goodsManagement.vo.OutRepositoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,7 +26,9 @@ public class OutRepositoryAction extends ActionSupport {
     private OutRepositoryServiceImpl outRepositoryService;
     private List<OutRepositoryVO> list;
     private OutRepositoryVO outRepositoryVO;
-
+    private String outrepositoryid;
+    private OutRepositoryVO vo;
+    private List<OutGoodsWithSameId> outGoodsWithSameIdList;
 
     public String getAll() {
         list = outRepositoryService.getAllOutRepositoryVO();
@@ -34,6 +37,16 @@ public class OutRepositoryAction extends ActionSupport {
             System.out.println(vo);
         }
         return "getAll";
+    }
+
+    public String selectOutRepositoryById() {
+        System.out.println(outrepositoryid + "*****************************");
+        vo = outRepositoryService.getOutReposById(outrepositoryid);
+        outGoodsWithSameIdList = outRepositoryService.getDifferentGoodsById(outrepositoryid);
+        for (OutGoodsWithSameId out : outGoodsWithSameIdList) {
+            System.out.println(out + "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        }
+        return "showMessage";
     }
 
     public OutRepositoryServiceImpl getOutRepositoryService() {
@@ -60,4 +73,28 @@ public class OutRepositoryAction extends ActionSupport {
         this.outRepositoryVO = outRepositoryVO;
     }
 
+    public String getOutrepositoryid() {
+        return outrepositoryid;
+    }
+
+    public void setOutrepositoryid(String outrepositoryid) {
+        this.outrepositoryid = outrepositoryid;
+    }
+
+    public OutRepositoryVO getVo() {
+        return vo;
+    }
+
+    public void setVo(OutRepositoryVO vo) {
+        this.vo = vo;
+    }
+
+
+    public List<OutGoodsWithSameId> getOutGoodsWithSameIdList() {
+        return outGoodsWithSameIdList;
+    }
+
+    public void setOutGoodsWithSameIdList(List<OutGoodsWithSameId> outGoodsWithSameIdList) {
+        this.outGoodsWithSameIdList = outGoodsWithSameIdList;
+    }
 }
