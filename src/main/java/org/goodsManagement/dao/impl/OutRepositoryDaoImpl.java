@@ -2,6 +2,7 @@ package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.OutRepositoryDto;
+
 import org.goodsManagement.vo.OutGoodsWithSameId;
 import org.goodsManagement.vo.OutRepositoryVO;
 import org.springframework.stereotype.Component;
@@ -76,6 +77,7 @@ public class OutRepositoryDaoImpl extends BasedaoA<OutRepositoryDto> {
     public int updateByPrimaryKey(OutRepositoryDto record) {
         return sessionTemplate.update("org.goodsManagement.mapper.OutRepositoryDtoMapper.updateByPrimaryKey", record);
     }
+
 
     /**
      * 显示所有的出库信息

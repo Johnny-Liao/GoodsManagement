@@ -17,6 +17,7 @@
     id, outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments,outrepositoryid
   </sql>
 
+
     <!-- 查出所有出库信息 -->
     <select id="selectAll" resultType="org.goodsManagement.vo.OutRepositoryVO">
         SELECT outrepositoryid, outr.id, outtime, goodname, goodtype, goodnumber, username, deptname, comments
