@@ -29,14 +29,16 @@ INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (2, 2, 2, 10);
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (4, 3, 6, 20);
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (5, 4, 4, 40);
 
-INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (1, 20150919, 1, 20, "卖衣服的", "黄衣党", 12345678901, 1, "买了几件衣服", "1111");
-INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (2, 20150919, 1, 30, "卖裤子的", "酷酷党", 12345678901, 1, "买了几件破裤子", "2222");
-INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (3, 20150919, 1, 30, "卖鞋的", "飞鞋党", 12345678901, 1, "买了几件破鞋", "XIEZI");
-INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (4, 20150919, 1, 30, "卖月饼的", "咸蛋超人", 12345678901, 1, "可以吃月饼咯", "yuebing");
+INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (1, 20150919, 1, 20, "卖衣服的", "黄衣党", 12345678901, 1, "买了几件衣服和裤子", "1111");
+INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (2, 20150919, 2, 30, "卖裤子的", "酷酷党", 12345678901, 1, "买了几件破裤子", "2222");
+INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (3, 20150919, 4, 30, "卖鞋的", "飞鞋党", 12345678901, 1, "买了几件破鞋", "XIEZI");
+INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (4, 20150919, 5, 30, "卖月饼的", "咸蛋超人", 12345678901, 1, "可以吃月饼咯", "yuebing");
+INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (5, 20150919, 2, 30, "卖裤子的", "酷酷党", 12345678901, 1, "买了几件衣服和裤子", "1111");
 
 INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 1, 10, 1, 1, 3, "发衣服咯", "YIFU");
 INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 2, 10, 1, 1, 3, "发裤子咯", "KUZI");
 INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150920, 5, 10, 1, 5, 3, "发月饼咯", "YUEBING");
+INSERT INTO outrepository (outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments, outrepositoryid)  VALUES (20150921, 5, 10, 1, 1, 3, "发衣服咯", "YIFU");
 
 -- 显示所有表数据
 SELECT * FROM user;
@@ -65,16 +67,17 @@ FROM getgoods
 WHERE getgoods.id = 1;
 
 # 入库信息明细
-SELECT inr.goodid, intime, goods.goodname, goodnumber, suppliers, linkman, phone, username,comments, inrepositoryid
+SELECT inr.goodid, intime, goods.goodname, goodtype, goodnumber, suppliers, linkman, phone, username,comments, inrepositoryid
 FROM inrepository inr
   LEFT JOIN goods ON goods.id = inr.goodid
   LEFT JOIN user ON user.id = inr.operatorid;
 
 # 出库信息明细
-SELECT outr.id, outtime, goodname, goodnumber, username, deptname, comments, outrepositoryid
+SELECT outrepositoryid, outr.id, outtime, goodname, goodtype, goodnumber, username, deptname, comments
 FROM outrepository outr
   LEFT JOIN goods ON goods.id = goodid
   LEFT JOIN user ON user.id = operatorid
   LEFT JOIN dept ON dept.id = deptid;
+  # GROUP BY outrepositoryid;
 
-COMMIT ;
+COMMIT
