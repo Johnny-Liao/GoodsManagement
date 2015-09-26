@@ -17,6 +17,37 @@
     id, outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments,outrepositoryid
   </sql>
 
+
+    <!-- 查出所有出库信息 -->
+    <select id="selectAll" resultType="org.goodsManagement.vo.OutRepositoryVO">
+        SELECT outrepositoryid, outr.id, outtime, goodname, goodtype, goodnumber, username, deptname, comments
+        FROM outrepository outr
+        LEFT JOIN goods ON goods.id = goodid
+        LEFT JOIN user ON user.id = operatorid
+        LEFT JOIN dept ON dept.id = deptid
+        GROUP BY outrepositoryid;
+    </select>
+
+    <!-- 查出所有出库信息 -->
+    <select id="selectOutReposById" resultType="org.goodsManagement.vo.OutRepositoryVO" parameterType="java.lang.String">
+        SELECT outrepositoryid, outr.id, outtime, goodname, goodtype, goodnumber, username, deptname, comments
+        FROM outrepository outr
+        LEFT JOIN goods ON goods.id = goodid
+        LEFT JOIN user ON user.id = operatorid
+        LEFT JOIN dept ON dept.id = deptid
+        WHERE outrepositoryid = #{outrepositoryid}
+        GROUP BY outrepositoryid;
+    </select>
+
+    <!-- 查询出出库id相同的不同物品的信息-->
+    <select id="selectDifferentGoods" resultType="org.goodsManagement.vo.OutGoodsWithSameId" parameterType="java.lang.String">
+        SELECT goodname, deptname, goodnumber, goodunit, goodtype
+        FROM outrepository
+        LEFT JOIN goods ON goods.id = outrepository.goodid
+        LEFT JOIN dept ON dept.id = outrepository.deptid
+        WHERE outrepositoryid = #{outrepositoryid};
+    </select>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>

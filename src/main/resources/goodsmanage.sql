@@ -35,7 +35,7 @@ CREATE TABLE staff
   sex       ENUM('男', '女')  NOT NULL,
   deptid   INT             NOT NULL
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
-ALTER TABLE staff ADD CONSTRAINT FK_STAFF_DEPT_ID FOREIGN KEY (deptid) REFERENCES dept (id);
+ALTER TABLE staff ADD CONSTRAINT FK_STAFF_DEPT_ID FOREIGN KEY (deptid) REFERENCES dept (id) ON DELETE CASCADE;
 
 -- 领用信息表（编号、员工编号、物品编号、数量） 
 CREATE TABLE getgoods
@@ -45,8 +45,8 @@ CREATE TABLE getgoods
   goodid    INT             NOT NULL,
   getnumber INT             NOT NULL
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
-ALTER TABLE getgoods ADD CONSTRAINT FK_ID_STAFF FOREIGN KEY (staffid) REFERENCES staff (id);
-ALTER TABLE getgoods ADD CONSTRAINT FK_ID_GOODS FOREIGN KEY (goodid) REFERENCES goods (id);
+ALTER TABLE getgoods ADD CONSTRAINT FK_ID_STAFF FOREIGN KEY (staffid) REFERENCES staff (id) ON DELETE CASCADE;
+ALTER TABLE getgoods ADD CONSTRAINT FK_ID_GOODS FOREIGN KEY (goodid) REFERENCES goods (id) ON DELETE CASCADE;
 
 -- 入库信息表（入库id、入库时间、物品编号、入库物品数量、供应商、联系人、联系电话、操作员、备注、入库单号）
 CREATE TABLE inrepository
@@ -62,8 +62,8 @@ CREATE TABLE inrepository
   comments  VARCHAR(40),
   inrepositoryid VARCHAR(20)  NOT NULL
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
-ALTER TABLE inrepository ADD CONSTRAINT FK_ID_STAFF_IN FOREIGN KEY (goodid) REFERENCES goods (id);
-ALTER TABLE inrepository ADD CONSTRAINT FK_ID_OPERATOR_IN FOREIGN KEY (operatorid) REFERENCES user (id);
+ALTER TABLE inrepository ADD CONSTRAINT FK_ID_STAFF_IN FOREIGN KEY (goodid) REFERENCES goods (id) ON DELETE CASCADE;
+ALTER TABLE inrepository ADD CONSTRAINT FK_ID_OPERATOR_IN FOREIGN KEY (operatorid) REFERENCES user (id) ON DELETE CASCADE;
 
 -- 出库信息表（出库id、出库时间、物品编号、出库物品数量、操作员、部门编号、部门分发给员工标准数量、备注、出库单号）
 CREATE TABLE outrepository
@@ -78,7 +78,9 @@ CREATE TABLE outrepository
   comments VARCHAR(40),
   outrepositoryid VARCHAR(20)  NOT NULL
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
-ALTER TABLE outrepository ADD CONSTRAINT FK_ID_STAFF_OUT FOREIGN KEY (goodid) REFERENCES goods (id);
-ALTER TABLE outrepository ADD CONSTRAINT FK_ID_DEPT_OUT FOREIGN KEY (deptid) REFERENCES dept (id);
-ALTER TABLE outrepository ADD CONSTRAINT FK_ID_OPERATOR_OUT FOREIGN KEY (operatorid) REFERENCES user (id);
+
+ALTER TABLE outrepository ADD CONSTRAINT FK_ID_STAFF_OUT FOREIGN KEY (goodid) REFERENCES goods (id) ON DELETE CASCADE;
+ALTER TABLE outrepository ADD CONSTRAINT FK_ID_DEPT_OUT FOREIGN KEY (deptid) REFERENCES dept (id) ON DELETE CASCADE;
+ALTER TABLE outrepository ADD CONSTRAINT FK_ID_OPERATOR_OUT FOREIGN KEY (operatorid) REFERENCES user (id) ON DELETE CASCADE;
+COMMIT ;
 
