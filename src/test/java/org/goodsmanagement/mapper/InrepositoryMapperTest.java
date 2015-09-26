@@ -3,6 +3,7 @@ package org.goodsmanagement.mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.goodsManagement.dao.impl.InRepositoryDaoImpl;
+import org.goodsManagement.service.impl.InRepositoryServiceImpl;
 import org.goodsManagement.vo.InrepositoryGood;
 import org.goodsManagement.vo.InrepositoryShow;
 import org.goodsManagement.vo.Inrepositorysql;
@@ -25,7 +26,11 @@ public class InrepositoryMapperTest {
     private ApplicationContext applicationContext;
     @Autowired
     @Qualifier("inRepositoryDaoImpl")
-    private static InRepositoryDaoImpl inRepositoryDaoImpl;
+    private InRepositoryDaoImpl inRepositoryDaoImpl;
+
+    @Autowired
+    @Qualifier("inRepositoryServiceImpl")
+    private InRepositoryServiceImpl inRepositoryServiceImpl;
 
     @Before
     public void setUp() throws Exception {
@@ -33,6 +38,7 @@ public class InrepositoryMapperTest {
         inRepositoryDaoImpl = (InRepositoryDaoImpl) applicationContext.getBean("inRepositoryDaoImpl");
         sqlSessionFactory = (SqlSessionFactory) applicationContext.getBean("sqlSessionFactory");
         sqlSession = sqlSessionFactory.openSession();
+        inRepositoryServiceImpl = (InRepositoryServiceImpl) applicationContext.getBean("inRepositoryServiceImpl");
     }
 
     @Test
@@ -47,10 +53,18 @@ public class InrepositoryMapperTest {
         sql.setIntime("2015-09-19");
 //        sql.setSuppliers("傻逼");
 //        sql.setInrepositoryid("K13141");
-        List<InrepositoryShow> list= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql", sql);
-        System.out.println(list.size());
-        List<InrepositoryShow> list1 = inRepositoryDaoImpl.selectsearch(sql);
-        System.out.println("通过Dao接口进行查询"+list1.size());
+        int a= sqlSession.selectOne("org.goodsManagement.mapper.InRepositoryDtoMapper.selectcountpage");
+        System.out.println(a);
+//       List<InrepositoryShow> list= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql", sql);
+//        System.out.println(list.size());
+//        List<InrepositoryShow> list1 = inRepositoryDaoImpl.selectsearch(sql);
+//        System.out.println("通过Dao接口进行查询"+list1.size());
+        int page=1;
+        List<InrepositoryShow> list1= sqlSession.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectbypage",page*3);
+        System.out.println(list1.size());
+
+
+        System.out.println("共"+inRepositoryServiceImpl.selectcountpage()+"页");
     }
 
 }

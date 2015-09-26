@@ -10,8 +10,16 @@ public class InrepositoryShow {
     private String suppliers;
     private String linkman;
     private String phone;
-    private int operatorid;
+    private String staffname;
     private String intime;
+
+    public String getStaffname() {
+        return staffname;
+    }
+
+    public void setStaffname(String staffname) {
+        this.staffname = staffname;
+    }
 
     public String getInrepositoryid() {
         return inrepositoryid;
@@ -43,14 +51,6 @@ public class InrepositoryShow {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public int getOperatorid() {
-        return operatorid;
-    }
-
-    public void setOperatorid(int operatorid) {
-        this.operatorid = operatorid;
     }
 
     public String getIntime() {
