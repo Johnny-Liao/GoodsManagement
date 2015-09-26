@@ -8,12 +8,14 @@ import org.goodsManagement.vo.OutGoodsWithSameId;
 import org.goodsManagement.vo.OutRepositoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by admin on 2015/9/20.
  */
+@Service
 public class OutRepositoryServiceImpl implements BaseServiceI<OutRepositoryDto> {
     @Autowired
     @Qualifier("outRepositoryDaoImpl")
