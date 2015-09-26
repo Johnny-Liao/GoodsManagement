@@ -42,8 +42,8 @@
           <tr>
             <td width="9%" align="right"><span class="red">*</span> 供应商：</td>
             <td width="18%"><input type="text" name="textfield" id="textfield2" class="s_inputss" value="<s:property value="inrepositoryShow['suppliers']"/>"/></td>
-            <td width="9%" align="right"><span class="red">*</span> 入库人员编号：</td>
-            <td width="18%"><input type="text" name="textfield" id="textfield3" class="s_inputss" value="<s:property value="inrepositoryShow['operatorid']"/>"/></td>
+            <td width="9%" align="right"><span class="red">*</span> 入库人员：</td>
+            <td width="18%"><input type="text" name="textfield" id="textfield3" class="s_inputss" value="<s:property value="inrepositoryShow['staffname']"/>"/></td>
             </tr>
           <tr>
            <td width="9%" align="right"><span class="red">*</span> 联系人电话：</td>

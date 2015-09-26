@@ -67,12 +67,12 @@
                   <td align="center" bgcolor="#fff8f8">${suppliers}</td>
                   <td align="center" bgcolor="#fff8f8">${linkman}</td>
                   <td align="center" bgcolor="#fff8f8">${phone}</td>
-                  <td align="center" bgcolor="#fff8f8">${operatorid}</td>
+                  <td align="center" bgcolor="#fff8f8">${staffname}</td>
                   <td align="center" bgcolor="#fff8f8"><a href="/InRepository!selectInrepositoryGoods?inrepositoryid=${inrepositoryid}">查看详细信息</a></td>
                 </tr>
               </s:iterator>
           </table>
-
+          共<s:property value="countpage"></s:property>页
         </div>
 
       </div>
