@@ -14,6 +14,16 @@ import java.util.List;
  */
 @Component
 public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
+    private int pagesize=3;
+
+    public int getPagesize() {
+        return pagesize;
+    }
+
+    public void setPagesize(int pagesize) {
+        this.pagesize = pagesize;
+    }
+
     /**
      * 通过主键获取实体
      *
@@ -117,5 +127,23 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
      */
     public InrepositoryShow selectmesInprositoryId(String inprositoryId) {
         return sessionTemplate.selectOne("org.goodsManagement.mapper.InRepositoryDtoMapper.selectmesInprositoryId", inprositoryId);
+    }
+
+    /**
+     * 分页查询
+     *
+     * @return
+     */
+    public List<InrepositoryShow> selectbypage(int page) {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectbypage", page*pagesize);
+    }
+
+    /**
+     * 统计有多少条入库单记录
+     *
+     * @return
+     */
+    public int selectcount() {
+        return sessionTemplate.selectOne("org.goodsManagement.mapper.InRepositoryDtoMapper.selectcountpage");
     }
 }
