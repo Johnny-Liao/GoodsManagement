@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * Created by lifei on 2015/9/20.
+ * Created by Jimmyhjy on 2015/9/26.
  */
 @Component
 public class GoodsDaoImpl extends BasedaoA<GoodsDto> {
@@ -82,8 +82,7 @@ public class GoodsDaoImpl extends BasedaoA<GoodsDto> {
      *              同意货品名称的集合
      */
     public  List<GoodsDto> selectByName(String name) {
-        List<GoodsDto> goods =  sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.selectByName", "衬衫");
-        return goods;
+        return sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.selectByName", name);
     }
     /**
      * 通过货品名称来查询
@@ -100,8 +99,8 @@ public class GoodsDaoImpl extends BasedaoA<GoodsDto> {
      * 获取库房盘存信息
      * @return 所有库房盘存信息
      */
-    public List<Warehouse> getWarehouseInventory() {
-        return sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.WarehouseInventory");
+    public List<Warehouse> getWarehouseInventory(String name) {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.WarehouseInventory",name);
     }
 
 }

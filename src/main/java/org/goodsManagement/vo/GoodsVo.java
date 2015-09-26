@@ -1,11 +1,30 @@
 package org.goodsManagement.vo;
 
 /**
- * Created by lifei on 2015/9/20.
+ * Created by Jimmyhjy on 2015/9/26.
  */
 public class GoodsVo {
     private String goodname;
-    private String gooduit;
+    private String goodunit;
+    private int goodnumbers;
+    private String goodtype;
+
+    public int getGoodnumbers() {
+        return goodnumbers;
+    }
+
+    public void setGoodnumbers(int goodnumbers) {
+        this.goodnumbers = goodnumbers;
+    }
+
+    public String getGoodtype() {
+        return goodtype;
+    }
+
+    public void setGoodtype(String goodtype) {
+        this.goodtype = goodtype;
+    }
+
 
     public String getGoodname() {
         return goodname;
@@ -15,11 +34,11 @@ public class GoodsVo {
         this.goodname = goodname;
     }
 
-    public String getGooduit() {
-        return gooduit;
+    public String getGoodunit() {
+        return goodunit;
     }
 
-    public void setGooduit(String gooduit) {
-        this.gooduit = gooduit;
+    public void setGoodunit(String goodunit) {
+        this.goodunit = goodunit;
     }
 }
