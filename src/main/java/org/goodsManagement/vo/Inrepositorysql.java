@@ -10,6 +10,17 @@ public class Inrepositorysql {
     private String intime;
     private String inrepositoryid;
 
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    private int page;
+
+
     public String getSuppliers() {
         return suppliers;
     }

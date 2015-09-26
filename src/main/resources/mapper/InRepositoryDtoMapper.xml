@@ -221,7 +221,7 @@
     </select>
 
 
-    <select id="selectcount" resultType="java.lang.Integer" parameterType="org.goodsManagement.vo.Inrepositorysql">
+    <select id="selectcountsearch" resultType="java.lang.Integer" parameterType="org.goodsManagement.vo.Inrepositorysql">
         select
         COUNT(*)
         from
@@ -243,24 +243,52 @@
     </select>
     <select id="selectbypage" resultType="org.goodsManagement.vo.InrepositoryShow" parameterType="int">
         select distinct
-        inrepositoryid,
-        suppliers,
-        linkman,
-        phone,
-        operatorid,
-        intime
-        from inrepository
+        inrepository.inrepositoryid,
+        inrepository.suppliers,
+        inrepository.linkman,
+        inrepository.phone,
+        inrepository.intime,
+        staff.staffname
+        from inrepository,staff
+        WHERE inrepository.operatorid=staff.id
         GROUP BY inrepositoryid
         limit #{page},3
     </select>
 
     <select id="selectcountpage" resultType="java.lang.Integer" >
-        select
+        SELECT
         COUNT(*)
-        from
+        FROM
         (select
         inrepositoryid
         from inrepository
         GROUP BY inrepositoryid)AS repository
+    </select>
+
+
+
+    <select id="selectsearchbypage" resultType="org.goodsManagement.vo.InrepositoryShow" parameterType="org.goodsManagement.vo.Inrepositorysql">
+        select distinct
+        inrepository.inrepositoryid,
+        inrepository.suppliers,
+        inrepository.linkman,
+        inrepository.phone,
+        inrepository.intime,
+        staff.staffname
+        from inrepository,staff
+        <where>
+            inrepository.operatorid=staff.id
+            <if test=" suppliers != null ">
+                suppliers = #{suppliers}
+            </if>
+            <if test="intime != null">
+                and  intime LIKE CONCAT(CONCAT('%', #{intime}),'%')
+            </if>
+            <if test="inrepositoryid != null ">
+                and  inrepositoryid = #{inrepositoryid}
+            </if>
+        </where>
+        GROUP BY inrepositoryid
+        limit #{page},3
     </select>
 </mapper>

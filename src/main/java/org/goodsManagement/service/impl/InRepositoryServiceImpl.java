@@ -121,4 +121,33 @@ public class InRepositoryServiceImpl implements BaseServiceI<InRepositoryDto> {
     public List<InrepositoryShow> selectbypage(int page) {
         return  inRepositoryDaoImpl.selectbypage(page);
     }
+
+
+    /**
+     * 通过条件查询统计有多少条入库单记录
+     *
+     * @return
+     */
+    public int selectcountsearch(Inrepositorysql sql) {
+        return inRepositoryDaoImpl.selectcountsearch(sql);
+    }
+
+
+    /**
+     * 统计条件查询有多少页
+     *
+     * @return
+     */
+    public int selectcountsearchpage(Inrepositorysql sql) {
+        int pagesize = 3;
+        int count = inRepositoryDaoImpl.selectcountsearch(sql);
+        if(count%pagesize!=0){
+
+            pagecount = (count/pagesize)+1;
+        }else{
+            pagecount = count/pagesize;
+        }
+        return pagecount;
+    }
+
 }

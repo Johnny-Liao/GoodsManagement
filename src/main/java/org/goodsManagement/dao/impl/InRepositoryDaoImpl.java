@@ -104,12 +104,9 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
      * @return
      */
     public List<InrepositoryShow> selectsearch(Inrepositorysql sql) {
-        System.out.println(sql.getIntime()+"=======");
-        System.out.println(sql.getSuppliers()+"=======");
-        System.out.println(sql.getInrepositoryid()+"=======");
         List<InrepositoryShow> list = sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
         System.out.println("Dao层中执行了方法"+list.size());
-        return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsql",sql);
+        return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectsearchbypage",sql);
     }
     /**
      * 查询入库单下所有入库的物品
@@ -135,7 +132,8 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
      * @return
      */
     public List<InrepositoryShow> selectbypage(int page) {
-        return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectbypage", page*pagesize);
+        System.out.println(page+"=========");
+        return sessionTemplate.selectList("org.goodsManagement.mapper.InRepositoryDtoMapper.selectbypage", page * pagesize);
     }
 
     /**
@@ -145,5 +143,14 @@ public class InRepositoryDaoImpl extends BasedaoA<InRepositoryDto> {
      */
     public int selectcount() {
         return sessionTemplate.selectOne("org.goodsManagement.mapper.InRepositoryDtoMapper.selectcountpage");
+    }
+
+    /**
+     * 通过条件查询统计有多少条入库单记录
+     *
+     * @return
+     */
+    public int selectcountsearch(Inrepositorysql sql) {
+        return sessionTemplate.selectOne("org.goodsManagement.mapper.InRepositoryDtoMapper.selectcountsearch",sql);
     }
 }

@@ -40,6 +40,7 @@ public class InRepositoryAction extends ActionSupport {
     private InrepositoryShow inrepositoryShow;
     private List<InrepositoryShow> list;
     private int countpage;
+    private int page;
 
 
 
@@ -48,8 +49,31 @@ public class InRepositoryAction extends ActionSupport {
     @Autowired
     private InRepositoryUtils inRepositoryUtils;
 
+    /**
+     *    判断是获取所有信息还是进行条件查询
+     * @return
+     */
+    public String dispachar(){
+        System.out.println(intime);
+        if((suppliers != null && suppliers.equals("")==false)
+                ||(inrepositoryid != null && inrepositoryid.equals("")==false)
+                ||(intime != null && intime.equals("")==false)
+                ){
+            return this.selectbysearch();
+        }else{
+            return this.getAll();
+        }
+    }
+
+
+    /**
+     *    获取所有的订单信息
+     * @return
+     */
     public String getAll() {
-        list = inRepositoryServiceImpl.selectallmes();
+        System.out.println(page);
+        int pagetemp = (page-1);
+        list = inRepositoryServiceImpl.selectbypage(pagetemp);
         countpage = inRepositoryServiceImpl.selectcountpage();
         System.out.println(countpage);
         System.out.println("拿到所有信息的方法");
@@ -63,24 +87,28 @@ public class InRepositoryAction extends ActionSupport {
         if(intime != null && intime.equals("")==false){
             String s = intime;
             sql.setIntime(s);
-            System.out.println(intime+"+++++++++++++++++++++++++++++++++");
         }
 
         if(suppliers != null && suppliers.equals("")==false){
             String ss = suppliers;
             sql.setSuppliers(ss);
-            System.out.println(suppliers+"+++++++++++++++++++++++++++++++++");
         }
 
         if(inrepositoryid != null && inrepositoryid.equals("")==false){
             String sss = inrepositoryid;
             sql.setInrepositoryid(sss);
-            System.out.println(inrepositoryid+"+++++++++++++++++++++++++++++++++");
         }
-//        Inrepositorysql sql = new Inrepositorysql();
-//        sql.setIntime("2015-09-19");
-//        sql.setSuppliers("傻逼");
+        if(page!=0){
+            int temppage = (page-1)*3;
+            sql.setPage(temppage);
+        }
+
         list = inRepositoryServiceImpl.selectbysearch(sql);
+        countpage = inRepositoryServiceImpl.selectcountsearchpage(sql);
+        System.out.println("通过条件查询统计有"+countpage+"页");
+        System.out.println("通过条件查询统计有"+countpage+"页");
+        System.out.println("通过条件查询统计有"+countpage+"页");
+        System.out.println("通过条件查询统计有"+countpage+"页");
         System.out.println(sql.getIntime());
         System.out.println(list.size());
         return "getAll";
@@ -187,5 +215,12 @@ public class InRepositoryAction extends ActionSupport {
 
     public void setCountpage(int countpage) {
         this.countpage = countpage;
+    }
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
     }
 }

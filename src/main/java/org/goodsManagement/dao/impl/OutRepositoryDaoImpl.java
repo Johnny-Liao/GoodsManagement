@@ -2,10 +2,7 @@ package org.goodsManagement.dao.impl;
 
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.OutRepositoryDto;
-import org.goodsManagement.vo.OutRepositoryVO;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * Created by lifei on 2015/9/20.
@@ -74,13 +71,5 @@ public class OutRepositoryDaoImpl extends BasedaoA<OutRepositoryDto> {
     @Override
     public int updateByPrimaryKey(OutRepositoryDto record) {
         return sessionTemplate.update("org.goodsManagement.mapper.OutRepositoryDtoMapper.updateByPrimaryKey", record);
-    }
-
-    /**
-     * 显示所有的出库信息
-     * @return List of OutRepository
-     */
-    public List<OutRepositoryVO> selectAll() {
-        return sessionTemplate.selectList("org.goodsManagement.mapper.OutRepositoryDtoMapper.selectAll");
     }
 }

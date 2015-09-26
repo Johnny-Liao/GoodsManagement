@@ -1,6 +1,3 @@
-# 加事务，保证数据库结构的完整
-START TRANSACTION ;
-
 DROP DATABASE IF EXISTS goodsmanage;
 CREATE DATABASE goodsmanage DEFAULT CHARACTER SET utf8;
 USE goodsmanage;
@@ -84,5 +81,4 @@ CREATE TABLE outrepository
 ALTER TABLE outrepository ADD CONSTRAINT FK_ID_STAFF_OUT FOREIGN KEY (goodid) REFERENCES goods (id);
 ALTER TABLE outrepository ADD CONSTRAINT FK_ID_DEPT_OUT FOREIGN KEY (deptid) REFERENCES dept (id);
 ALTER TABLE outrepository ADD CONSTRAINT FK_ID_OPERATOR_OUT FOREIGN KEY (operatorid) REFERENCES user (id);
-COMMIT ;
 
