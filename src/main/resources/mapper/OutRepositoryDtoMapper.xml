@@ -17,6 +17,15 @@
     id, outtime, goodid, goodnumber, operatorid, deptid, standardnumber, comments,outrepositoryid
   </sql>
 
+    <!-- 查出所有出库信息 -->
+    <select id="selectAll" resultType="org.goodsManagement.vo.OutRepositoryVO">
+        SELECT outrepositoryid, outr.id, outtime, goodname, goodtype, goodnumber, username, deptname, comments
+        FROM outrepository outr
+        LEFT JOIN goods ON goods.id = goodid
+        LEFT JOIN user ON user.id = operatorid
+        LEFT JOIN dept ON dept.id = deptid;
+    </select>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
