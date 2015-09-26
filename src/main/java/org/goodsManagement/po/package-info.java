@@ -7,7 +7,7 @@
  * <strong>以下是对这个包中的类的介绍</strong>
  * <ol>
  *      <li>DeptDto表示部门实体对象</li>
- *      <li>DeptDto表示部门实体对象</li>
+ *      <li>DeptDto表示部门实体对象</li>   
  * </ol>
  *
  * Created by never on 2015/9/26.
