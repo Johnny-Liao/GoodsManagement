@@ -1,4 +1,4 @@
-package org.goodsManagement.ResourceString;
+package org.goodsManagement.resourcestring;
 
 /**
  * Created by lifei on 2015/9/24.
