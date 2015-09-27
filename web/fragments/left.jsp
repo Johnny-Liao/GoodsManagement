@@ -18,9 +18,9 @@
     </script>
 </head>
 <body>
-<div class="subNavBox">
+<div class="left">
     <div style="padding-bottom:50px;">
-        <div class="subs"><a href="#">监管人事管理系统</a></div>
+        <div class="subs"><a href="#">物品管理系统</a></div>
         <li><a href="/GoodsManager!getAll" target="contentFrame">物品信息管理</a></li>
         <li><a href="#" target="contentFrame">库房盘存</a></li>
         <li><a href="#" target="contentFrame">人员物品领用明细</a></li>
