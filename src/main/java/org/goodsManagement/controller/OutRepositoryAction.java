@@ -3,10 +3,12 @@ package org.goodsManagement.controller;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.convention.annotation.*;
 import org.goodsManagement.service.impl.OutRepositoryServiceImpl;
+import org.goodsManagement.service.impl.PoiUtils.OutRepositoryUtils;
 import org.goodsManagement.vo.OutGoodsWithSameId;
 import org.goodsManagement.vo.OutRepositoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -29,7 +31,14 @@ public class OutRepositoryAction extends ActionSupport {
     private String outrepositoryid;
     private OutRepositoryVO vo;
     private List<OutGoodsWithSameId> outGoodsWithSameIdList;
+    private File file;
+    @Autowired
+    private OutRepositoryUtils outRepositoryUtils;
 
+    /**
+     * 显示所有的出库信息
+     * @return
+     */
     public String getAll() {
         list = outRepositoryService.getAllOutRepositoryVO();
         // just for debug
@@ -39,14 +48,29 @@ public class OutRepositoryAction extends ActionSupport {
         return "getAll";
     }
 
+    /**
+     * 根据outrepositoryid显示相应的出库详细信息
+     * @return
+     */
     public String selectOutRepositoryById() {
-        System.out.println(outrepositoryid + "*****************************");
         vo = outRepositoryService.getOutReposById(outrepositoryid);
         outGoodsWithSameIdList = outRepositoryService.getDifferentGoodsById(outrepositoryid);
-        for (OutGoodsWithSameId out : outGoodsWithSameIdList) {
-            System.out.println(out + "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-        }
         return "showMessage";
+    }
+
+    /**
+     * 通过excel添加出库信息
+     * @return
+     */
+    public String addOutRepository() {
+        System.out.println("开始进行出库");
+        String filename = file.getPath();
+        System.out.println(filename);
+        String inid = outRepositoryUtils.addoutgoodsPoiUtils(filename);
+        System.out.println("添加出库成功"+inid);
+        this.setOutrepositoryid(inid);
+        return this.selectOutRepositoryById();
+
     }
 
     public OutRepositoryServiceImpl getOutRepositoryService() {
@@ -96,5 +120,21 @@ public class OutRepositoryAction extends ActionSupport {
 
     public void setOutGoodsWithSameIdList(List<OutGoodsWithSameId> outGoodsWithSameIdList) {
         this.outGoodsWithSameIdList = outGoodsWithSameIdList;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
+
+    public OutRepositoryUtils getOutRepositoryUtils() {
+        return outRepositoryUtils;
+    }
+
+    public void setOutRepositoryUtils(OutRepositoryUtils outRepositoryUtils) {
+        this.outRepositoryUtils = outRepositoryUtils;
     }
 }
