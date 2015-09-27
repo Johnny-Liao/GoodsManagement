@@ -25,34 +25,14 @@
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">入库出库管理</a> &gt; <a href="#">出库管理</a>
         </div>
         <form id="formresume" enctype="multipart/form-data" method="post">
-            <div class="search">
-                <!-- 搜索框开始 -->
-                <table border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td>订单号：</td>
-                        <td><input type="text" name="inrepositoryid" class="s_inputs"/></td>
-                        <td>出库时间：</td>
-                        <td><input type="text" name="intime" class="s_inputs"/></td>
-                        <td>供应商：</td>
-                        <td><input type="text" name="suppliers" class="s_inputs"/></td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td><input type="submit" name="submit" id="button" value="查询" class="s_btn"
-                                   onclick="javascript:this.form.action='/InRepository!selectbysearch'"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="file" name="file"></td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td><input type="submit" name="submit" id="button3" value="添加出库" class="s_btn"
-                                   onclick="javascript:this.form.action='/InRepository!addInrepository'"/></td>
-                    </tr>
-
-                </table>
-                <!-- 搜索框结束 -->
-            </div>
 
             <div class="tum">
                 <div class="contlist">
                     <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+                        <td><input type="file" name="file" value="选择出库清单文件" class="s_file_button"></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td><input type="submit" name="submit" id="button3" value="添加出库" class="s_btn"
+                                   onclick="javascript:this.form.action='/OutRepository!addOutRepository'"/></td>
                         <%--显示表头标题--%>
                         <tr style="color:#000; font-size:14px; padding:10px 0;">
                             <s:iterator var="column"

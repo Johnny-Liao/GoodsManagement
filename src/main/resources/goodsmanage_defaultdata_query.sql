@@ -1,3 +1,4 @@
+START TRANSACTION;
 -- 插入测试数据
 USE goodsmanage;
 

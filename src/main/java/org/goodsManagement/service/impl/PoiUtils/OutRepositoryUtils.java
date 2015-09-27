@@ -44,9 +44,10 @@ public class OutRepositoryUtils {
 //        public static void main(String[] args){
 //            OutRepositoryUtils.addoutgoodsPoiUtils(filePath);
 //    }
-    public  void addoutgoodsPoiUtils(String filePath) {
+    public  String addoutgoodsPoiUtils(String filePath) {
         HSSFWorkbook wookbook = null;
         OutRepositoryDto in;
+        String outRepositoryid = null;
         try {
             // 创建对Excel工作簿文件的引用
             wookbook = new HSSFWorkbook(new FileInputStream(filePath));
@@ -127,6 +128,7 @@ public class OutRepositoryUtils {
                     //拿到val1中入库表单的数据
                     in = new OutRepositoryDto();
                     in.setOutrepositoryid(val1[0]);
+                    outRepositoryid = val1[0];
                     in.setOperatorid(Integer.parseInt(val1[1]));
                     Date outdata = null;
                     try {
@@ -174,5 +176,6 @@ public class OutRepositoryUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return outRepositoryid;
     }
 }
