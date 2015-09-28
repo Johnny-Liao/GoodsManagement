@@ -28,30 +28,30 @@
         <jsp:include page="fragments/contentTop.jsp"/>
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">人员领用明细管理</a> &gt; <a href="#">人员领用明细管理</a>
         </div>
-        <form id="formresume" enctype="multipart/form-data" method="post">
-            <div class="search">
-                <table border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td>订单号：</td>
-                        <td><input type="text" name="inrepositoryid" class="s_inputs" value="${inrepositoryid}"/></td>
-                        <td>入库时间：</td>
-                        <td><input type="text" name="intime" class="s_inputs" value="${intime}"/></td>
-                        <td>供应商：</td>
-                        <td><input type="text" name="suppliers" class="s_inputs" value="${suppliers}"/></td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td><input type="submit" name="submit" id="button" value="查询" class="s_btn"
-                                   onclick="javascript:this.form.action='/InRepository!selectbysearch?page=1'"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="file" name="file"></td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td><input type="submit" name="submit" id="button3" value="添加入库" class="s_btn"
-                                   onclick="javascript:this.form.action='/InRepository!addInrepository'"/></td>
-                    </tr>
+        <%--<form id="formresume" enctype="multipart/form-data" method="post">--%>
+        <%--<div class="search">--%>
+        <%--<table border="0" cellspacing="0" cellpadding="0">--%>
+        <%--<tr>--%>
+        <%--<td>订单号：</td>--%>
+        <%--<td><input type="text" name="inrepositoryid" class="s_inputs" value="${inrepositoryid}"/></td>--%>
+        <%--<td>入库时间：</td>--%>
+        <%--<td><input type="text" name="intime" class="s_inputs" value="${intime}"/></td>--%>
+        <%--<td>供应商：</td>--%>
+        <%--<td><input type="text" name="suppliers" class="s_inputs" value="${suppliers}"/></td>--%>
+        <%--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>--%>
+        <%--<td><input type="submit" name="submit" id="button" value="查询" class="s_btn"--%>
+        <%--onclick="javascript:this.form.action='/InRepository!selectbysearch?page=1'"/></td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+        <%--<td><input type="file" name="file"></td>--%>
+        <%--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>--%>
+        <%--<td><input type="submit" name="submit" id="button3" value="添加入库" class="s_btn"--%>
+        <%--onclick="javascript:this.form.action='/InRepository!addInrepository'"/></td>--%>
+        <%--</tr>--%>
 
-                </table>
-            </div>
-
+        <%--</table>--%>
+        <%--</div>--%>
+        <form id="myform" method="post">
             <div class="tum">
                 <div class="contlist">
                     <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
@@ -73,19 +73,15 @@
                                 <td align="center" bgcolor="#fff8f8"><c:out value="${dto.goodname}"/></td>
                                 <td align="center" bgcolor="#fff8f8"><c:out value="${dto.getnumber}"/></td>
                                 <td align="center" bgcolor="#fff8f8"><c:out value="${dto.goodtype}"/></td>
-                                    <%--<td align="center" bgcolor="#fff8f8"><a--%>
-                                    <%--href="/InRepository!selectInrepositoryGoods?inrepositoryid=${inrepositoryid}">查看详细信息</a>--%>
-                                    <%--</td>--%>
                             </tr>
                         </c:forEach>
                     </table>
                     <td><input type="submit" name="submit" id="up" value="上一页" class="s_btn"
-                               onclick="javascript:this.form.action='/InRepository!dispachar?page=${(page - 1) > 1 ? (page - 1) : 1}'"/>
+                               onclick="javascript:this.form.action='/DeliveryDetail!getAll?page=${page-1}'"/>
                     </td>
-                    共<s:property value="countpage"></s:property>页
-                    当前第<s:property value="page"></s:property>页
+                    共${total_page}页 当前第${page}页
                     <td><input type="submit" name="submit" id="down" value="下一页" class="s_btn"
-                               onclick="javascript:this.form.action='/InRepository!dispachar?page=${(page + 1) > countpage ? countpage : (page + 1)}'"/>
+                               onclick="javascript:this.form.action='/DeliveryDetail!getAll?page=${page+1}'"/>
                     </td>
                 </div>
 

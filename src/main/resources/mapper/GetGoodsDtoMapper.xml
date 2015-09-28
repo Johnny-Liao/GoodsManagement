@@ -113,4 +113,8 @@
         LEFT OUTER JOIN dept ON dept.id = staff.deptid
         LEFT OUTER JOIN goods ON goods.id = getgoods.goodid
     </select>
+
+    <select id="counts" resultType="INTEGER">
+        select COUNT(*) FROM getgoods;
+    </select>
 </mapper>

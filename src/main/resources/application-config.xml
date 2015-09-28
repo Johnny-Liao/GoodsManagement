@@ -80,6 +80,18 @@
         <!--<property name="configLocation" value="classpath:sqlMapConfig.xml"/>-->
         <!--指定实体类所在的包，增强别名-->
         <property name="typeAliasesPackage" value="org.goodsManagement.po"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <value>
+                            dialect=mysql
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+
     </bean>
 
     <!--MapperScannerConfigurer就会扫描指定基包下面的所有接口，并把它们注册为一个个MapperFactoryBean对象-->
