@@ -1,8 +1,6 @@
 package org.goodsmanagement.service.impl;
 
-import org.goodsManagement.dao.impl.GetGoodsDaoImpl;
-import org.goodsManagement.po.GetGoodsDto;
-import org.goodsManagement.service.impl.GetGoodsServiceImpl;
+import org.goodsManagement.service.impl.DeliveryDetailServiceImpl;
 import org.goodsManagement.vo.GetGoodsVO;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,12 +12,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class GetGoodsServiceTest {
     private ApplicationContext applicationContext;
-    private GetGoodsServiceImpl getGoodsService;
+    private DeliveryDetailServiceImpl getGoodsService;
 
     @Before
     public void setUp() throws Exception {
         applicationContext = new ClassPathXmlApplicationContext("application-config.xml");
-        getGoodsService = (GetGoodsServiceImpl) applicationContext.getBean("getGoodsServiceImpl");
+        getGoodsService = (DeliveryDetailServiceImpl) applicationContext.getBean("getGoodsServiceImpl");
     }
 
     @Test

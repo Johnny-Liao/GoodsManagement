@@ -41,7 +41,7 @@ public interface BaseServiceI<T> {
      *
      * @return
      */
-    List<T> getAllEntities();
+//    List<T> getAllEntities();
 
 
     /**

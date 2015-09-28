@@ -1,8 +1,6 @@
 package org.goodsmanagement.dao.impl;
 
-import org.goodsManagement.dao.impl.DeptdaoImpl;
-import org.goodsManagement.dao.impl.GetGoodsDaoImpl;
-import org.goodsManagement.po.DeptDto;
+import org.goodsManagement.dao.impl.DeliveryDetailDaoImpl;
 import org.goodsManagement.po.GetGoodsDto;
 import org.goodsManagement.vo.GetGoodsVO;
 import org.junit.Before;
@@ -15,15 +13,15 @@ import java.util.List;
 /**
  * Created by johnny on 2015/9/23.
  */
-public class GetGoodsDaoImplTest {
+public class DeliveryDetailDaoImplTest {
 
     private ApplicationContext applicationContext;
-    private GetGoodsDaoImpl getGoodsDao;
+    private DeliveryDetailDaoImpl getGoodsDao;
 
     @Before
     public void setUp() throws Exception {
         applicationContext = new ClassPathXmlApplicationContext("application-config.xml");
-        getGoodsDao = (GetGoodsDaoImpl) applicationContext.getBean("getGoodsDaoImpl");
+        getGoodsDao = (DeliveryDetailDaoImpl) applicationContext.getBean("getGoodsDaoImpl");
     }
 
     @Test

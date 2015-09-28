@@ -13,7 +13,6 @@
   </sql>
 
 
-
     <!-- 自己添加  -->
     <select id="getGoodsById" parameterType="java.lang.Integer" resultType="org.goodsManagement.vo.GetGoodsVO">
         SELECT getgoods.id, staff.staffname, goods.goodname, goods.goodtype ,getgoods.getnumber
@@ -29,7 +28,6 @@
         LEFT JOIN staff ON getgoods.staffid = staff.id
         LEFT JOIN goods ON getgoods.goodid = goods.id
     </select>
-
 
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
@@ -107,4 +105,12 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+    <select id="selectAll" resultType="org.goodsManagement.vo.DeliveryDetailVO">
+        SELECT getgoods.getnumber,staff.staffname,
+        staff.id,staff.sex,dept.deptname,
+        goods.goodname,goods.goodtype
+        FROM getgoods LEFT OUTER JOIN staff ON staff.id = getgoods.staffid
+        LEFT OUTER JOIN dept ON dept.id = staff.deptid
+        LEFT OUTER JOIN goods ON goods.id = getgoods.goodid
+    </select>
 </mapper>

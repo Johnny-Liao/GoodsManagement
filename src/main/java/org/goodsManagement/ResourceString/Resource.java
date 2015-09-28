@@ -23,4 +23,6 @@ public class Resource {
     public static String[] goodInformationHead = {"品名", "单位", "显示详细信息", "删除"};
 
     public static String[] goodNuberAndTypeHead = {"数量", "类型"};
+
+    public static String[] DeliveryDetail = {"服务单位", "员工编号", "姓名", "性别", "物品名", "物品数量", "物品类型"};
 }

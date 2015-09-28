@@ -1,8 +1,9 @@
 package org.goodsManagement.service.impl;
 
-import org.goodsManagement.dao.impl.GetGoodsDaoImpl;
+import org.goodsManagement.dao.impl.DeliveryDetailDaoImpl;
 import org.goodsManagement.po.GetGoodsDto;
 import org.goodsManagement.service.BaseServiceI;
+import org.goodsManagement.vo.DeliveryDetailVO;
 import org.goodsManagement.vo.GetGoodsVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,21 +12,21 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- *
  * Created by johnny on 2015/9/23.
  */
 @Service
-public class GetGoodsServiceImpl implements BaseServiceI<GetGoodsDto> {
+public class DeliveryDetailServiceImpl implements BaseServiceI<GetGoodsDto> {
+
     @Autowired
-    @Qualifier("getGoodsDaoImpl")
-    private GetGoodsDaoImpl getGoodsDaoImpl;
+    @Qualifier("deliveryDetailDaoImpl")
+    private DeliveryDetailDaoImpl deliveryDetailDaoImpl;
 
     public void addEntity(GetGoodsDto getGoodsDto) {
-        getGoodsDaoImpl.insert(getGoodsDto);
+        deliveryDetailDaoImpl.insert(getGoodsDto);
     }
 
     public void modifyEntity(GetGoodsDto getGoodsDto) {
-        getGoodsDaoImpl.updateByPrimaryKey(getGoodsDto);
+        deliveryDetailDaoImpl.updateByPrimaryKey(getGoodsDto);
     }
 
     public GetGoodsDto loadEntity(int id) {
@@ -33,24 +34,25 @@ public class GetGoodsServiceImpl implements BaseServiceI<GetGoodsDto> {
     }
 
     public GetGoodsDto getEntity(int id) {
-        return getGoodsDaoImpl.selectByPrimaryKey(id);
+        return deliveryDetailDaoImpl.selectByPrimaryKey(id);
     }
 
-    public List<GetGoodsDto> getAllEntities() {
-        return null;
+    public List<DeliveryDetailVO> getAllEntities() {
+        return deliveryDetailDaoImpl.getAll();
     }
 
     public void deleteEntity(GetGoodsDto getGoodsDto) {
-        getGoodsDaoImpl.deleteByPrimaryKey(getGoodsDto.getId());
+        deliveryDetailDaoImpl.deleteByPrimaryKey(getGoodsDto.getId());
     }
 
     /**
      * 通过id来获取显示信息
+     *
      * @param id id
      * @return vo
      */
     public GetGoodsVO getGoodsById(int id) {
-        return getGoodsDaoImpl.getGoodsById(id);
+        return deliveryDetailDaoImpl.getGoodsById(id);
     }
 
 }
