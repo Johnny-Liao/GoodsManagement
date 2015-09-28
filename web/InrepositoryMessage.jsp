@@ -31,7 +31,7 @@
       <div class="contlist">
         <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
           <tr>
-            <td colspan="6" align="left" bgcolor="#fff8f8" style="font-size:14px; font-weight:bold; padding-left:16px;">简历基本信息</td>
+            <td colspan="6" align="left" bgcolor="#fff8f8" style="font-size:14px; font-weight:bold; padding-left:16px;">入库详细信息</td>
           </tr>
           <tr>
             <td width="9%" align="right"><span class="red">*</span> 订单号：</td>
@@ -63,10 +63,10 @@
           <%--显示表内容--%>
           <s:iterator value="listGoods" var="column">
             <tr style="color:#000; font-size:14px; padding:10px 0;">
-              <td align="center" bgcolor="#fff8f8">${goodname}</td><br>
-              <td align="center" bgcolor="#fff8f8">${goodnumber}</td><br>
-              <td align="center" bgcolor="#fff8f8">${goodunit}</td><br>
-              <td align="center" bgcolor="#fff8f8">${goodtype}</td><br>
+              <td align="center" bgcolor="#fff8f8">${goodname}</td>
+              <td align="center" bgcolor="#fff8f8">${goodnumber}</td>
+              <td align="center" bgcolor="#fff8f8">${goodunit}</td>
+              <td align="center" bgcolor="#fff8f8">${goodtype}</td>
             </tr>
           </s:iterator>
         </table>
