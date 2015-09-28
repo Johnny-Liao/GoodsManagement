@@ -33,7 +33,7 @@
                 <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
                     <tr>
                         <td colspan="6" align="left" bgcolor="#fff8f8"
-                            style="font-size:14px; font-weight:bold; padding-left:16px;">简历基本信息
+                            style="font-size:14px; font-weight:bold; padding-left:16px;">出库详细信息
                         </td>
                     </tr>
                     <tr>
@@ -70,15 +70,10 @@
                     <s:iterator value="outGoodsWithSameIdList" var="column">
                         <tr style="color:#000; font-size:14px; padding:10px 0;">
                             <td align="center" bgcolor="#fff8f8">${goodname}</td>
-                            <br>
                             <td align="center" bgcolor="#fff8f8">${deptname}</td>
-                            <br>
                             <td align="center" bgcolor="#fff8f8">${goodnumber}</td>
-                            <br>
                             <td align="center" bgcolor="#fff8f8">${goodunit}</td>
-                            <br>
                             <td align="center" bgcolor="#fff8f8">${goodtype}</td>
-                            <br>
                         </tr>
                     </s:iterator>
                 </table>
