@@ -1,5 +1,6 @@
 package org.goodsManagement.dao.impl;
 
+import com.github.pagehelper.PageHelper;
 import org.goodsManagement.dao.BasedaoA;
 import org.goodsManagement.po.GetGoodsDto;
 import org.goodsManagement.po.GoodsDto;
@@ -97,5 +98,21 @@ public class DeliveryDetailDaoImpl extends BasedaoA<GetGoodsDto> {
 
     public List<DeliveryDetailVO> getAll() {
         return sessionTemplate.selectList("org.goodsManagement.mapper.GetGoodsDtoMapper.selectAll");
+    }
+
+    /**
+     * 支持分页
+     *
+     * @param page
+     * @param rowCounts
+     * @return
+     */
+    public List<DeliveryDetailVO> getEntitiesByPage(int page, int rowCounts) {
+        PageHelper.startPage(page, rowCounts);
+        return sessionTemplate.selectList("org.goodsManagement.mapper.GetGoodsDtoMapper.selectAll");
+    }
+
+    public int getCounts() {
+        return sessionTemplate.selectOne("org.goodsManagement.mapper.GetGoodsDtoMapper.counts");
     }
 }

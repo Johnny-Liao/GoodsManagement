@@ -55,4 +55,11 @@ public class DeliveryDetailServiceImpl implements BaseServiceI<GetGoodsDto> {
         return deliveryDetailDaoImpl.getGoodsById(id);
     }
 
+    public List<DeliveryDetailVO> getEntitiesByPage(int page, int rowCounts) {
+        return deliveryDetailDaoImpl.getEntitiesByPage(page, rowCounts);
+    }
+
+    public int getCounts() {
+        return deliveryDetailDaoImpl.getCounts();
+    }
 }
