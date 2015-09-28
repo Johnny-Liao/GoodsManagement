@@ -154,7 +154,7 @@
         </tx:attributes>
     </tx:advice>
 
-    <!--使用aop来记录日志-->
+    <!--使用aop来记录日志 适合在调试的时候使用 生产环境下请取消-->
     <aop:config proxy-target-class="true">
         <!--pointcut表示将切面逻辑应用到哪些类上，采用的是aspectJ的表达式语言-->
         <aop:pointcut id="myPointcut"
@@ -171,4 +171,25 @@
 
     <!-- 启用AspectJ对Annotation的支持 -->
     <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+
+    <!--适合在调试的时候使用 生产环境下请取消-->
+    <aop:config>
+        <aop:advisor advice-ref="druid-stat-interceptor"
+                     pointcut-ref="druid-stat-pointcut"/>
+    </aop:config>
+
+    <bean id="druid-stat-interceptor"
+          class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
+    </bean>
+
+    <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut"
+          scope="prototype">
+        <property name="patterns">
+            <list>
+                <value>org.goodsManagement.service.*</value>
+                <value>org.goodsManagement.dao.*</value>
+            </list>
+        </property>
+    </bean>
+
 </beans>
