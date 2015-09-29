@@ -18,7 +18,7 @@
         <div>
             <a href="#"><span>
                 <img src="../images/person.png" width="17" height="19"/>
-            </span><span>您好<s:property value="#session.username"/>管理员</span> </a>
+            </span><span>您好<s:property value="#session.user.username"/></span> </a>
         </div>
         <div>
             <a href="#"><span>
