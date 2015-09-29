@@ -56,6 +56,14 @@
                             </tr>
                         </s:iterator>
                     </table>
+                    <td><input type="submit" name="submit" id="up" value="上一页" class="s_btn"
+                               onclick="/*javascript:this.form.action='/OutRepository!showByPage?page=${(page - 1) > 1 ? (page - 1) : 1}'*/"/>
+                    </td>
+                    共<s:property value="1"></s:property>页
+                    当前第<s:property value="1"></s:property>页
+                    <td><input type="submit" name="submit" id="down" value="下一页" class="s_btn"
+                               onclick="/*javascript:this.form.action='/OutRepository!showByPage?page=${(page + 1) > countpage ? countpage : (page + 1)}'*/"/>
+                    </td>
                 </div>
             </div>
         </form>

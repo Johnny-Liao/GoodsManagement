@@ -18,7 +18,7 @@
     <frame src="fragments/header.jsp" name="topFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
     <frameset cols="200,*" frameborder="0" border="0" framespacing="0">
         <frame src="fragments/left.jsp" name="menuFrame" frameborder="0" border="0" framespacing="0" noresize scrolling="NO">
-        <frame src="/InRepository!getAll?page=1" name="contentFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
+        <frame src="/GoodsManager!getAll" name="contentFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
     </frameset>
     <frame src="fragments/footer.jsp" name="footFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
 </frameset>
