@@ -102,5 +102,8 @@ public class GoodsDaoImpl extends BasedaoA<GoodsDto> {
     public List<Warehouse> getWarehouseInventory(String name) {
         return sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.WarehouseInventory",name);
     }
+    public List<Warehouse> getWarehouseInventory1() {
+        return sessionTemplate.selectList("org.goodsManagement.mapper.GoodsDtoMapper.WarehouseInventory1");
+    }
 
 }
