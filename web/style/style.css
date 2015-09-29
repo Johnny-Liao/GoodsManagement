@@ -105,7 +105,8 @@ input{width:23px;height:23px;}
 .s_inputss{ background:#fff; border:1px solid #d8d8d8; width:180px; height:28px; color:#ccc; padding-left:10px;}
 .search td{ padding-right:10px; height:46px;}
 .s_btn{ background:#ff0000; width:80px; height:30px; border-radius:3px; color:#fff; text-align:center; border:none;}
-.s_btns{ background:#b4b4b4; width:80px; height:30px; border-radius:3px; color:#fff; text-align:center; border:none;}
+.s_btns{ background:#b4b4b4; width:60px; height:30px; border-radius:3px; color:#fff; text-align:center; border:none;}
+.s_btns_file{ background:#b4b4b2; width:80px; height:20px; border-radius:3px; color:#fff; text-align:center; border:none;}
 .s_btnhidden{display:none;visibility: hidden}
 .contlist{  font-size:12px; width:98%; margin:0 auto; border-top:2px solid #db0000;}
 .contlist td{ line-height:30px; padding:5px 0;border-bottom: dashed 1px #e5e3da;}
