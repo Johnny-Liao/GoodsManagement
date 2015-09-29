@@ -26,7 +26,7 @@ INSERT INTO staff (id, staffname, sex, deptid)  VALUES (4, "汉子", "女", 1);
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (1, 1, 1, 20);
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (2, 2, 2, 10);
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (4, 3, 6, 20);
-INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (5, 4, 4, 40);
+# INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (5, 4, 4, 40);
 
 
 INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (1, 20150919, 1, 20, "卖衣服的", "黄衣党", 12345678901, 1, "买了几件衣服和裤子", "1111");
