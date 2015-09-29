@@ -19,6 +19,11 @@
         GROUP BY goodname;
     </select>
 
+    <select id="WarehouseInventory1" resultType="org.goodsManagement.vo.Warehouse">
+        SELECT goodname,goodunit, sum(goodnumbers) as sumnum FROM goods GROUP BY goodname;
+
+    </select>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>

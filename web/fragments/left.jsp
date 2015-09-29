@@ -23,7 +23,7 @@
         <div class="subs"><a href="#">物品管理系统</a></div>
         <ul class="navContent " style="display:block">
             <li><a href="/GoodsManager!getAll" target="contentFrame">物品信息管理</a></li>
-            <li><a href="#" target="contentFrame">库房盘存</a></li>
+            <li><a href="/Warehouse!warehouse" target="contentFrame">库房盘存</a></li>
             <li><a href="/DeliveryDetail!getAll" target="contentFrame">人员物品领用明细</a></li>
             <li><a href="/InRepository!getAll?page=1" target="contentFrame">入库管理</a></li>
             <li><a href="/OutRepository!getAll?page=1" target="contentFrame">出库管理</a></li>

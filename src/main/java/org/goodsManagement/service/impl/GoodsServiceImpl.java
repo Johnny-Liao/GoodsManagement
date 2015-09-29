@@ -98,4 +98,7 @@ public class GoodsServiceImpl implements BaseServiceI<GoodsDto> {
     }
 
 
+    public List<Warehouse> getWarehouseInventory1() {
+        return goodsDaoImpl.getWarehouseInventory1();
+    }
 }

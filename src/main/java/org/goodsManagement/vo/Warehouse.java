@@ -6,8 +6,17 @@ package org.goodsManagement.vo;
  */
 public class Warehouse {
     private int id;
-    private String goodName;
-    private int sumNum;
+    private String goodname;
+    private int sumnum;
+    private String goodunit;
+
+    public int getSumnum() {
+        return sumnum;
+    }
+
+    public void setSumnum(int sumnum) {
+        this.sumnum = sumnum;
+    }
 
     public int getId() {
         return id;
@@ -17,28 +26,30 @@ public class Warehouse {
         this.id = id;
     }
 
-    public String getGoodName() {
-        return goodName;
+    public String getGoodname() {
+        return goodname;
     }
 
-    public void setGoodName(String goodName) {
-        this.goodName = goodName;
+    public void setGoodname(String goodname) {
+        this.goodname = goodname;
     }
 
-    public int getSumNum() {
-        return sumNum;
+
+
+    public String getGoodunit() {
+        return goodunit;
     }
 
-    public void setSumNum(int sumNum) {
-        this.sumNum = sumNum;
+    public void setGoodunit(String goodunit) {
+        this.goodunit = goodunit;
     }
 
     @Override
     public String toString() {
         return "Warehouse{" +
-                "id=" + id +
-                ", goodName='" + goodName + '\'' +
-                ", sumNum=" + sumNum +
+                "goodUnit=" + goodunit +
+                ", goodName='" + goodname + '\'' +
+                ", sum=" + sumnum +
                 '}';
     }
 }
