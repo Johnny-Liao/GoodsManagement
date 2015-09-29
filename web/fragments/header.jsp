@@ -26,7 +26,7 @@
             </span><span>修改密码</span> </a>
         </div>
         <div>
-            <a href="#<%--/Login!logout?username=#session.username--%>"><span>
+            <a target="_top" href="/Login!logout"><span>
                 <img src="../images/colse.png" width="19" height="20"/>
             </span><span>注销</span> </a>
         </div>

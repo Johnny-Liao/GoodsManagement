@@ -2,8 +2,6 @@ package org.goodsManagement.controller.filter;
 
 import org.goodsManagement.dao.impl.UserDaoImpl;
 import org.goodsManagement.po.UserDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -52,7 +50,6 @@ public class LoginFilter implements Filter {
             chain.doFilter(request, response);
         } else {
             UserDto user = (UserDto) session.getAttribute("user");
-//            UserDaoImpl userDao = new UserDaoImpl();
 
             //表示之前登录过
             if (user != null && userDao.existUser(user) != null) {
@@ -61,7 +58,6 @@ public class LoginFilter implements Filter {
                 //表示之前没有登陆过
                 response1.sendRedirect("/login.jsp");
         }
-
     }
 
     public void destroy() {
