@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * Created by lifei on 2015/9/20.
  */
 @Component
-public class UserDao extends BasedaoA<UserDto> {
+public class UserDaoImpl extends BasedaoA<UserDto> {
     /**
      * 通过主键获取实体
      *
@@ -73,5 +73,12 @@ public class UserDao extends BasedaoA<UserDto> {
     @Override
     public int updateByPrimaryKey(UserDto record) {
         return sessionTemplate.update("org.goodsManagement.mapper.StaffDtoMapper.updateByPrimaryKey", record);
+    }
+
+    /**
+     *用于判断是否存在此用户
+     */
+    public UserDto existUser(UserDto user) {
+        return sessionTemplate.selectOne("org.goodsManagement.mapper.UserDtoMapper.existUser", user);
     }
 }
