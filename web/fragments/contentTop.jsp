@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <script language="javascript">
   function realSysTime(clock) {
     var now = new Date();            //创建Date对象
@@ -20,6 +21,6 @@
   }
 </script>
 <div class="contentop">
-  <div class="welcome">您好：<a href="#">admin</a>，欢迎登综合业务管理系统！</div>
+  <div class="welcome">您好：<font color="#FF0000"><s:property value="#session.username"/></font>，欢迎登综合业务管理系统！</div>
   <div class="time"><span id="clock"></span></div>
 </div>

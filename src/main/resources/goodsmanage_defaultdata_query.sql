@@ -94,4 +94,5 @@ SELECT goodname, deptname, goodnumber, goodunit, goodtype
     LEFT JOIN dept ON dept.id = outrepository.deptid
 WHERE outrepositoryid = 'YIFU';
 
+SELECT * FROM user WHERE username='admin' AND password='admin';
 COMMIT

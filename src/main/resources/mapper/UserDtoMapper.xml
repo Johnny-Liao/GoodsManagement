@@ -11,6 +11,10 @@
     id, username, password
   </sql>
 
+    <select id="existUser" resultType="org.goodsManagement.po.UserDto" parameterType="org.goodsManagement.po.UserDto">
+        SELECT * FROM user WHERE username=#{username} AND password=#{password};
+    </select>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
