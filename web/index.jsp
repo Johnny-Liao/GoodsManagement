@@ -15,9 +15,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 </head>
-<s:if test="#session.username == null">
-    <jsp:forward page="login.jsp" />
-</s:if>
+<%--<s:if test="#session.user == null">--%>
+    <%--<jsp:forward page="login.jsp" />--%>
+<%--</s:if>--%>
 <frameset rows="15%,80%,5%">
     <frame src="fragments/header.jsp" name="topFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
     <frameset cols="200,*" frameborder="0" border="0" framespacing="0">

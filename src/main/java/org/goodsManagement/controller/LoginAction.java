@@ -25,6 +25,7 @@ public class LoginAction {
 
     @Autowired
     UserServiceImpl userService;
+
     private String username;
     private String password;
 
@@ -45,21 +46,21 @@ public class LoginAction {
     }
 
     public String validate() {
-        Map<String,Object> session = ActionContext.getContext().getSession();
+        Map<String, Object> session = ActionContext.getContext().getSession();
         UserDto userDto = new UserDto();
         userDto.setUsername(username);
         userDto.setPassword(password);
         if (userService.existUser(userDto) == null) {
-            session.put("msg","用户名或密码出错！");
+            session.put("msg", "用户名或密码出错！");
             return "NOT_PASS";
         }
-        session.put("username", username);
+        session.put("user", userDto);
         return "PASS";
     }
 
     public String logout() {
-        Map<String,Object> session = ActionContext.getContext().getSession();
-        session.remove(username);
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        session.remove("user");
         session.put("msg", "退出成功！");
         return "NOT_PASS";
     }
