@@ -30,4 +30,13 @@ public class UserServiceTest {
         UserDto result = userServiceImpl.existUser(userDto);
         System.out.println(result);
     }
+
+    @Test
+    public void testChangePassword() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("admin");
+        userDto.setPassword("admin");
+        userServiceImpl.changePassword(userDto);
+        System.out.println("done");
+    }
 }

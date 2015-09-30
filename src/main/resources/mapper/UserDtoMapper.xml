@@ -15,6 +15,11 @@
         SELECT * FROM user WHERE username=#{username} AND password=#{password};
     </select>
 
+    <update id="changePassword" parameterType="org.goodsManagement.po.UserDto">
+        <!-- Some wrong in here!-->
+        UPDATE user SET password=#{password, jdbcType=VARCHAR} WHERE username=#{username, jdbcType=VARCHAR};
+    </update>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
