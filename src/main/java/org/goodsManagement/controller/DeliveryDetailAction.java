@@ -34,7 +34,7 @@ public class DeliveryDetailAction {
     /**
      * 分页中每页5条记录
      */
-    private static final int NUM_PER_PAGE = 5;
+    private static final int NUM_PER_PAGE = 3;
 
     /**
      * 按每页显示5条记录
@@ -50,9 +50,10 @@ public class DeliveryDetailAction {
         else page = Integer.parseInt(tmp);
 //        System.out.println(page);
         int counts = deliveryDetailService.getCounts();
-        int total_page = counts / NUM_PER_PAGE;
-        if (total_page == 0)
-            total_page = 1;
+        System.out.println(counts);
+        int total_page =counts % NUM_PER_PAGE == 0 ? (counts / NUM_PER_PAGE) : (counts / NUM_PER_PAGE + 1);
+//        if (total_page == 0)
+//            total_page = 1;
         if (total_page < page || page <= 0)
             page = 1;
         List<DeliveryDetailVO> dtos = deliveryDetailService.getEntitiesByPage(page, NUM_PER_PAGE);

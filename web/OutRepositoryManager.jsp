@@ -29,9 +29,9 @@
             <div class="tum">
                 <div class="contlist">
                     <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
-                        <td><input type="file" name="file" value="选择出库清单文件" class="s_input">
-                            <input type="submit" name="submit" id="button3" value="添加出库" class="s_btn"
-                                   onclick="javascript:this.form.action='/OutRepository!addOutRepository'"/></td>
+                        <input type="file" name="file" value="选择出库清单文件" class="s_input">
+                        <input type="submit" name="submit" id="button3" value="添加出库" class="s_btn"
+                               onclick="javascript:this.form.action='/OutRepository!addOutRepository'"/>
                         <%--显示表头标题--%>
                         <tr style="color:#000; font-size:14px; padding:10px 0;">
                             <s:iterator var="column"

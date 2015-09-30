@@ -26,7 +26,7 @@ INSERT INTO staff (id, staffname, sex, deptid)  VALUES (4, "汉子", "女", 1);
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (1, 1, 1, 20);
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (2, 2, 2, 10);
 INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (4, 3, 6, 20);
-# INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (5, 4, 4, 40);
+INSERT INTO getgoods (id, staffid, goodid, getnumber)  VALUES (5, 4, 4, 40);
 
 
 INSERT INTO inrepository (id, intime, goodid, goodnumber, suppliers, linkman, phone, operatorid, comments, inrepositoryid)  VALUES (1, 20150919, 1, 20, "卖衣服的", "黄衣党", 12345678901, 1, "买了几件衣服和裤子", "1111");
@@ -95,6 +95,12 @@ SELECT goodname, deptname, goodnumber, goodunit, goodtype
 WHERE outrepositoryid = 'YIFU';
 
 SELECT * FROM user WHERE username='admin' AND password='admin';
-SELECT * FROM user;
-UPDATE user SET password="aaaaaaa" WHERE username="admin";
+use goodsmanage;
+SELECT getgoods.getnumber, staff.staffname, staff.id, staff.sex, dept.deptname
+  , goods.goodname, goods.goodtype
+FROM getgoods
+  LEFT JOIN staff ON staff.id = getgoods.staffid
+  LEFT JOIN dept ON dept.id = staff.deptid
+  LEFT JOIN goods ON goods.id = getgoods.goodid
+LIMIT 1, 3;
 COMMIT
