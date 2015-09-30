@@ -29,13 +29,13 @@ public class LoginFilter implements Filter {
         return false;
     }
 
-    private UserDaoImpl userDao;
+//    private UserDaoImpl userDao;
 
     public void init(FilterConfig filterConfig) throws ServletException {
         //这里获取Spring管理的bean，使用注解的方式好像不奏效
-        WebApplicationContext wac = WebApplicationContextUtils
-                .getRequiredWebApplicationContext(filterConfig.getServletContext());
-        userDao = (UserDaoImpl) wac.getBean("userDaoImpl");
+//        WebApplicationContext wac = WebApplicationContextUtils
+//                .getRequiredWebApplicationContext(filterConfig.getServletContext());
+//        userDao = (UserDaoImpl) wac.getBean("userDaoImpl");
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -52,7 +52,7 @@ public class LoginFilter implements Filter {
             UserDto user = (UserDto) session.getAttribute("user");
 
             //表示之前登录过
-            if (user != null && userDao.existUser(user) != null) {
+            if (user != null/* && userDao.existUser(user) != null*/) {
                 chain.doFilter(request, response);
             } else
                 //表示之前没有登陆过
