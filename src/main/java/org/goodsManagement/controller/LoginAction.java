@@ -20,7 +20,7 @@ import java.util.Map;
 @Results(
         {
                 @Result(name = "PASS", location = "/index.jsp", type = "redirect"),
-                @Result(name = "NOT_PASS", location = "/login.jsp"),
+                @Result(name = "NOT_PASS", location = "/login.jsp", type = "redirect"),
                 @Result(name = "CHANGE_PASS", location = "/changePassword.jsp"),
                 @Result(name = "error", location = "/error.jsp")
         })
