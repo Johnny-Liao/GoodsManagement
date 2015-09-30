@@ -1,11 +1,13 @@
 package org.goodsManagement.controller;
 
 import com.opensymphony.xwork2.ActionContext;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.*;
 import org.goodsManagement.po.UserDto;
 import org.goodsManagement.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -17,8 +19,9 @@ import java.util.Map;
 @Namespace("/")
 @Results(
         {
-                @Result(name = "PASS", location = "/index.jsp"),
+                @Result(name = "PASS", location = "/index.jsp", type = "redirect"),
                 @Result(name = "NOT_PASS", location = "/login.jsp"),
+                @Result(name = "CHANGE_PASS", location = "/changePassword.jsp"),
                 @Result(name = "error", location = "/error.jsp")
         })
 public class LoginAction {
@@ -28,6 +31,15 @@ public class LoginAction {
 
     private String username;
     private String password;
+    private String ensure_password;
+
+    public String getEnsure_password() {
+        return ensure_password;
+    }
+
+    public void setEnsure_password(String ensure_password) {
+        this.ensure_password = ensure_password;
+    }
 
     public String getUsername() {
         return username;
@@ -63,5 +75,18 @@ public class LoginAction {
         session.remove("user");
         session.put("msg", "退出成功！");
         return "NOT_PASS";
+    }
+
+    public String changePassword() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        if (!password.equals(ensure_password)) {
+            session.put("message", "两次密码不同");
+            return "CHANGE_PASS";
+        }
+        UserDto userDto = new UserDto();
+        userDto.setUsername(username);
+        userDto.setPassword(password);
+        userService.changePassword(userDto);
+        return "PASS";
     }
 }

@@ -18,12 +18,12 @@
         <div>
             <a href="#"><span>
                 <img src="../images/person.png" width="17" height="19"/>
-            </span><span>您好<s:property value="#session.user.username"/></span> </a>
+            </span><span>您好&nbsp;<s:property value="#session.user.username"/></span></a>
         </div>
         <div>
-            <a href="#"><span>
+            <a target="_top" href="../changePassword.jsp<%--/Login!changePassword--%>"><span>
                 <img src="../images/password.png" width="15" height="21"/>
-            </span><span>修改密码</span> </a>
+            </span><span>修改密码</span></a>
         </div>
         <div>
             <a target="_top" href="/Login!logout"><span>

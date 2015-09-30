@@ -81,4 +81,8 @@ public class UserDaoImpl extends BasedaoA<UserDto> {
     public UserDto existUser(UserDto user) {
         return sessionTemplate.selectOne("org.goodsManagement.mapper.UserDtoMapper.existUser", user);
     }
+
+    public void changePassword(UserDto userDto) {
+        sessionTemplate.update("org.goodsManagement.mapper.UserDtoMapper.changePassword", userDto);
+    }
 }

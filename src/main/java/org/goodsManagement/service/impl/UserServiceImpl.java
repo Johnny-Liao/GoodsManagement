@@ -40,4 +40,8 @@ public class UserServiceImpl implements BaseServiceI<UserDto> {
     public void deleteEntity(UserDto userDto) {
 
     }
+
+    public void changePassword(UserDto userDto) {
+        userDaoImpl.changePassword(userDto);
+    }
 }

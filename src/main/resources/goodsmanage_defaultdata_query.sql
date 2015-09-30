@@ -95,4 +95,6 @@ SELECT goodname, deptname, goodnumber, goodunit, goodtype
 WHERE outrepositoryid = 'YIFU';
 
 SELECT * FROM user WHERE username='admin' AND password='admin';
+SELECT * FROM user;
+UPDATE user SET password="aaaaaaa" WHERE username="admin";
 COMMIT

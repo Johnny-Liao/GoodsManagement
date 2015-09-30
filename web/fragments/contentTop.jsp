@@ -21,6 +21,6 @@
   }
 </script>
 <div class="contentop">
-  <div class="welcome">您好：<font color="#FF0000"><s:property value="#session.username"/></font>，欢迎登综合业务管理系统！</div>
+  <div class="welcome">您好：<font color="#FF0000"><s:property value="#session.user.username"/></font>，欢迎登综合业务管理系统！</div>
   <div class="time"><span id="clock"></span></div>
 </div>
